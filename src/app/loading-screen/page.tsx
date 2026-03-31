@@ -72,20 +72,20 @@ export default function LoadingScreen() {
         <div className="text-center space-y-2">
           <p className="text-lg md:text-xl font-semibold text-[#1A1A1A] tracking-tight">
             {progress < 33
-              ? "Analyzing your profile..."
+              ? "Analyzing your pelvic floor profile..."
               : progress < 66
-              ? "Matching your goals..."
-              : "Building your personal plan..."}
+              ? "Matching clinical protocols to your goals..."
+              : "Building your personalized 8-week program..."}
           </p>
           <p className="text-sm md:text-base text-[#5c5b5b] font-medium max-w-[240px] mx-auto leading-relaxed">
-            Tailoring exercises to your unique peak performance goals.
+            Cross-referencing your answers with clinical data from 3,800+ men.
           </p>
         </div>
       </div>
       {/* Background Subtle Detail (Clean Aesthetic) */}
       <div className="fixed bottom-12 text-center w-full px-6">
         <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-[#adacb6] opacity-40">
-          PEAKCORE BIOMETRIC ENGINE v2.0
+          PEAKCORE CLINICAL MATCHING ENGINE
         </span>
       </div>
     </div>
