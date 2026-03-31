@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import PelvicFloorAnatomy from "@/components/PelvicFloorAnatomy";
 
 export default function FlowPage() {
   const [step, setStep] = useState(0);
@@ -470,7 +469,11 @@ export default function FlowPage() {
           <div className="flex-1 flex flex-col justify-center items-center">
             {/* Animated Pelvic Floor Anatomy */}
             <div className="flex justify-center mb-6">
-              <PelvicFloorAnatomy />
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/1116_Muscles_of_the_Pelvic_Floor.png/800px-1116_Muscles_of_the_Pelvic_Floor.png"
+                alt="Male pelvic floor anatomy showing muscles that control bladder function and sexual stamina"
+                className="w-full max-w-[280px] mx-auto rounded-xl"
+              />
             </div>
             <h2 className="text-[20px] font-bold text-[#1A1A1A] text-center mb-3">This is your pelvic floor</h2>
             <p className="text-[14px] text-[#71717A] text-center leading-relaxed max-w-[320px] mb-8">

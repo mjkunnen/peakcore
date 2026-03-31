@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import PelvicFloorAnatomy from "@/components/PelvicFloorAnatomy";
 
 export default function ResultsPage() {
   const [discountActive, setDiscountActive] = useState(false);
@@ -11,7 +10,9 @@ export default function ResultsPage() {
   const [offerTriggered, setOfferTriggered] = useState(false);
   const [countdown, setCountdown] = useState(15 * 60); // 15 minutes in seconds
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+  const [pricingSeenAt, setPricingSeenAt] = useState<number | null>(null);
   const pricingSectionRef = useRef<HTMLDivElement>(null);
+  const pricingRef = useRef<HTMLDivElement>(null);
 
   // Time on page counter
   useEffect(() => {
@@ -19,27 +20,36 @@ export default function ResultsPage() {
     return () => clearInterval(timer);
   }, []);
 
-  // Scroll trigger: track when user scrolls past 60%
+  // Intersection Observer: detect when pricing section enters viewport
   useEffect(() => {
-    const handleScroll = () => {
-      if (scrolledEnough) return;
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (docHeight > 0 && scrollTop / docHeight >= 0.80) {
-        setScrolledEnough(true);
-      }
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    if (scrolledEnough || !pricingRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setScrolledEnough(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(pricingRef.current);
+    return () => observer.disconnect();
   }, [scrolledEnough]);
 
-  // Show offer when BOTH conditions met: scrolled 85% AND 8+ seconds on page
+  // When pricing section is seen, record the time
   useEffect(() => {
-    if (scrolledEnough && timeOnPage >= 15 && !offerTriggered && !showOffer && !discountActive) {
+    if (scrolledEnough && pricingSeenAt === null) {
+      setPricingSeenAt(timeOnPage);
+    }
+  }, [scrolledEnough, pricingSeenAt, timeOnPage]);
+
+  // Show offer 5 seconds after pricing was seen
+  useEffect(() => {
+    if (pricingSeenAt !== null && timeOnPage >= pricingSeenAt + 5 && !offerTriggered && !showOffer && !discountActive) {
       setShowOffer(true);
       setOfferTriggered(true);
     }
-  }, [scrolledEnough, timeOnPage, offerTriggered, showOffer, discountActive]);
+  }, [pricingSeenAt, timeOnPage, offerTriggered, showOffer, discountActive]);
 
   // Countdown timer
   useEffect(() => {
@@ -258,8 +268,12 @@ export default function ResultsPage() {
         {/* SECTION: What You're Training */}
         <section className="px-5 py-8">
           <div className="flex flex-col items-center">
-            <div className="flex justify-center mb-5">
-              <PelvicFloorAnatomy />
+            <div className="flex justify-center mb-6">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/1116_Muscles_of_the_Pelvic_Floor.png/800px-1116_Muscles_of_the_Pelvic_Floor.png"
+                alt="Male pelvic floor anatomy showing muscles that control bladder function and sexual stamina"
+                className="w-full max-w-[280px] mx-auto rounded-xl"
+              />
             </div>
             <h3 className="text-[18px] font-bold text-[#1A1A1A] mb-2 text-center">What you&apos;re training</h3>
             <p className="text-[14px] text-[#71717A] text-center leading-relaxed max-w-[320px]">
@@ -436,7 +450,7 @@ export default function ResultsPage() {
         </section>
 
         {/* ===== BOTTOM SECTION: PRICING ===== */}
-        <div ref={pricingSectionRef}>
+        <div ref={(el) => { (pricingSectionRef as React.MutableRefObject<HTMLDivElement | null>).current = el; (pricingRef as React.MutableRefObject<HTMLDivElement | null>).current = el; }}>
           {!discountActive ? (
             <>
               {/* Pre-discount pricing - stacked vertical cards */}
