@@ -10,6 +10,7 @@ export default function ResultsPage() {
   const [isSpinning, setIsSpinning] = useState(false);
   const [spinRotation, setSpinRotation] = useState(0);
   const [countdown, setCountdown] = useState(15 * 60); // 15 minutes in seconds
+  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
   const pricingSectionRef = useRef<HTMLDivElement>(null);
 
   // Scroll trigger: when user scrolls past 60% of the page
@@ -57,6 +58,7 @@ export default function ResultsPage() {
   const handleGoToDiscount = () => {
     setDiscountActive(true);
     setShowCelebration(false);
+    setSelectedPlan(null);
     setTimeout(() => {
       pricingSectionRef.current?.scrollIntoView({ behavior: "smooth" });
     }, 100);
@@ -342,20 +344,20 @@ export default function ResultsPage() {
               <section className="px-5 py-8">
                 <div className="flex overflow-x-auto gap-3 pb-4 snap-x" style={{ msOverflowStyle: "none", scrollbarWidth: "none" }}>
                   {/* Tier 1 */}
-                  <div className="min-w-[150px] flex-1 snap-start p-4 border border-[#e5e2e1] rounded-xl flex flex-col items-center justify-center text-center gap-1">
+                  <div onClick={() => setSelectedPlan("1week")} className={`option-tap cursor-pointer min-w-[150px] flex-1 snap-start p-4 border-2 rounded-xl flex flex-col items-center justify-center text-center gap-1 transition-all ${selectedPlan === "1week" ? "option-selected border-[#FF6B2C]" : "border-[#e5e2e1]"}`}>
                     <span className="text-[14px] text-[#9CA3AF] font-medium">1 Week</span>
                     <span className="text-[20px] font-bold text-[#1A1A1A]">$9.99</span>
                     <span className="text-[12px] text-[#9CA3AF]">$1.43/day</span>
                   </div>
                   {/* Tier 2 (Highlighted) */}
-                  <div className="min-w-[160px] flex-1 snap-center p-4 border-2 border-[#ff6b2c] bg-[#FFF4EE] rounded-xl flex flex-col items-center justify-center text-center gap-1 relative overflow-hidden">
+                  <div onClick={() => setSelectedPlan("4week")} className={`option-tap cursor-pointer min-w-[160px] flex-1 snap-center p-4 border-2 rounded-xl flex flex-col items-center justify-center text-center gap-1 relative overflow-hidden transition-all ${selectedPlan === "4week" ? "option-selected border-[#FF6B2C]" : "border-[#ff6b2c] bg-[#FFF4EE]"}`}>
                     <div className="absolute top-0 left-0 right-0 bg-[#ff6b2c] py-1 text-[10px] font-extrabold text-white uppercase tracking-wider">Most Popular</div>
                     <span className="text-[14px] text-[#ff6b2c] font-bold mt-3">4 Weeks</span>
                     <span className="text-[24px] font-black text-[#1A1A1A]">$39.99</span>
                     <span className="text-[12px] text-[#ff6b2c] font-medium">$1.33/day</span>
                   </div>
                   {/* Tier 3 */}
-                  <div className="min-w-[150px] flex-1 snap-end p-4 border border-[#e5e2e1] rounded-xl flex flex-col items-center justify-center text-center gap-1 relative overflow-hidden">
+                  <div onClick={() => setSelectedPlan("12week")} className={`option-tap cursor-pointer min-w-[150px] flex-1 snap-end p-4 border-2 rounded-xl flex flex-col items-center justify-center text-center gap-1 relative overflow-hidden transition-all ${selectedPlan === "12week" ? "option-selected border-[#FF6B2C]" : "border-[#e5e2e1]"}`}>
                     <div className="absolute top-0 left-0 right-0 bg-[#22C55E] py-1 text-[10px] font-extrabold text-white uppercase tracking-wider">Best Value</div>
                     <span className="text-[14px] text-[#9CA3AF] font-medium mt-3">12 Weeks</span>
                     <span className="text-[20px] font-bold text-[#1A1A1A]">$89.99</span>
@@ -363,7 +365,7 @@ export default function ResultsPage() {
                   </div>
                 </div>
                 {/* CTA Button */}
-                <button className="w-full h-14 bg-[#ff6b2c] text-white font-bold text-[16px] rounded-xl mt-8 active:scale-[0.98] transition-transform duration-200 flex items-center justify-center gap-2 shadow-lg" style={{ boxShadow: "0 4px 12px rgba(255,107,44,0.2)" }}>
+                <button disabled={!selectedPlan} className={`w-full h-14 font-bold text-[16px] rounded-xl mt-8 active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 ${selectedPlan ? "bg-[#ff6b2c] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>
                   Get My Plan
                   <span className="material-symbols-outlined">arrow_forward</span>
                 </button>
@@ -391,7 +393,7 @@ export default function ResultsPage() {
               {/* Pricing Cards Stack */}
               <div className="flex flex-col gap-3 px-4 mt-6">
                 {/* Card 1: 1 Week Trial */}
-                <div className="flex flex-col p-5 bg-white border border-[#E4E4E7] rounded-xl shadow-sm active:scale-[0.98] transition-transform">
+                <div onClick={() => setSelectedPlan("d1week")} className={`option-tap cursor-pointer flex flex-col p-5 bg-white border-2 rounded-xl shadow-sm active:scale-[0.98] transition-all ${selectedPlan === "d1week" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7]"}`}>
                   <div className="flex justify-between items-start">
                     <div className="flex flex-col">
                       <span className="text-[14px] font-bold tracking-tight text-[#1c1b1b]">1-WEEK TRIAL</span>
@@ -409,7 +411,7 @@ export default function ResultsPage() {
                 </div>
 
                 {/* Card 2: 4 Weeks HIGHLIGHTED */}
-                <div className="relative flex flex-col p-5 bg-[#FFF4EE] border-2 border-[#FF6B2C] rounded-xl active:scale-[0.98] transition-transform">
+                <div onClick={() => setSelectedPlan("d4week")} className={`option-tap cursor-pointer relative flex flex-col p-5 border-2 rounded-xl active:scale-[0.98] transition-all ${selectedPlan === "d4week" ? "option-selected border-[#FF6B2C]" : "bg-[#FFF4EE] border-[#FF6B2C]"}`}>
                   <div className="absolute -top-3 right-4 bg-[#FF6B2C] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                     MOST POPULAR
                   </div>
@@ -431,7 +433,7 @@ export default function ResultsPage() {
                 </div>
 
                 {/* Card 3: 12 Weeks */}
-                <div className="flex flex-col p-5 bg-white border border-[#E4E4E7] rounded-xl shadow-sm active:scale-[0.98] transition-transform">
+                <div onClick={() => setSelectedPlan("d12week")} className={`option-tap cursor-pointer flex flex-col p-5 bg-white border-2 rounded-xl shadow-sm active:scale-[0.98] transition-all ${selectedPlan === "d12week" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7]"}`}>
                   <div className="flex justify-between items-start">
                     <div className="flex flex-col gap-2">
                       <div className="flex items-center gap-2">
@@ -460,7 +462,7 @@ export default function ResultsPage() {
 
               {/* Main Action CTA */}
               <div className="flex flex-col gap-4 px-4 mt-6">
-                <button className="w-full h-[56px] bg-[#22C55E] text-white font-bold text-[16px] rounded-xl shadow-lg active:scale-[0.98] transition-all flex items-center justify-center gap-2" style={{ boxShadow: "0 4px 12px rgba(34,197,94,0.2)" }}>
+                <button disabled={!selectedPlan} className={`w-full h-[56px] font-bold text-[16px] rounded-xl active:scale-[0.98] transition-all flex items-center justify-center gap-2 ${selectedPlan ? "bg-[#22C55E] text-white shadow-[0_0_20px_rgba(34,197,94,0.4)] animate-cta-glow" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>
                   Get My Plan Now
                   <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
                 </button>

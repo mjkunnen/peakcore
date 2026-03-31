@@ -1,13 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export default function FlowPage() {
   const [step, setStep] = useState(0);
   const [email, setEmail] = useState("");
+  const [selected, setSelected] = useState<string | null>(null);
   const router = useRouter();
   const totalSteps = 15;
+
+  // Reset selection when step changes
+  useEffect(() => { setSelected(null); }, [step]);
 
   function next() {
     if (step < totalSteps - 1) {
@@ -35,7 +39,7 @@ export default function FlowPage() {
             <h1 className="font-black tracking-tight text-xl text-zinc-900 uppercase">PeakCore</h1>
             <div className="w-6"></div>
           </header>
-          <main className="w-full max-w-[480px] h-full flex flex-col px-6 pt-14 pb-8">
+          <main className="w-full max-w-[480px] h-full flex flex-col px-6 pt-14 pb-[120px]">
             <div className="w-full h-1 bg-[#E4E4E7] mt-4 relative rounded-full overflow-hidden">
               <div className="absolute top-0 left-0 h-full bg-[#FF6B2C] rounded-full" style={{ width: progressWidth }}></div>
             </div>
@@ -43,30 +47,30 @@ export default function FlowPage() {
             <div className="flex-1 flex flex-col justify-center items-center w-full">
               <h2 className="text-2xl font-bold text-[#1A1A1A] text-center mb-6 leading-tight">What&apos;s your main goal?</h2>
               <div className="flex flex-col gap-3 w-full">
-                <button onClick={next} className="option-hover w-full h-[60px] bg-white border border-[#E4E4E7] rounded-[12px] flex items-center justify-between px-5 active:scale-[0.98] transition-all hover:bg-orange-50/30 group">
+                <button onClick={() => setSelected("longer")} className={`option-tap w-full h-[60px] bg-white border rounded-[12px] flex items-center justify-between px-5 transition-all ${selected === "longer" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:bg-orange-50/30"}`}>
                   <div className="flex items-center gap-4">
-                    <span className="text-[20px] icon-bounce">⏱️</span>
+                    <span className={`text-[20px] ${selected === "longer" ? "icon-selected" : "icon-bounce"}`}>⏱️</span>
                     <span className="text-base font-medium text-[#1A1A1A]">Last longer in bed</span>
                   </div>
                   <span className="text-[#AAAAAA] text-xl">&rsaquo;</span>
                 </button>
-                <button onClick={next} className="option-hover w-full h-[60px] bg-white border border-[#E4E4E7] rounded-[12px] flex items-center justify-between px-5 active:scale-[0.98] transition-all hover:bg-orange-50/30 group">
+                <button onClick={() => setSelected("control")} className={`option-tap w-full h-[60px] bg-white border rounded-[12px] flex items-center justify-between px-5 transition-all ${selected === "control" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:bg-orange-50/30"}`}>
                   <div className="flex items-center gap-4">
-                    <span className="text-[20px] icon-bounce">🎯</span>
+                    <span className={`text-[20px] ${selected === "control" ? "icon-selected" : "icon-bounce"}`}>🎯</span>
                     <span className="text-base font-medium text-[#1A1A1A]">Better control</span>
                   </div>
                   <span className="text-[#AAAAAA] text-xl">&rsaquo;</span>
                 </button>
-                <button onClick={next} className="option-hover w-full h-[60px] bg-white border border-[#E4E4E7] rounded-[12px] flex items-center justify-between px-5 active:scale-[0.98] transition-all hover:bg-orange-50/30 group">
+                <button onClick={() => setSelected("stronger")} className={`option-tap w-full h-[60px] bg-white border rounded-[12px] flex items-center justify-between px-5 transition-all ${selected === "stronger" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:bg-orange-50/30"}`}>
                   <div className="flex items-center gap-4">
-                    <span className="text-[20px] icon-bounce">⚡</span>
+                    <span className={`text-[20px] ${selected === "stronger" ? "icon-selected" : "icon-bounce"}`}>⚡</span>
                     <span className="text-base font-medium text-[#1A1A1A]">Stronger finish</span>
                   </div>
                   <span className="text-[#AAAAAA] text-xl">&rsaquo;</span>
                 </button>
-                <button onClick={next} className="option-hover w-full h-[60px] bg-white border border-[#E4E4E7] rounded-[12px] flex items-center justify-between px-5 active:scale-[0.98] transition-all hover:bg-orange-50/30 group">
+                <button onClick={() => setSelected("health")} className={`option-tap w-full h-[60px] bg-white border rounded-[12px] flex items-center justify-between px-5 transition-all ${selected === "health" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:bg-orange-50/30"}`}>
                   <div className="flex items-center gap-4">
-                    <span className="text-[20px] icon-bounce">❤️</span>
+                    <span className={`text-[20px] ${selected === "health" ? "icon-selected" : "icon-bounce"}`}>❤️</span>
                     <span className="text-base font-medium text-[#1A1A1A]">Overall health</span>
                   </div>
                   <span className="text-[#AAAAAA] text-xl">&rsaquo;</span>
@@ -75,6 +79,9 @@ export default function FlowPage() {
             </div>
             <p className="text-[#71717A] italic text-sm text-center mt-8">Small steps lead to peak performance 💪</p>
           </main>
+          <div className="fixed bottom-0 left-0 right-0 z-50 px-6 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[480px] mx-auto">
+            <button disabled={!selected} onClick={() => { next(); }} className={`w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
+          </div>
         </div>
       )}
 
@@ -91,23 +98,23 @@ export default function FlowPage() {
             <span className="text-xl font-black tracking-tighter text-zinc-900">PeakCore</span>
             <div className="w-8"></div>
           </header>
-          <main className="w-full max-w-[480px] px-6 pt-[60px] pb-[100px] flex-grow flex flex-col justify-center">
+          <main className="w-full max-w-[480px] px-6 pt-[60px] pb-[120px] flex-grow flex flex-col justify-center">
             <div className="mb-2 text-center">
               <span className="text-sm font-medium text-[#76767f] uppercase tracking-wider">Step 2 of 18</span>
             </div>
             <h1 className="text-3xl font-extrabold text-[#2d2e36] text-center mb-6 leading-tight">Your age?</h1>
             <div className="grid grid-cols-2 gap-4 mb-8">
-              <button onClick={next} className="option-hover group flex flex-col items-center justify-center aspect-square bg-white border-2 border-[#adacb6] rounded-xl transition-all duration-200 hover:border-[#a33700] active:scale-[0.98] focus:ring-2 focus:ring-[#ff7943] focus:outline-none focus:border-[#a33700]">
-                <span className="text-xl font-bold text-[#2d2e36] group-hover:text-[#a33700] transition-colors">18-25</span>
+              <button onClick={() => setSelected("18-25")} className={`option-tap group flex flex-col items-center justify-center aspect-square bg-white border-2 rounded-xl transition-all duration-200 active:scale-[0.98] ${selected === "18-25" ? "option-selected border-[#FF6B2C]" : "border-[#adacb6] hover:border-[#a33700]"}`}>
+                <span className={`text-xl font-bold transition-colors ${selected === "18-25" ? "text-[#FF6B2C]" : "text-[#2d2e36] group-hover:text-[#a33700]"}`}>18-25</span>
               </button>
-              <button onClick={next} className="option-hover group flex flex-col items-center justify-center aspect-square bg-white border-2 border-[#adacb6] rounded-xl transition-all duration-200 hover:border-[#a33700] active:scale-[0.98] focus:ring-2 focus:ring-[#ff7943] focus:outline-none focus:border-[#a33700]">
-                <span className="text-xl font-bold text-[#2d2e36] group-hover:text-[#a33700] transition-colors">26-35</span>
+              <button onClick={() => setSelected("26-35")} className={`option-tap group flex flex-col items-center justify-center aspect-square bg-white border-2 rounded-xl transition-all duration-200 active:scale-[0.98] ${selected === "26-35" ? "option-selected border-[#FF6B2C]" : "border-[#adacb6] hover:border-[#a33700]"}`}>
+                <span className={`text-xl font-bold transition-colors ${selected === "26-35" ? "text-[#FF6B2C]" : "text-[#2d2e36] group-hover:text-[#a33700]"}`}>26-35</span>
               </button>
-              <button onClick={next} className="option-hover group flex flex-col items-center justify-center aspect-square bg-white border-2 border-[#adacb6] rounded-xl transition-all duration-200 hover:border-[#a33700] active:scale-[0.98] focus:ring-2 focus:ring-[#ff7943] focus:outline-none focus:border-[#a33700]">
-                <span className="text-xl font-bold text-[#2d2e36] group-hover:text-[#a33700] transition-colors">36-50</span>
+              <button onClick={() => setSelected("36-50")} className={`option-tap group flex flex-col items-center justify-center aspect-square bg-white border-2 rounded-xl transition-all duration-200 active:scale-[0.98] ${selected === "36-50" ? "option-selected border-[#FF6B2C]" : "border-[#adacb6] hover:border-[#a33700]"}`}>
+                <span className={`text-xl font-bold transition-colors ${selected === "36-50" ? "text-[#FF6B2C]" : "text-[#2d2e36] group-hover:text-[#a33700]"}`}>36-50</span>
               </button>
-              <button onClick={next} className="option-hover group flex flex-col items-center justify-center aspect-square bg-white border-2 border-[#adacb6] rounded-xl transition-all duration-200 hover:border-[#a33700] active:scale-[0.98] focus:ring-2 focus:ring-[#ff7943] focus:outline-none focus:border-[#a33700]">
-                <span className="text-xl font-bold text-[#2d2e36] group-hover:text-[#a33700] transition-colors">50+</span>
+              <button onClick={() => setSelected("50+")} className={`option-tap group flex flex-col items-center justify-center aspect-square bg-white border-2 rounded-xl transition-all duration-200 active:scale-[0.98] ${selected === "50+" ? "option-selected border-[#FF6B2C]" : "border-[#adacb6] hover:border-[#a33700]"}`}>
+                <span className={`text-xl font-bold transition-colors ${selected === "50+" ? "text-[#FF6B2C]" : "text-[#2d2e36] group-hover:text-[#a33700]"}`}>50+</span>
               </button>
             </div>
             <div className="flex items-center justify-center gap-3 p-4 bg-[#f1effb] rounded-xl">
@@ -117,10 +124,8 @@ export default function FlowPage() {
               </p>
             </div>
           </main>
-          <div className="fixed bottom-0 left-0 w-full p-6 bg-white/80 backdrop-blur-md flex flex-col items-center border-t border-[#adacb6]/10">
-            <button onClick={next} className="w-full max-w-[432px] h-14 bg-[#a33700] text-white font-bold text-lg rounded-xl shadow-lg shadow-[#a33700]/20 transition-all duration-200 active:scale-95 hover:bg-[#8f2f00]">
-              Continue
-            </button>
+          <div className="fixed bottom-0 left-0 right-0 z-50 px-6 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[480px] mx-auto">
+            <button disabled={!selected} onClick={() => { next(); }} className={`w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
           </div>
         </div>
       )}
@@ -138,7 +143,7 @@ export default function FlowPage() {
             <h1 className="text-xl font-black tracking-tight text-[#1A1A1A]">PEAKCORE</h1>
             <div className="w-10"></div>
           </header>
-          <main className="w-full max-w-[480px] px-6 pt-[60px] pb-12 flex flex-col flex-grow">
+          <main className="w-full max-w-[480px] px-6 pt-[60px] pb-[120px] flex flex-col flex-grow">
             <div className="text-center mb-2">
               <span className="text-[10px] font-bold tracking-widest text-[#71717A] uppercase">STEP 3 OF 18</span>
             </div>
@@ -146,16 +151,16 @@ export default function FlowPage() {
               How active are you?
             </h2>
             <div className="flex flex-col gap-4">
-              <button onClick={next} className="option-hover group relative w-full flex flex-col items-center justify-center py-8 px-6 bg-[#F7F7F8] border-2 border-[#E4E4E7] rounded-xl transition-all duration-200 hover:border-[#FF6B2C] hover:bg-[#FFF4EE] active:scale-[0.98]">
-                <span className="text-4xl mb-3 icon-bounce">🏃</span>
+              <button onClick={() => setSelected("very")} className={`option-tap group relative w-full flex flex-col items-center justify-center py-8 px-6 border-2 rounded-xl transition-all duration-200 active:scale-[0.98] ${selected === "very" ? "option-selected border-[#FF6B2C]" : "bg-[#F7F7F8] border-[#E4E4E7] hover:border-[#FF6B2C] hover:bg-[#FFF4EE]"}`}>
+                <span className={`text-4xl mb-3 ${selected === "very" ? "icon-selected" : "icon-bounce"}`}>🏃</span>
                 <span className="text-lg font-bold text-[#1A1A1A]">Very active</span>
               </button>
-              <button onClick={next} className="option-hover group relative w-full flex flex-col items-center justify-center py-8 px-6 bg-[#F7F7F8] border-2 border-[#E4E4E7] rounded-xl transition-all duration-200 hover:border-[#FF6B2C] hover:bg-[#FFF4EE] active:scale-[0.98]">
-                <span className="text-4xl mb-3 icon-bounce">🚶</span>
+              <button onClick={() => setSelected("somewhat")} className={`option-tap group relative w-full flex flex-col items-center justify-center py-8 px-6 border-2 rounded-xl transition-all duration-200 active:scale-[0.98] ${selected === "somewhat" ? "option-selected border-[#FF6B2C]" : "bg-[#F7F7F8] border-[#E4E4E7] hover:border-[#FF6B2C] hover:bg-[#FFF4EE]"}`}>
+                <span className={`text-4xl mb-3 ${selected === "somewhat" ? "icon-selected" : "icon-bounce"}`}>🚶</span>
                 <span className="text-lg font-bold text-[#1A1A1A]">Somewhat active</span>
               </button>
-              <button onClick={next} className="option-hover group relative w-full flex flex-col items-center justify-center py-8 px-6 bg-[#F7F7F8] border-2 border-[#E4E4E7] rounded-xl transition-all duration-200 hover:border-[#FF6B2C] hover:bg-[#FFF4EE] active:scale-[0.98]">
-                <span className="text-4xl mb-3 icon-bounce">🛋️</span>
+              <button onClick={() => setSelected("not")} className={`option-tap group relative w-full flex flex-col items-center justify-center py-8 px-6 border-2 rounded-xl transition-all duration-200 active:scale-[0.98] ${selected === "not" ? "option-selected border-[#FF6B2C]" : "bg-[#F7F7F8] border-[#E4E4E7] hover:border-[#FF6B2C] hover:bg-[#FFF4EE]"}`}>
+                <span className={`text-4xl mb-3 ${selected === "not" ? "icon-selected" : "icon-bounce"}`}>🛋️</span>
                 <span className="text-lg font-bold text-[#1A1A1A]">Not very active</span>
               </button>
             </div>
@@ -165,6 +170,9 @@ export default function FlowPage() {
               </p>
             </div>
           </main>
+          <div className="fixed bottom-0 left-0 right-0 z-50 px-6 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[480px] mx-auto">
+            <button disabled={!selected} onClick={() => { next(); }} className={`w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
+          </div>
         </div>
       )}
 
@@ -178,7 +186,7 @@ export default function FlowPage() {
             <h1 className="text-xl font-black text-[#1A1A1A] tracking-tighter uppercase">PEAKCORE</h1>
             <div className="w-10"></div>
           </header>
-          <main className="flex-1 flex flex-col mt-16 px-6">
+          <main className="flex-1 flex flex-col mt-16 px-6 pb-[120px]">
             <div className="fixed top-16 left-0 w-full max-w-[480px] mx-auto z-40 bg-white">
               <div className="w-full h-[4px] bg-[#E4E4E7]">
                 <div className="h-full bg-[#FF6B2C] transition-all duration-500 ease-out" style={{ width: progressWidth }}></div>
@@ -190,26 +198,26 @@ export default function FlowPage() {
                 Tried pelvic exercises before?
               </h2>
               <div className="flex flex-col gap-4">
-                <button onClick={next} className="option-hover w-full h-14 min-h-[56px] px-4 flex items-center justify-between bg-white border border-[#E4E4E7] rounded-lg group hover:border-[#FF6B2C] hover:bg-[#FFF4EE] transition-all active:scale-[0.98] duration-100">
+                <button onClick={() => setSelected("regularly")} className={`option-tap w-full h-14 min-h-[56px] px-4 flex items-center justify-between bg-white border rounded-lg transition-all active:scale-[0.98] duration-100 ${selected === "regularly" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:border-[#FF6B2C] hover:bg-[#FFF4EE]"}`}>
                   <div className="flex items-center gap-4">
-                    <span className="text-xl icon-bounce">✅</span>
+                    <span className={`text-xl ${selected === "regularly" ? "icon-selected" : "icon-bounce"}`}>✅</span>
                     <span className="text-[16px] font-semibold text-[#1A1A1A]">Regularly</span>
                   </div>
-                  <span className="material-symbols-outlined text-[#E4E4E7] group-hover:text-[#FF6B2C]">chevron_right</span>
+                  <span className={`material-symbols-outlined ${selected === "regularly" ? "text-[#FF6B2C]" : "text-[#E4E4E7]"}`}>chevron_right</span>
                 </button>
-                <button onClick={next} className="option-hover w-full h-14 min-h-[56px] px-4 flex items-center justify-between bg-white border border-[#E4E4E7] rounded-lg group hover:border-[#FF6B2C] hover:bg-[#FFF4EE] transition-all active:scale-[0.98] duration-100">
+                <button onClick={() => setSelected("tried")} className={`option-tap w-full h-14 min-h-[56px] px-4 flex items-center justify-between bg-white border rounded-lg transition-all active:scale-[0.98] duration-100 ${selected === "tried" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:border-[#FF6B2C] hover:bg-[#FFF4EE]"}`}>
                   <div className="flex items-center gap-4">
-                    <span className="text-xl icon-bounce">🔄</span>
+                    <span className={`text-xl ${selected === "tried" ? "icon-selected" : "icon-bounce"}`}>🔄</span>
                     <span className="text-[16px] font-semibold text-[#1A1A1A]">Tried a few times</span>
                   </div>
-                  <span className="material-symbols-outlined text-[#E4E4E7] group-hover:text-[#FF6B2C]">chevron_right</span>
+                  <span className={`material-symbols-outlined ${selected === "tried" ? "text-[#FF6B2C]" : "text-[#E4E4E7]"}`}>chevron_right</span>
                 </button>
-                <button onClick={next} className="option-hover w-full h-14 min-h-[56px] px-4 flex items-center justify-between bg-white border border-[#E4E4E7] rounded-lg group hover:border-[#FF6B2C] hover:bg-[#FFF4EE] transition-all active:scale-[0.98] duration-100">
+                <button onClick={() => setSelected("never")} className={`option-tap w-full h-14 min-h-[56px] px-4 flex items-center justify-between bg-white border rounded-lg transition-all active:scale-[0.98] duration-100 ${selected === "never" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:border-[#FF6B2C] hover:bg-[#FFF4EE]"}`}>
                   <div className="flex items-center gap-4">
-                    <span className="text-xl icon-bounce">❌</span>
+                    <span className={`text-xl ${selected === "never" ? "icon-selected" : "icon-bounce"}`}>❌</span>
                     <span className="text-[16px] font-semibold text-[#1A1A1A]">Never</span>
                   </div>
-                  <span className="material-symbols-outlined text-[#E4E4E7] group-hover:text-[#FF6B2C]">chevron_right</span>
+                  <span className={`material-symbols-outlined ${selected === "never" ? "text-[#FF6B2C]" : "text-[#E4E4E7]"}`}>chevron_right</span>
                 </button>
               </div>
               <p className="text-center text-[#71717A] italic text-sm mt-8 mb-4 px-6">
@@ -217,7 +225,9 @@ export default function FlowPage() {
               </p>
             </div>
           </main>
-          <div className="pb-8"></div>
+          <div className="fixed bottom-0 left-0 right-0 z-50 px-6 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[480px] mx-auto">
+            <button disabled={!selected} onClick={() => { next(); }} className={`w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
+          </div>
         </div>
       )}
 
@@ -236,40 +246,40 @@ export default function FlowPage() {
               <div className="w-10"></div>
             </div>
           </header>
-          <main className="flex-1 w-full max-w-[480px] px-6 pt-[60px] pb-12 flex flex-col">
+          <main className="flex-1 w-full max-w-[480px] px-6 pt-[60px] pb-[120px] flex flex-col">
             <div className="mt-6 mb-6 text-center">
               <h2 className="text-2xl md:text-3xl font-black text-[#1A1A1A] leading-tight tracking-tight">
                 When did you first notice?
               </h2>
             </div>
             <div className="space-y-4 flex-1">
-              <button onClick={next} className="option-hover w-full h-14 px-5 flex items-center justify-between bg-white border border-[#E4E4E7] rounded-xl hover:border-[#FF6B2C] active:bg-orange-50 transition-all group">
+              <button onClick={() => setSelected("recently")} className={`option-tap w-full h-14 px-5 flex items-center justify-between bg-white border rounded-xl transition-all ${selected === "recently" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:border-[#FF6B2C]"}`}>
                 <div className="flex items-center gap-4">
-                  <span className="text-xl icon-bounce">🕐</span>
+                  <span className={`text-xl ${selected === "recently" ? "icon-selected" : "icon-bounce"}`}>🕐</span>
                   <span className="font-bold text-[#1A1A1A] text-lg">Recently</span>
                 </div>
-                <span className="material-symbols-outlined text-zinc-400 group-hover:text-[#FF6B2C]">chevron_right</span>
+                <span className={`material-symbols-outlined ${selected === "recently" ? "text-[#FF6B2C]" : "text-zinc-400"}`}>chevron_right</span>
               </button>
-              <button onClick={next} className="option-hover w-full h-14 px-5 flex items-center justify-between bg-white border border-[#E4E4E7] rounded-xl hover:border-[#FF6B2C] active:bg-orange-50 transition-all group">
+              <button onClick={() => setSelected("1-2y")} className={`option-tap w-full h-14 px-5 flex items-center justify-between bg-white border rounded-xl transition-all ${selected === "1-2y" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:border-[#FF6B2C]"}`}>
                 <div className="flex items-center gap-4">
-                  <span className="text-xl icon-bounce">📅</span>
+                  <span className={`text-xl ${selected === "1-2y" ? "icon-selected" : "icon-bounce"}`}>📅</span>
                   <span className="font-bold text-[#1A1A1A] text-lg">1-2 years ago</span>
                 </div>
-                <span className="material-symbols-outlined text-zinc-400 group-hover:text-[#FF6B2C]">chevron_right</span>
+                <span className={`material-symbols-outlined ${selected === "1-2y" ? "text-[#FF6B2C]" : "text-zinc-400"}`}>chevron_right</span>
               </button>
-              <button onClick={next} className="option-hover w-full h-14 px-5 flex items-center justify-between bg-white border border-[#E4E4E7] rounded-xl hover:border-[#FF6B2C] active:bg-orange-50 transition-all group">
+              <button onClick={() => setSelected("3+")} className={`option-tap w-full h-14 px-5 flex items-center justify-between bg-white border rounded-xl transition-all ${selected === "3+" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:border-[#FF6B2C]"}`}>
                 <div className="flex items-center gap-4">
-                  <span className="text-xl icon-bounce">📆</span>
+                  <span className={`text-xl ${selected === "3+" ? "icon-selected" : "icon-bounce"}`}>📆</span>
                   <span className="font-bold text-[#1A1A1A] text-lg">3+ years</span>
                 </div>
-                <span className="material-symbols-outlined text-zinc-400 group-hover:text-[#FF6B2C]">chevron_right</span>
+                <span className={`material-symbols-outlined ${selected === "3+" ? "text-[#FF6B2C]" : "text-zinc-400"}`}>chevron_right</span>
               </button>
-              <button onClick={next} className="option-hover w-full h-14 px-5 flex items-center justify-between bg-white border border-[#E4E4E7] rounded-xl hover:border-[#FF6B2C] active:bg-orange-50 transition-all group">
+              <button onClick={() => setSelected("always")} className={`option-tap w-full h-14 px-5 flex items-center justify-between bg-white border rounded-xl transition-all ${selected === "always" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:border-[#FF6B2C]"}`}>
                 <div className="flex items-center gap-4">
-                  <span className="text-xl icon-bounce">🔄</span>
+                  <span className={`text-xl ${selected === "always" ? "icon-selected" : "icon-bounce"}`}>🔄</span>
                   <span className="font-bold text-[#1A1A1A] text-lg">Always been this way</span>
                 </div>
-                <span className="material-symbols-outlined text-zinc-400 group-hover:text-[#FF6B2C]">chevron_right</span>
+                <span className={`material-symbols-outlined ${selected === "always" ? "text-[#FF6B2C]" : "text-zinc-400"}`}>chevron_right</span>
               </button>
             </div>
             <div className="mt-6 text-center px-4">
@@ -278,7 +288,9 @@ export default function FlowPage() {
               </p>
             </div>
           </main>
-          <div className="h-8 w-full max-w-[480px]"></div>
+          <div className="fixed bottom-0 left-0 right-0 z-50 px-6 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[480px] mx-auto">
+            <button disabled={!selected} onClick={() => { next(); }} className={`w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
+          </div>
         </div>
       )}
 
@@ -319,11 +331,8 @@ export default function FlowPage() {
               </p>
             </div>
           </main>
-          <div className="fixed bottom-0 left-0 w-full z-50 p-6 max-w-[480px] mx-auto bg-white">
-            <button onClick={next} className="w-full h-14 flex items-center justify-center gap-2 bg-orange-600 hover:bg-orange-700 active:scale-[0.98] transition-all duration-200 text-white rounded-xl font-bold text-base shadow-lg shadow-orange-600/10">
-              <span>Continue</span>
-              <span className="material-symbols-outlined text-xl">arrow_forward</span>
-            </button>
+          <div className="fixed bottom-0 left-0 right-0 z-50 px-6 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[480px] mx-auto">
+            <button onClick={next} className="w-full h-[56px] rounded-[12px] font-bold text-base transition-all bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]">Continue</button>
           </div>
         </div>
       )}
@@ -342,33 +351,33 @@ export default function FlowPage() {
               <h1 className="text-lg font-black tracking-tighter text-[#1A1A1A] antialiased">PEAKCORE</h1>
               <div className="w-10"></div>
             </header>
-            <main className="flex-1 flex flex-col px-6 pt-[60px] pb-[100px]">
+            <main className="flex-1 flex flex-col px-6 pt-[60px] pb-[120px]">
               <div className="mt-8 mb-6 text-center">
                 <h2 className="text-[28px] leading-tight font-extrabold text-[#1A1A1A] tracking-tight">
                   Tried anything before?
                 </h2>
               </div>
               <div className="space-y-4">
-                <button onClick={next} className="option-hover w-full h-14 px-5 flex items-center justify-between bg-white border border-[#E4E4E7] rounded-xl hover:border-[#FF6B2C] hover:bg-[#FFF4EE] active:scale-[0.98] transition-all duration-100 group">
+                <button onClick={() => setSelected("didnt_work")} className={`option-tap w-full h-14 px-5 flex items-center justify-between bg-white border rounded-xl transition-all duration-100 ${selected === "didnt_work" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:border-[#FF6B2C] hover:bg-[#FFF4EE]"}`}>
                   <div className="flex items-center gap-4">
-                    <span className="text-xl icon-bounce">❌</span>
+                    <span className={`text-xl ${selected === "didnt_work" ? "icon-selected" : "icon-bounce"}`}>❌</span>
                     <span className="text-[#1A1A1A] font-semibold text-[17px]">Yes, didn&apos;t work</span>
                   </div>
-                  <span className="material-symbols-outlined text-[#71717A] text-[18px] group-hover:text-[#FF6B2C]">arrow_forward_ios</span>
+                  <span className={`material-symbols-outlined text-[18px] ${selected === "didnt_work" ? "text-[#FF6B2C]" : "text-[#71717A]"}`}>arrow_forward_ios</span>
                 </button>
-                <button onClick={next} className="option-hover w-full h-14 px-5 flex items-center justify-between bg-white border border-[#E4E4E7] rounded-xl hover:border-[#FF6B2C] hover:bg-[#FFF4EE] active:scale-[0.98] transition-all duration-100 group">
+                <button onClick={() => setSelected("helped")} className={`option-tap w-full h-14 px-5 flex items-center justify-between bg-white border rounded-xl transition-all duration-100 ${selected === "helped" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:border-[#FF6B2C] hover:bg-[#FFF4EE]"}`}>
                   <div className="flex items-center gap-4">
-                    <span className="text-xl icon-bounce">🔄</span>
+                    <span className={`text-xl ${selected === "helped" ? "icon-selected" : "icon-bounce"}`}>🔄</span>
                     <span className="text-[#1A1A1A] font-semibold text-[17px]">Yes, helped a bit</span>
                   </div>
-                  <span className="material-symbols-outlined text-[#71717A] text-[18px] group-hover:text-[#FF6B2C]">arrow_forward_ios</span>
+                  <span className={`material-symbols-outlined text-[18px] ${selected === "helped" ? "text-[#FF6B2C]" : "text-[#71717A]"}`}>arrow_forward_ios</span>
                 </button>
-                <button onClick={next} className="option-hover w-full h-14 px-5 flex items-center justify-between bg-white border border-[#E4E4E7] rounded-xl hover:border-[#FF6B2C] hover:bg-[#FFF4EE] active:scale-[0.98] transition-all duration-100 group">
+                <button onClick={() => setSelected("never_tried")} className={`option-tap w-full h-14 px-5 flex items-center justify-between bg-white border rounded-xl transition-all duration-100 ${selected === "never_tried" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:border-[#FF6B2C] hover:bg-[#FFF4EE]"}`}>
                   <div className="flex items-center gap-4">
-                    <span className="text-xl icon-bounce">🆕</span>
+                    <span className={`text-xl ${selected === "never_tried" ? "icon-selected" : "icon-bounce"}`}>🆕</span>
                     <span className="text-[#1A1A1A] font-semibold text-[17px]">Never tried anything</span>
                   </div>
-                  <span className="material-symbols-outlined text-[#71717A] text-[18px] group-hover:text-[#FF6B2C]">arrow_forward_ios</span>
+                  <span className={`material-symbols-outlined text-[18px] ${selected === "never_tried" ? "text-[#FF6B2C]" : "text-[#71717A]"}`}>arrow_forward_ios</span>
                 </button>
               </div>
               <div className="mt-6 text-center">
@@ -377,10 +386,8 @@ export default function FlowPage() {
                 </p>
               </div>
             </main>
-            <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[480px] p-6 bg-white/80 backdrop-blur-sm">
-              <p className="text-center text-[13px] text-[#71717A] leading-tight">
-                Your data is secure and private.
-              </p>
+            <div className="fixed bottom-0 left-0 right-0 z-50 px-6 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[480px] mx-auto">
+              <button disabled={!selected} onClick={() => { next(); }} className={`w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
             </div>
           </div>
         </div>
@@ -401,7 +408,7 @@ export default function FlowPage() {
               <div className="w-10"></div>
             </div>
           </div>
-          <main className="w-full max-w-[480px] px-6 pt-[60px] pb-[100px] flex-grow flex flex-col justify-center">
+          <main className="w-full max-w-[480px] px-6 pt-[60px] pb-[120px] flex-grow flex flex-col justify-center">
             <div className="mb-8 rounded-2xl overflow-hidden aspect-video bg-gray-50 flex items-center justify-center">
               <img className="w-full h-full object-cover opacity-90" alt="Modern high-end gym interior with clean lighting and premium equipment in soft focus, fitness lifestyle aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK2Nbme08-dBA_9t1THNRkFAKZKsrfLB_ZX0Rdb2_3jICvamphKufR1wq9Ij44XHdyZjGqAdnwArVQ6nSnYLFMuu1weEFdqIp4_NNNLTyAu1t0fNYo-aDvIdXEk7bNXHRaOpaR6BIhIjgdKbVsSaQMOGDrgQbXThGo_dZCHztjeqZfr4gOOCiVcpaRUzgGA34AmUJaMr7vJ1ojFEbQBk9vPXwGLFw0ZCIXJOaGcM6d-xajQhK2FVQ7TD1hGDz-evqfaEW5n_r6q2fe" />
             </div>
@@ -410,16 +417,16 @@ export default function FlowPage() {
               <p className="text-[#71717A] text-base">Select the duration that best fits your lifestyle. Consistency is key.</p>
             </div>
             <div className="grid grid-cols-3 gap-3 w-full">
-              <button onClick={next} className="option-hover group flex flex-col items-center justify-center p-4 bg-white border border-[#E4E4E7] rounded-xl aspect-square transition-all duration-200 hover:border-[#FF6B2C] hover:bg-[#FFF4EE] active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#FF6B2C]/20">
-                <span className="text-3xl mb-3 icon-bounce group-hover:scale-110 transition-transform">⚡</span>
+              <button onClick={() => setSelected("3min")} className={`option-tap group flex flex-col items-center justify-center p-4 border rounded-xl aspect-square transition-all duration-200 active:scale-95 ${selected === "3min" ? "option-selected border-[#FF6B2C]" : "bg-white border-[#E4E4E7] hover:border-[#FF6B2C] hover:bg-[#FFF4EE]"}`}>
+                <span className={`text-3xl mb-3 ${selected === "3min" ? "icon-selected" : "icon-bounce"}`}>⚡</span>
                 <span className="text-sm font-bold text-[#1A1A1A]">3 min</span>
               </button>
-              <button onClick={next} className="option-hover group flex flex-col items-center justify-center p-4 bg-white border border-[#E4E4E7] rounded-xl aspect-square transition-all duration-200 hover:border-[#FF6B2C] hover:bg-[#FFF4EE] active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#FF6B2C]/20">
-                <span className="text-3xl mb-3 icon-bounce group-hover:scale-110 transition-transform">⏱️</span>
+              <button onClick={() => setSelected("5min")} className={`option-tap group flex flex-col items-center justify-center p-4 border rounded-xl aspect-square transition-all duration-200 active:scale-95 ${selected === "5min" ? "option-selected border-[#FF6B2C]" : "bg-white border-[#E4E4E7] hover:border-[#FF6B2C] hover:bg-[#FFF4EE]"}`}>
+                <span className={`text-3xl mb-3 ${selected === "5min" ? "icon-selected" : "icon-bounce"}`}>⏱️</span>
                 <span className="text-sm font-bold text-[#1A1A1A]">5 min</span>
               </button>
-              <button onClick={next} className="option-hover group flex flex-col items-center justify-center p-4 bg-white border border-[#E4E4E7] rounded-xl aspect-square transition-all duration-200 hover:border-[#FF6B2C] hover:bg-[#FFF4EE] active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#FF6B2C]/20">
-                <span className="text-3xl mb-3 icon-bounce group-hover:scale-110 transition-transform">💪</span>
+              <button onClick={() => setSelected("10min")} className={`option-tap group flex flex-col items-center justify-center p-4 border rounded-xl aspect-square transition-all duration-200 active:scale-95 ${selected === "10min" ? "option-selected border-[#FF6B2C]" : "bg-white border-[#E4E4E7] hover:border-[#FF6B2C] hover:bg-[#FFF4EE]"}`}>
+                <span className={`text-3xl mb-3 ${selected === "10min" ? "icon-selected" : "icon-bounce"}`}>💪</span>
                 <span className="text-sm font-bold text-[#1A1A1A]">10+ min</span>
               </button>
             </div>
@@ -434,10 +441,8 @@ export default function FlowPage() {
               </div>
             </div>
           </main>
-          <div className="fixed bottom-0 left-0 w-full p-6 bg-gradient-to-t from-white via-white to-transparent max-w-[480px] left-1/2 -translate-x-1/2">
-            <button onClick={next} className="w-full h-14 bg-[#FF6B2C] text-white font-bold text-lg rounded-xl shadow-lg shadow-orange-200 active:scale-[0.98] transition-all duration-150 uppercase tracking-wide">
-              Continue
-            </button>
+          <div className="fixed bottom-0 left-0 right-0 z-50 px-6 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[480px] mx-auto">
+            <button disabled={!selected} onClick={() => { next(); }} className={`w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
           </div>
         </div>
       )}
@@ -479,11 +484,8 @@ export default function FlowPage() {
               </div>
             </div>
           </main>
-          <div className="fixed bottom-0 left-0 w-full z-50 flex flex-col p-4 max-w-[480px] left-1/2 -translate-x-1/2">
-            <button onClick={next} className="flex items-center justify-center w-full h-14 bg-orange-600 text-white rounded-xl mb-4 hover:bg-orange-700 active:scale-[0.98] transition-all duration-200 font-bold text-lg">
-              <span>Continue</span>
-              <span className="material-symbols-outlined ml-2">arrow_forward</span>
-            </button>
+          <div className="fixed bottom-0 left-0 right-0 z-50 px-6 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[480px] mx-auto">
+            <button onClick={next} className="w-full h-[56px] rounded-[12px] font-bold text-base transition-all bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]">Continue</button>
           </div>
         </div>
       )}
@@ -501,40 +503,40 @@ export default function FlowPage() {
             <h1 className="text-xl font-black tracking-tighter text-zinc-900 antialiased">PEAKCORE</h1>
             <div className="w-10"></div>
           </header>
-          <main className="flex-1 w-full max-w-[480px] px-6 pt-[60px] pb-12 flex flex-col">
+          <main className="flex-1 w-full max-w-[480px] px-6 pt-[60px] pb-[120px] flex flex-col">
             <div className="mt-6 mb-6">
               <h2 className="text-[32px] font-extrabold leading-tight text-[#1A1A1A]">
                 Biggest concern?
               </h2>
             </div>
             <div className="flex flex-col gap-4">
-              <button onClick={next} className="option-hover group w-full h-[72px] px-5 flex items-center justify-between bg-white border-2 border-zinc-100 rounded-xl hover:border-[#FF6B2C]/30 hover:bg-[#FFF4EE]/20 active:scale-[0.98] transition-all duration-200">
+              <button onClick={() => setSelected("age")} className={`option-tap group w-full h-[72px] px-5 flex items-center justify-between bg-white border-2 rounded-xl active:scale-[0.98] transition-all duration-200 ${selected === "age" ? "option-selected border-[#FF6B2C]" : "border-zinc-100 hover:border-[#FF6B2C]/30 hover:bg-[#FFF4EE]/20"}`}>
                 <div className="flex items-center gap-4">
-                  <span className="text-2xl icon-bounce">📉</span>
+                  <span className={`text-2xl ${selected === "age" ? "icon-selected" : "icon-bounce"}`}>📉</span>
                   <span className="text-lg font-semibold text-zinc-800">Getting worse with age</span>
                 </div>
-                <span className="material-symbols-outlined text-zinc-300 group-hover:text-[#FF6B2C] transition-colors">chevron_right</span>
+                <span className={`material-symbols-outlined transition-colors ${selected === "age" ? "text-[#FF6B2C]" : "text-zinc-300"}`}>chevron_right</span>
               </button>
-              <button onClick={next} className="option-hover group w-full h-[72px] px-5 flex items-center justify-between bg-white border-2 border-zinc-100 rounded-xl hover:border-[#FF6B2C]/30 hover:bg-[#FFF4EE]/20 active:scale-[0.98] transition-all duration-200">
+              <button onClick={() => setSelected("partner")} className={`option-tap group w-full h-[72px] px-5 flex items-center justify-between bg-white border-2 rounded-xl active:scale-[0.98] transition-all duration-200 ${selected === "partner" ? "option-selected border-[#FF6B2C]" : "border-zinc-100 hover:border-[#FF6B2C]/30 hover:bg-[#FFF4EE]/20"}`}>
                 <div className="flex items-center gap-4">
-                  <span className="text-2xl icon-bounce">💑</span>
+                  <span className={`text-2xl ${selected === "partner" ? "icon-selected" : "icon-bounce"}`}>💑</span>
                   <span className="text-lg font-semibold text-zinc-800">Partner satisfaction</span>
                 </div>
-                <span className="material-symbols-outlined text-zinc-300 group-hover:text-[#FF6B2C] transition-colors">chevron_right</span>
+                <span className={`material-symbols-outlined transition-colors ${selected === "partner" ? "text-[#FF6B2C]" : "text-zinc-300"}`}>chevron_right</span>
               </button>
-              <button onClick={next} className="option-hover group w-full h-[72px] px-5 flex items-center justify-between bg-white border-2 border-zinc-100 rounded-xl hover:border-[#FF6B2C]/30 hover:bg-[#FFF4EE]/20 active:scale-[0.98] transition-all duration-200">
+              <button onClick={() => setSelected("missing")} className={`option-tap group w-full h-[72px] px-5 flex items-center justify-between bg-white border-2 rounded-xl active:scale-[0.98] transition-all duration-200 ${selected === "missing" ? "option-selected border-[#FF6B2C]" : "border-zinc-100 hover:border-[#FF6B2C]/30 hover:bg-[#FFF4EE]/20"}`}>
                 <div className="flex items-center gap-4">
-                  <span className="text-2xl icon-bounce">🚫</span>
+                  <span className={`text-2xl ${selected === "missing" ? "icon-selected" : "icon-bounce"}`}>🚫</span>
                   <span className="text-lg font-semibold text-zinc-800">Missing better experiences</span>
                 </div>
-                <span className="material-symbols-outlined text-zinc-300 group-hover:text-[#FF6B2C] transition-colors">chevron_right</span>
+                <span className={`material-symbols-outlined transition-colors ${selected === "missing" ? "text-[#FF6B2C]" : "text-zinc-300"}`}>chevron_right</span>
               </button>
-              <button onClick={next} className="option-hover group w-full h-[72px] px-5 flex items-center justify-between bg-white border-2 border-zinc-100 rounded-xl hover:border-[#FF6B2C]/30 hover:bg-[#FFF4EE]/20 active:scale-[0.98] transition-all duration-200">
+              <button onClick={() => setSelected("health")} className={`option-tap group w-full h-[72px] px-5 flex items-center justify-between bg-white border-2 rounded-xl active:scale-[0.98] transition-all duration-200 ${selected === "health" ? "option-selected border-[#FF6B2C]" : "border-zinc-100 hover:border-[#FF6B2C]/30 hover:bg-[#FFF4EE]/20"}`}>
                 <div className="flex items-center gap-4">
-                  <span className="text-2xl icon-bounce">🏥</span>
+                  <span className={`text-2xl ${selected === "health" ? "icon-selected" : "icon-bounce"}`}>🏥</span>
                   <span className="text-lg font-semibold text-zinc-800">Health decline</span>
                 </div>
-                <span className="material-symbols-outlined text-zinc-300 group-hover:text-[#FF6B2C] transition-colors">chevron_right</span>
+                <span className={`material-symbols-outlined transition-colors ${selected === "health" ? "text-[#FF6B2C]" : "text-zinc-300"}`}>chevron_right</span>
               </button>
             </div>
             <div className="mt-6 text-center">
@@ -542,16 +544,9 @@ export default function FlowPage() {
                 Knowing your priority helps us focus your plan
               </p>
             </div>
-            <div className="mt-auto pt-12 text-center">
-              <p className="text-sm text-[#76767f] font-medium">
-                Your answers help us customize your training plan.
-              </p>
-            </div>
           </main>
-          <div className="w-full max-w-[480px] p-6 mt-auto">
-            <button onClick={next} className="w-full h-14 bg-[#FF6B2C] text-white font-bold text-lg rounded-xl shadow-lg shadow-[#FF6B2C]/20 hover:opacity-90 active:scale-95 transition-all">
-              Continue
-            </button>
+          <div className="fixed bottom-0 left-0 right-0 z-50 px-6 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[480px] mx-auto">
+            <button disabled={!selected} onClick={() => { next(); }} className={`w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
           </div>
         </div>
       )}
@@ -569,44 +564,39 @@ export default function FlowPage() {
           <div className="fixed top-14 left-0 w-full h-1 bg-zinc-100 z-40">
             <div className="h-full bg-[#FF6B2C] transition-all duration-500" style={{ width: progressWidth }}></div>
           </div>
-          <main className="flex-1 w-full max-w-[480px] px-6 pt-[60px] pb-[100px] flex flex-col justify-center items-center">
+          <main className="flex-1 w-full max-w-[480px] px-6 pt-[60px] pb-[120px] flex flex-col justify-center items-center">
             <h2 className="text-2xl md:text-3xl font-extrabold text-[#1A1A1A] text-center mb-6 leading-tight">
               How quickly do you want results?
             </h2>
             <div className="grid grid-cols-3 gap-3 w-full">
-              <button onClick={next} className="option-hover group flex flex-col items-center justify-center aspect-square bg-white border-2 border-[#E4E4E7] rounded-2xl p-4 transition-all duration-200 active:scale-95 hover:border-[#FF6B2C]/50">
-                <div className="text-3xl md:text-4xl mb-3 group-active:scale-110 transition-transform">
+              <button onClick={() => setSelected("asap")} className={`option-tap group flex flex-col items-center justify-center aspect-square border-2 rounded-2xl p-4 transition-all duration-200 active:scale-95 ${selected === "asap" ? "option-selected border-[#FF6B2C]" : "bg-white border-[#E4E4E7] hover:border-[#FF6B2C]/50"}`}>
+                <div className={`text-3xl md:text-4xl mb-3 ${selected === "asap" ? "icon-selected" : ""}`}>
                   🔥
                 </div>
-                <span className="text-xs md:text-sm font-bold text-[#3F3F46] group-hover:text-[#FF6B2C] text-center leading-tight">
+                <span className={`text-xs md:text-sm font-bold text-center leading-tight ${selected === "asap" ? "text-[#FF6B2C]" : "text-[#3F3F46]"}`}>
                   ASAP
                 </span>
               </button>
-              <button onClick={next} className="option-hover group flex flex-col items-center justify-center aspect-square bg-white border-2 border-[#E4E4E7] rounded-2xl p-4 transition-all duration-200 active:scale-95 hover:border-[#FF6B2C]/50">
-                <div className="text-3xl md:text-4xl mb-3 icon-bounce group-active:scale-110 transition-transform">
+              <button onClick={() => setSelected("month")} className={`option-tap group flex flex-col items-center justify-center aspect-square border-2 rounded-2xl p-4 transition-all duration-200 active:scale-95 ${selected === "month" ? "option-selected border-[#FF6B2C]" : "bg-white border-[#E4E4E7] hover:border-[#FF6B2C]/50"}`}>
+                <div className={`text-3xl md:text-4xl mb-3 ${selected === "month" ? "icon-selected" : "icon-bounce"}`}>
                   📅
                 </div>
-                <span className="text-xs md:text-sm font-bold text-[#3F3F46] group-hover:text-[#FF6B2C] text-center leading-tight">
+                <span className={`text-xs md:text-sm font-bold text-center leading-tight ${selected === "month" ? "text-[#FF6B2C]" : "text-[#3F3F46]"}`}>
                   Within a month
                 </span>
               </button>
-              <button onClick={next} className="option-hover group flex flex-col items-center justify-center aspect-square bg-white border-2 border-[#E4E4E7] rounded-2xl p-4 transition-all duration-200 active:scale-95 hover:border-[#FF6B2C]/50">
-                <div className="text-3xl md:text-4xl mb-3 group-active:scale-110 transition-transform">
+              <button onClick={() => setSelected("norush")} className={`option-tap group flex flex-col items-center justify-center aspect-square border-2 rounded-2xl p-4 transition-all duration-200 active:scale-95 ${selected === "norush" ? "option-selected border-[#FF6B2C]" : "bg-white border-[#E4E4E7] hover:border-[#FF6B2C]/50"}`}>
+                <div className={`text-3xl md:text-4xl mb-3 ${selected === "norush" ? "icon-selected" : ""}`}>
                   🧘
                 </div>
-                <span className="text-xs md:text-sm font-bold text-[#3F3F46] group-hover:text-[#FF6B2C] text-center leading-tight">
+                <span className={`text-xs md:text-sm font-bold text-center leading-tight ${selected === "norush" ? "text-[#FF6B2C]" : "text-[#3F3F46]"}`}>
                   No rush
                 </span>
               </button>
             </div>
           </main>
-          <div className="fixed bottom-0 left-0 w-full p-6 bg-white flex justify-center">
-            <div className="w-full max-w-[480px]">
-              <button onClick={next} className="w-full h-14 bg-[#FF6B2C] text-white font-bold text-lg rounded-xl shadow-lg shadow-orange-200 flex items-center justify-center transition-transform active:scale-[0.98]">
-                Continue
-              </button>
-              <p className="text-[10px] text-zinc-400 italic text-center mt-4">Most men see changes within the first 2 weeks</p>
-            </div>
+          <div className="fixed bottom-0 left-0 right-0 z-50 px-6 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[480px] mx-auto">
+            <button disabled={!selected} onClick={() => { next(); }} className={`w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
           </div>
         </div>
       )}
@@ -652,9 +642,7 @@ export default function FlowPage() {
               </div>
             </main>
             <div className="p-6 sticky bottom-0 bg-white border-t border-zinc-100">
-              <button onClick={next} className="w-full h-[56px] bg-[#FF6B2C] text-white font-bold text-lg rounded-2xl flex items-center justify-center gap-2 active:scale-95 transition-transform duration-150 shadow-lg shadow-orange-600/20">
-                Continue →
-              </button>
+              <button onClick={next} className="w-full h-[56px] rounded-[12px] font-bold text-base transition-all bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]">Continue</button>
             </div>
           </div>
           <div className="hidden">
@@ -676,32 +664,29 @@ export default function FlowPage() {
             <div className="text-xl font-black tracking-tighter text-zinc-900">PEAKCORE</div>
             <div className="w-10"></div>
           </header>
-          <main className="flex-1 w-full max-w-[480px] flex flex-col px-6 pt-[60px] pb-[100px]">
+          <main className="flex-1 w-full max-w-[480px] flex flex-col px-6 pt-[60px] pb-[120px]">
             <div className="flex-1 flex flex-col justify-center">
               <h1 className="text-3xl font-extrabold text-[#1A1A1A] leading-tight mb-6 text-center">
                 Preferred training time?
               </h1>
               <div className="grid grid-cols-3 gap-3">
-                <button onClick={next} className="option-hover flex flex-col items-center justify-center aspect-square bg-[#F7F7F8] border border-[#E4E4E7] rounded-xl transition-all active:scale-95 group hover:border-[#FF6B2C]">
-                  <span className="text-3xl mb-2 icon-bounce">🌅</span>
-                  <span className="text-sm font-semibold text-[#3F3F46]">Morning</span>
+                <button onClick={() => setSelected("morning")} className={`option-tap flex flex-col items-center justify-center aspect-square border rounded-xl transition-all active:scale-95 ${selected === "morning" ? "option-selected border-[#FF6B2C]" : "bg-[#F7F7F8] border-[#E4E4E7] hover:border-[#FF6B2C]"}`}>
+                  <span className={`text-3xl mb-2 ${selected === "morning" ? "icon-selected" : "icon-bounce"}`}>🌅</span>
+                  <span className={`text-sm font-semibold ${selected === "morning" ? "text-[#FF6B2C]" : "text-[#3F3F46]"}`}>Morning</span>
                 </button>
-                <button onClick={next} className="option-hover flex flex-col items-center justify-center aspect-square bg-[#F7F7F8] border border-[#E4E4E7] rounded-xl transition-all active:scale-95 group hover:border-[#FF6B2C]">
-                  <span className="text-3xl mb-2 icon-bounce">☀️</span>
-                  <span className="text-sm font-semibold text-[#3F3F46]">Afternoon</span>
+                <button onClick={() => setSelected("afternoon")} className={`option-tap flex flex-col items-center justify-center aspect-square border rounded-xl transition-all active:scale-95 ${selected === "afternoon" ? "option-selected border-[#FF6B2C]" : "bg-[#F7F7F8] border-[#E4E4E7] hover:border-[#FF6B2C]"}`}>
+                  <span className={`text-3xl mb-2 ${selected === "afternoon" ? "icon-selected" : "icon-bounce"}`}>☀️</span>
+                  <span className={`text-sm font-semibold ${selected === "afternoon" ? "text-[#FF6B2C]" : "text-[#3F3F46]"}`}>Afternoon</span>
                 </button>
-                <button onClick={next} className="option-hover flex flex-col items-center justify-center aspect-square bg-[#F7F7F8] border border-[#E4E4E7] rounded-xl transition-all active:scale-95 group hover:border-[#FF6B2C]">
-                  <span className="text-3xl mb-2 icon-bounce">🌙</span>
-                  <span className="text-sm font-semibold text-[#3F3F46]">Evening</span>
+                <button onClick={() => setSelected("evening")} className={`option-tap flex flex-col items-center justify-center aspect-square border rounded-xl transition-all active:scale-95 ${selected === "evening" ? "option-selected border-[#FF6B2C]" : "bg-[#F7F7F8] border-[#E4E4E7] hover:border-[#FF6B2C]"}`}>
+                  <span className={`text-3xl mb-2 ${selected === "evening" ? "icon-selected" : "icon-bounce"}`}>🌙</span>
+                  <span className={`text-sm font-semibold ${selected === "evening" ? "text-[#FF6B2C]" : "text-[#3F3F46]"}`}>Evening</span>
                 </button>
               </div>
             </div>
           </main>
-          <div className="fixed bottom-0 left-0 w-full p-6 bg-white max-w-[480px] left-1/2 -translate-x-1/2">
-            <button onClick={next} className="w-full h-14 bg-[#FF6B2C] text-white font-bold text-lg rounded-xl shadow-lg shadow-orange-200 active:scale-[0.98] transition-all">
-              Continue
-            </button>
-            <p className="text-center text-sm text-zinc-500 italic mt-4">We&apos;ll remind you at the perfect moment ⏰</p>
+          <div className="fixed bottom-0 left-0 right-0 z-50 px-6 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[480px] mx-auto">
+            <button disabled={!selected} onClick={() => { next(); }} className={`w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
           </div>
         </div>
       )}
@@ -739,14 +724,15 @@ export default function FlowPage() {
             </main>
             <div className="fixed bottom-0 left-0 right-0 w-full max-w-[480px] mx-auto px-6 pb-8 pt-4 bg-white bg-opacity-95 backdrop-blur-sm">
               <div className="flex flex-col gap-3">
-                <button onClick={next} className="w-full h-[56px] bg-[#FF6B2C] text-white rounded-xl font-bold text-lg flex items-center justify-center shadow-lg shadow-orange-200 active:scale-[0.98] transition-all">
+                <button onClick={() => setSelected("yes")} className={`option-tap w-full h-[56px] rounded-xl font-bold text-lg flex items-center justify-center active:scale-[0.98] transition-all ${selected === "yes" ? "bg-[#FF6B2C] text-white shadow-lg shadow-orange-200 option-selected" : "bg-white text-[#FF6B2C] border-2 border-[#FF6B2C]"}`}>
                   ✅ Yes, keep me on track
                 </button>
-                <button onClick={next} className="w-full h-[56px] bg-white text-[#FF6B2C] border-2 border-[#FF6B2C] rounded-xl font-bold text-lg flex items-center justify-center active:scale-[0.98] transition-all">
+                <button onClick={() => setSelected("no")} className={`option-tap w-full h-[56px] rounded-xl font-bold text-lg flex items-center justify-center active:scale-[0.98] transition-all ${selected === "no" ? "bg-[#FF6B2C] text-white shadow-lg shadow-orange-200 option-selected" : "bg-white text-[#FF6B2C] border-2 border-[#FF6B2C]"}`}>
                   ⏭️ No thanks
                 </button>
               </div>
-              <p className="mt-6 text-center text-[#71717A] text-sm font-medium">
+              <button disabled={!selected} onClick={() => { next(); }} className={`w-full h-[56px] rounded-[12px] font-bold text-base transition-all mt-3 ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
+              <p className="mt-4 text-center text-[#71717A] text-sm font-medium">
                 Consistency is the #1 predictor of success
               </p>
             </div>
@@ -793,7 +779,7 @@ export default function FlowPage() {
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
-                <button onClick={handleEmailSubmit} className="w-full h-14 bg-[#ff6b2c] text-white font-bold text-[1.125rem] rounded-xl flex items-center justify-center gap-2 active:scale-[0.98] transition-all duration-200">
+                <button onClick={handleEmailSubmit} className={`w-full h-14 bg-[#ff6b2c] text-white font-bold text-[1.125rem] rounded-xl flex items-center justify-center gap-2 active:scale-[0.98] transition-all duration-200 ${email ? "shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow" : ""}`}>
                   Get My Plan
                   <span className="material-symbols-outlined text-[1.25rem]">arrow_forward</span>
                 </button>

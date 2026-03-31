@@ -184,3 +184,34 @@ input[type=range]::-moz-range-thumb {
   background-color: rgba(255, 107, 44, 0.04);
   border-color: rgba(255, 107, 44, 0.3);
 }
+
+/* Selected option state */
+.option-selected {
+  background-color: #FFF4EE !important;
+  border-color: #FF6B2C !important;
+  box-shadow: 0 0 12px rgba(255, 107, 44, 0.2);
+  transition: all 0.2s ease;
+}
+
+/* CTA glow animation */
+@keyframes cta-glow {
+  0%, 100% { box-shadow: 0 0 15px rgba(255, 107, 44, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(255, 107, 44, 0.5), 0 0 50px rgba(255, 107, 44, 0.15); }
+}
+.animate-cta-glow {
+  animation: cta-glow 2s ease-in-out infinite;
+}
+
+/* Icon animation on option select */
+.icon-selected {
+  transform: scale(1.2);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Option tap feedback */
+.option-tap {
+  transition: all 0.15s ease;
+}
+.option-tap:active {
+  transform: scale(0.97);
+}
