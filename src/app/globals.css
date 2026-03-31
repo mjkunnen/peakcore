@@ -202,6 +202,22 @@ input[type=range]::-moz-range-thumb {
   animation: cta-glow 2s ease-in-out infinite;
 }
 
+/* Pelvic floor contraction animation */
+@keyframes pf-contract {
+  0%, 100% { d: path("M 65 200 Q 160 238 255 200"); }
+  50% { d: path("M 65 200 Q 160 215 255 200"); }
+}
+@keyframes pf-arrows {
+  0%, 40%, 100% { opacity: 0; }
+  50%, 70% { opacity: 0.7; }
+}
+.animate-pf-contract {
+  animation: pf-contract 3s ease-in-out infinite;
+}
+.animate-pf-arrows {
+  animation: pf-arrows 3s ease-in-out infinite;
+}
+
 /* Icon animation on option select */
 .icon-selected {
   transform: scale(1.2);

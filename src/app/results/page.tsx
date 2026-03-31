@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import PelvicFloorAnatomy from "@/components/PelvicFloorAnatomy";
 
 export default function ResultsPage() {
   const [discountActive, setDiscountActive] = useState(false);
@@ -258,43 +259,7 @@ export default function ResultsPage() {
         <section className="px-5 py-8">
           <div className="flex flex-col items-center">
             <div className="flex justify-center mb-5">
-              <svg viewBox="0 0 320 280" className="w-full max-w-[300px] h-auto">
-                {/* Background circle */}
-                <circle cx="160" cy="140" r="130" fill="#FFF7ED" opacity="0.5"/>
-
-                {/* Pelvis outline - stylized side view */}
-                <path d="M 60 60 C 60 40, 100 20, 160 25 C 220 30, 260 50, 270 80 L 280 140 C 285 180, 270 220, 240 245 L 200 255 C 170 260, 130 260, 100 250 L 70 240 C 40 220, 35 180, 40 140 Z" fill="#F9FAFB" stroke="#E5E7EB" strokeWidth="1.5"/>
-
-                {/* Spine indication */}
-                <path d="M 250 40 L 260 80 L 265 120 L 260 160" fill="none" stroke="#E5E7EB" strokeWidth="3" strokeLinecap="round"/>
-
-                {/* Bladder - pear shaped */}
-                <path d="M 120 70 C 110 55, 130 40, 155 42 C 180 44, 195 55, 190 72 C 185 90, 170 100, 155 102 C 135 104, 115 90, 120 70 Z" fill="#DBEAFE" stroke="#93C5FD" strokeWidth="1.5"/>
-
-                {/* Prostate - walnut shape */}
-                <path d="M 135 120 C 130 110, 145 105, 158 105 C 172 105, 185 110, 182 120 C 179 132, 168 138, 158 138 C 145 138, 132 132, 135 120 Z" fill="#D1FAE5" stroke="#86EFAC" strokeWidth="1.5"/>
-
-                {/* Rectum */}
-                <path d="M 200 90 C 210 100, 215 130, 212 160 C 210 185, 205 210, 195 230" fill="none" stroke="#D1D5DB" strokeWidth="8" strokeLinecap="round"/>
-                <path d="M 200 90 C 210 100, 215 130, 212 160 C 210 185, 205 210, 195 230" fill="none" stroke="#F3F4F6" strokeWidth="5" strokeLinecap="round"/>
-
-                {/* PELVIC FLOOR MUSCLES - the hero element - broad curved band */}
-                <path d="M 55 195 Q 110 235 160 238 Q 210 235 265 195" fill="none" stroke="#FF6B2C" strokeWidth="28" strokeLinecap="round" opacity="0.1"/>
-                <path d="M 65 200 Q 115 232 160 235 Q 205 232 255 200" fill="none" stroke="#FF6B2C" strokeWidth="16" strokeLinecap="round" opacity="0.3"/>
-                <path d="M 70 202 Q 118 230 160 233 Q 202 230 250 202" fill="none" stroke="#FF6B2C" strokeWidth="8" strokeLinecap="round" opacity="0.8"/>
-                <path d="M 80 198 Q 120 222 160 225 Q 200 222 240 198" fill="none" stroke="#FF6B2C" strokeWidth="2" strokeLinecap="round" opacity="0.5"/>
-                <path d="M 75 206 Q 118 236 160 239 Q 202 236 245 206" fill="none" stroke="#FF6B2C" strokeWidth="2" strokeLinecap="round" opacity="0.4"/>
-
-                {/* Labels */}
-                <line x1="155" y1="42" x2="60" y2="35" stroke="#D1D5DB" strokeWidth="1"/>
-                <text x="15" y="38" fontSize="11" fill="#6B7280" fontFamily="Inter, sans-serif">Bladder</text>
-                <line x1="182" y1="120" x2="250" y2="105" stroke="#D1D5DB" strokeWidth="1"/>
-                <text x="255" y="108" fontSize="10" fill="#6B7280" fontFamily="Inter, sans-serif">Prostate</text>
-                <line x1="212" y1="160" x2="270" y2="155" stroke="#D1D5DB" strokeWidth="1"/>
-                <text x="275" y="158" fontSize="10" fill="#6B7280" fontFamily="Inter, sans-serif">Rectum</text>
-                <line x1="160" y1="240" x2="160" y2="262" stroke="#FF6B2C" strokeWidth="1"/>
-                <text x="160" y="275" textAnchor="middle" fontSize="12" fill="#FF6B2C" fontWeight="600" fontFamily="Inter, sans-serif">Pelvic Floor Muscles</text>
-              </svg>
+              <PelvicFloorAnatomy />
             </div>
             <h3 className="text-[18px] font-bold text-[#1A1A1A] mb-2 text-center">What you&apos;re training</h3>
             <p className="text-[14px] text-[#71717A] text-center leading-relaxed max-w-[320px]">
