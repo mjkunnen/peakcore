@@ -1,0 +1,172 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-peak-orange: #FF6B2C;
+  --color-peak-grey: #E4E4E7;
+  --color-peak-black: #1A1A1A;
+  --color-peak-subtle: #71717A;
+  --color-peak-chevron: #AAAAAA;
+  --color-brand-orange: #FF6B2C;
+  --color-brand-grey-card: #F7F7F8;
+  --color-brand-grey-border: #E4E4E7;
+  --color-brand-grey-text: #3F3F46;
+  --color-brand-grey-subtle: #71717A;
+  --color-brand-black: #1A1A1A;
+  --color-brand-grey: #F7F7F8;
+  --color-subtle-text: #71717A;
+  --color-surface-container-low: #f1effb;
+  --color-secondary-fixed-dim: #d6d4d3;
+  --color-outline: #76767f;
+  --color-on-primary-fixed-variant: #541800;
+  --color-primary-dim: #8f2f00;
+  --color-outline-variant: #adacb6;
+  --color-on-tertiary-fixed-variant: #006a2d;
+  --color-on-error-container: #570008;
+  --color-secondary-container: #e5e2e1;
+  --color-surface-container: #e8e7f3;
+  --color-tertiary-fixed-dim: #5bf083;
+  --color-tertiary-dim: #005d26;
+  --color-on-secondary-fixed-variant: #5c5b5b;
+  --color-surface-dim: #d3d3e2;
+  --color-on-secondary: #f5f2f1;
+  --color-on-primary-fixed: #000000;
+  --color-tertiary-container: #6bff8f;
+  --color-secondary-fixed: #e5e2e1;
+  --color-primary: #a33700;
+  --color-inverse-primary: #fe6a2b;
+  --color-on-tertiary-fixed: #004a1d;
+  --color-surface: #f7f5ff;
+  --color-inverse-surface: #0d0e15;
+  --color-tertiary: #006a2d;
+  --color-primary-fixed-dim: #f76526;
+  --color-background: #f7f5ff;
+  --color-on-background: #2d2e36;
+  --color-error: #b31b25;
+  --color-on-tertiary-container: #005f28;
+  --color-on-primary-container: #441200;
+  --color-primary-fixed: #ff7943;
+  --color-secondary-dim: #504f4f;
+  --color-on-secondary-fixed: #403f3f;
+  --color-surface-container-highest: #dcdce9;
+  --color-surface-container-high: #e2e1ee;
+  --color-inverse-on-surface: #9c9ca6;
+  --color-surface-tint: #a33700;
+  --color-on-secondary-container: #525151;
+  --color-error-dim: #9f0519;
+  --color-surface-variant: #dcdce9;
+  --color-secondary: #5c5b5b;
+  --color-primary-container: #ff7943;
+  --color-on-surface: #2d2e36;
+  --color-on-primary: #ffefeb;
+  --color-surface-container-lowest: #ffffff;
+  --color-on-tertiary: #ceffd0;
+  --color-on-surface-variant: #5a5b63;
+  --color-on-error: #ffefee;
+  --color-tertiary-fixed: #6bff8f;
+  --color-surface-bright: #f7f5ff;
+  --color-error-container: #fb5151;
+  --font-headline: "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-label: "Inter", sans-serif;
+}
+
+html {
+  background-color: #FFFFFF;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #FFFFFF;
+  -webkit-font-smoothing: antialiased;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
+}
+
+.fill-icon {
+  font-variation-settings: 'FILL' 1;
+}
+
+/* Custom range slider styling */
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  background: transparent;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: #E4E4E7;
+  border-radius: 4px;
+}
+input[type=range]::-webkit-slider-thumb {
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  background: #FF6B2C;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -10px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: #E4E4E7;
+  border-radius: 4px;
+}
+input[type=range]::-moz-range-thumb {
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  background: #FF6B2C;
+  cursor: pointer;
+  border: none;
+}
+
+/* Kinetic input focus */
+.kinetic-input:focus {
+  outline: none;
+  border-bottom: 2px solid #ff6b2c;
+  background-color: #ffffff;
+}
+
+/* Progress ring animation */
+.progress-ring__circle {
+  transition: stroke-dashoffset 0.35s;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+/* Progress bar track/fill for reminders page */
+.progress-bar-track {
+  height: 4px;
+  background-color: #E4E4E7;
+  width: 100%;
+}
+.progress-bar-fill {
+  height: 100%;
+  background-color: #FF6B2C;
+  width: 94%;
+}
+
+/* Brand orange overrides */
+.text-brand-orange { color: #FF6B2C; }
+.bg-brand-orange { background-color: #FF6B2C; }
+.border-brand-orange { border-color: #FF6B2C; }
+.bg-brand-orange-light { background-color: #FFF4EE; }
+
+/* Monumental number style */
+.monumental-number {
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}

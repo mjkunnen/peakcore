@@ -1,0 +1,7 @@
+node_modules/
+.next/
+stitch/
+.vercel
+.env.local
+.env
+node_modules/
