@@ -27,7 +27,7 @@ export default function ResultsPage() {
       if (scrolledEnough) return;
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (docHeight > 0 && scrollTop / docHeight >= 0.6) {
+      if (docHeight > 0 && scrollTop / docHeight >= 0.85) {
         setScrolledEnough(true);
       }
     };
@@ -37,7 +37,7 @@ export default function ResultsPage() {
 
   // Show wheel when BOTH conditions met: scrolled 60% AND 3+ seconds on page
   useEffect(() => {
-    if (scrolledEnough && timeOnPage >= 3 && !wheelTriggered && !showSpinWheel && !discountActive) {
+    if (scrolledEnough && timeOnPage >= 8 && !wheelTriggered && !showSpinWheel && !discountActive) {
       setShowSpinWheel(true);
       setWheelTriggered(true);
     }
