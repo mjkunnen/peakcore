@@ -62,12 +62,14 @@ export default function ResultsPage() {
   const handleSpin = () => {
     if (isSpinning) return;
     setIsSpinning(true);
-    setSpinRotation((prev) => prev + 360 * 5 + 30); // 5 full rotations + land on 75% segment (300-360deg, center at 330deg)
+    // 8 full rotations + land JUST barely on 75% segment (near the edge between 65% and 75%)
+    // 75% segment is at 300-360deg. Land at ~305deg = just barely past the line, maximum tension
+    setSpinRotation((prev) => prev + 360 * 8 + 305);
     setTimeout(() => {
       setShowSpinWheel(false);
       setShowCelebration(true);
       setIsSpinning(false);
-    }, 3000);
+    }, 6000); // 6 seconds for dramatic spin
   };
 
   const handleGoToDiscount = () => {
@@ -377,7 +379,7 @@ export default function ResultsPage() {
                 </div>
 
                 {/* Card 2: 4 Weeks HIGHLIGHTED */}
-                <div onClick={() => setSelectedPlan("4week")} className={`option-tap cursor-pointer relative flex flex-col p-5 border-2 rounded-xl active:scale-[0.98] transition-all ${selectedPlan === "4week" ? "option-selected border-[#FF6B2C]" : "bg-[#FFF4EE] border-[#FF6B2C]"}`}>
+                <div onClick={() => setSelectedPlan("4week")} className={`option-tap cursor-pointer relative flex flex-col p-5 border-2 rounded-xl active:scale-[0.98] transition-all ${selectedPlan === "4week" ? "option-selected border-[#FF6B2C] bg-[#FFF4EE]" : "bg-white border-[#E4E4E7]"}`}>
                   <div className="absolute -top-3 right-4 bg-[#FF6B2C] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                     MOST POPULAR
                   </div>
@@ -591,7 +593,7 @@ export default function ResultsPage() {
                 style={{
                   background: "conic-gradient(from 0deg, #ffc9ac 0deg 60deg, #ffe3d4 60deg 120deg, #ff7943 120deg 180deg, #f76526 180deg 240deg, #a33700 240deg 300deg, #006a35 300deg 360deg)",
                   transform: `rotate(${spinRotation}deg)`,
-                  transition: isSpinning ? "transform 3s cubic-bezier(0.17, 0.67, 0.12, 0.99)" : "none",
+                  transition: isSpinning ? "transform 6s cubic-bezier(0.15, 0.60, 0.08, 1.00)" : "none",
                 }}
               >
                 {/* Text Labels */}
