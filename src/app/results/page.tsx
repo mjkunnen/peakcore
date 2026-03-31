@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import AnatomyDiagram from "@/components/AnatomyDiagram";
 
 export default function ResultsPage() {
   const [discountActive, setDiscountActive] = useState(false);
@@ -268,13 +269,7 @@ export default function ResultsPage() {
         {/* SECTION: What You're Training */}
         <section className="px-5 py-8">
           <div className="flex flex-col items-center">
-            <div className="flex justify-center mb-6">
-              <img
-                src="/images/pelvic-floor.jpg"
-                alt="Male pelvic floor anatomy showing muscles that control bladder function and sexual stamina"
-                className="w-full max-w-[280px] mx-auto rounded-xl"
-              />
-            </div>
+            <AnatomyDiagram />
             <h3 className="text-[18px] font-bold text-[#1A1A1A] mb-2 text-center">What you&apos;re training</h3>
             <p className="text-[14px] text-[#71717A] text-center leading-relaxed max-w-[320px]">
               The pelvic floor is a group of muscles that supports bladder control, sexual function, and core stability. Our protocol strengthens these through progressive daily training.
