@@ -6,27 +6,42 @@ export default function ResultsPage() {
   const [discountActive, setDiscountActive] = useState(false);
   const [showSpinWheel, setShowSpinWheel] = useState(false);
   const [showCelebration, setShowCelebration] = useState(false);
-  const [hasScrolledEnough, setHasScrolledEnough] = useState(false);
+  const [scrolledEnough, setScrolledEnough] = useState(false);
+  const [timeOnPage, setTimeOnPage] = useState(0);
+  const [wheelTriggered, setWheelTriggered] = useState(false);
   const [isSpinning, setIsSpinning] = useState(false);
   const [spinRotation, setSpinRotation] = useState(0);
   const [countdown, setCountdown] = useState(15 * 60); // 15 minutes in seconds
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
   const pricingSectionRef = useRef<HTMLDivElement>(null);
 
-  // Scroll trigger: when user scrolls past 60% of the page
+  // Time on page counter
+  useEffect(() => {
+    const timer = setInterval(() => setTimeOnPage(t => t + 1), 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  // Scroll trigger: track when user scrolls past 60%
   useEffect(() => {
     const handleScroll = () => {
-      if (hasScrolledEnough) return;
+      if (scrolledEnough) return;
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       if (docHeight > 0 && scrollTop / docHeight >= 0.6) {
-        setHasScrolledEnough(true);
-        setShowSpinWheel(true);
+        setScrolledEnough(true);
       }
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [hasScrolledEnough]);
+  }, [scrolledEnough]);
+
+  // Show wheel when BOTH conditions met: scrolled 60% AND 3+ seconds on page
+  useEffect(() => {
+    if (scrolledEnough && timeOnPage >= 3 && !wheelTriggered && !showSpinWheel && !discountActive) {
+      setShowSpinWheel(true);
+      setWheelTriggered(true);
+    }
+  }, [scrolledEnough, timeOnPage, wheelTriggered, showSpinWheel, discountActive]);
 
   // Countdown timer
   useEffect(() => {
@@ -77,7 +92,7 @@ export default function ResultsPage() {
         <h1 style={{ fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: "16px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#1a1a1a" }}>PEAKCORE</h1>
       </header>
 
-      <main className="w-[390px] mx-auto pb-12 overflow-x-hidden">
+      <main className="max-w-[390px] w-full mx-auto pb-12 overflow-x-hidden">
         {/* SECTION 1: Your goals pills */}
         <section className="px-5 py-6">
           <div className="flex flex-wrap gap-2">
@@ -340,37 +355,90 @@ export default function ResultsPage() {
         <div ref={pricingSectionRef}>
           {!discountActive ? (
             <>
-              {/* stitch/17_result_top.html pricing (original $39.99) */}
-              <section className="px-5 py-8">
-                <div className="flex overflow-x-auto gap-3 pb-4 snap-x" style={{ msOverflowStyle: "none", scrollbarWidth: "none" }}>
-                  {/* Tier 1 */}
-                  <div onClick={() => setSelectedPlan("1week")} className={`option-tap cursor-pointer min-w-[150px] flex-1 snap-start p-4 border-2 rounded-xl flex flex-col items-center justify-center text-center gap-1 transition-all ${selectedPlan === "1week" ? "option-selected border-[#FF6B2C]" : "border-[#e5e2e1]"}`}>
-                    <span className="text-[14px] text-[#9CA3AF] font-medium">1 Week</span>
-                    <span className="text-[20px] font-bold text-[#1A1A1A]">$9.99</span>
-                    <span className="text-[12px] text-[#9CA3AF]">$1.43/day</span>
-                  </div>
-                  {/* Tier 2 (Highlighted) */}
-                  <div onClick={() => setSelectedPlan("4week")} className={`option-tap cursor-pointer min-w-[160px] flex-1 snap-center p-4 border-2 rounded-xl flex flex-col items-center justify-center text-center gap-1 relative overflow-hidden transition-all ${selectedPlan === "4week" ? "option-selected border-[#FF6B2C]" : "border-[#ff6b2c] bg-[#FFF4EE]"}`}>
-                    <div className="absolute top-0 left-0 right-0 bg-[#ff6b2c] py-1 text-[10px] font-extrabold text-white uppercase tracking-wider">Most Popular</div>
-                    <span className="text-[14px] text-[#ff6b2c] font-bold mt-3">4 Weeks</span>
-                    <span className="text-[24px] font-black text-[#1A1A1A]">$39.99</span>
-                    <span className="text-[12px] text-[#ff6b2c] font-medium">$1.33/day</span>
-                  </div>
-                  {/* Tier 3 */}
-                  <div onClick={() => setSelectedPlan("12week")} className={`option-tap cursor-pointer min-w-[150px] flex-1 snap-end p-4 border-2 rounded-xl flex flex-col items-center justify-center text-center gap-1 relative overflow-hidden transition-all ${selectedPlan === "12week" ? "option-selected border-[#FF6B2C]" : "border-[#e5e2e1]"}`}>
-                    <div className="absolute top-0 left-0 right-0 bg-[#22C55E] py-1 text-[10px] font-extrabold text-white uppercase tracking-wider">Best Value</div>
-                    <span className="text-[14px] text-[#9CA3AF] font-medium mt-3">12 Weeks</span>
-                    <span className="text-[20px] font-bold text-[#1A1A1A]">$89.99</span>
-                    <span className="text-[12px] text-[#9CA3AF]">$0.99/day</span>
-                  </div>
-                </div>
-                {/* CTA Button */}
-                <button disabled={!selectedPlan} className={`w-full h-14 font-bold text-[16px] rounded-xl mt-8 active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 ${selectedPlan ? "bg-[#ff6b2c] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>
-                  Get My Plan
-                  <span className="material-symbols-outlined">arrow_forward</span>
-                </button>
+              {/* Pre-discount pricing - stacked vertical cards */}
+              <section className="text-center px-4 pt-6">
+                <h1 className="text-[20px] font-bold text-[#1c1b1b]">Choose your plan</h1>
               </section>
 
+              <div className="flex flex-col gap-3 px-4 mt-6">
+                {/* Card 1: 1 Week */}
+                <div onClick={() => setSelectedPlan("1week")} className={`option-tap cursor-pointer flex flex-col p-5 bg-white border-2 rounded-xl shadow-sm active:scale-[0.98] transition-all ${selectedPlan === "1week" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7]"}`}>
+                  <div className="flex justify-between items-start">
+                    <div className="flex flex-col">
+                      <span className="text-[14px] font-bold tracking-tight text-[#1c1b1b]">1-WEEK TRIAL</span>
+                    </div>
+                    <div className="flex flex-col items-end">
+                      <span className="text-[20px] font-bold text-[#1c1b1b]">$9.99</span>
+                    </div>
+                  </div>
+                  <div className="flex justify-end mt-1">
+                    <span className="text-[12px] text-[#71717A]">$1.43/day</span>
+                  </div>
+                </div>
+
+                {/* Card 2: 4 Weeks HIGHLIGHTED */}
+                <div onClick={() => setSelectedPlan("4week")} className={`option-tap cursor-pointer relative flex flex-col p-5 border-2 rounded-xl active:scale-[0.98] transition-all ${selectedPlan === "4week" ? "option-selected border-[#FF6B2C]" : "bg-[#FFF4EE] border-[#FF6B2C]"}`}>
+                  <div className="absolute -top-3 right-4 bg-[#FF6B2C] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                    MOST POPULAR
+                  </div>
+                  <div className="flex justify-between items-start pt-1">
+                    <div className="flex flex-col">
+                      <span className="text-[14px] font-bold tracking-tight text-[#1c1b1b]">4-WEEK PLAN</span>
+                    </div>
+                    <div className="flex flex-col items-end">
+                      <span className="text-[28px] font-bold text-[#1c1b1b] leading-none">$39.99</span>
+                    </div>
+                  </div>
+                  <div className="flex justify-end mt-2">
+                    <span className="text-[12px] text-[#71717A]">$1.33/day</span>
+                  </div>
+                </div>
+
+                {/* Card 3: 12 Weeks */}
+                <div onClick={() => setSelectedPlan("12week")} className={`option-tap cursor-pointer flex flex-col p-5 bg-white border-2 rounded-xl shadow-sm active:scale-[0.98] transition-all ${selectedPlan === "12week" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7]"}`}>
+                  <div className="flex justify-between items-start">
+                    <div className="flex flex-col">
+                      <div className="flex items-center gap-2">
+                        <span className="text-[14px] font-bold tracking-tight text-[#1c1b1b]">12-WEEK PLAN</span>
+                        <div className="bg-[#22C55E]/10 text-[#22C55E] text-[10px] font-bold px-2 py-0.5 rounded border border-[#22C55E]/20">BEST VALUE</div>
+                      </div>
+                    </div>
+                    <div className="flex flex-col items-end">
+                      <span className="text-[20px] font-bold text-[#1c1b1b]">$89.99</span>
+                    </div>
+                  </div>
+                  <div className="flex justify-end mt-1">
+                    <span className="text-[12px] text-[#71717A]">$0.99/day</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Social Proof */}
+              <p className="text-center text-[12px] italic text-[#71717A] px-8 mt-6">
+                &quot;People who train for 12 weeks see 2x the results vs 4 weeks&quot;
+              </p>
+
+              {/* CTA Button */}
+              <div className="flex flex-col gap-4 px-4 mt-6">
+                <button disabled={!selectedPlan} className={`w-full h-[56px] font-bold text-[16px] rounded-xl active:scale-[0.98] transition-all flex items-center justify-center gap-2 ${selectedPlan ? "bg-[#ff6b2c] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>
+                  Get My Plan
+                  <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+                </button>
+                <div className="flex flex-col items-center gap-3">
+                  <div className="flex items-center gap-1.5 text-[12px] text-[#71717A] font-medium">
+                    <span className="material-symbols-outlined text-[14px] text-[#22C55E]" style={{ fontVariationSettings: "'FILL' 1" }}>verified_user</span>
+                    30-day money-back guarantee &middot; Cancel anytime
+                  </div>
+                  <div className="flex items-center gap-1 text-[11px] text-[#9CA3AF]">
+                    <span className="material-symbols-outlined text-[12px]">lock</span>
+                    Secured by Stripe
+                  </div>
+                </div>
+              </div>
+
+              <p className="text-[10px] text-[#9CA3AF] text-center leading-relaxed px-10 mt-6">
+                Auto-renews at $39.99/mo after intro period unless cancelled. See Subscription Terms.
+              </p>
             </>
           ) : (
             <>

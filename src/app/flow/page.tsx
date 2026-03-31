@@ -7,6 +7,7 @@ export default function FlowPage() {
   const [step, setStep] = useState(0);
   const [email, setEmail] = useState("");
   const [selected, setSelected] = useState<string | null>(null);
+  const [sliderValue, setSliderValue] = useState(50);
   const router = useRouter();
   const totalSteps = 15;
 
@@ -33,54 +34,52 @@ export default function FlowPage() {
       {step === 0 && (
         <div className="bg-white text-on-surface min-h-dvh max-h-dvh overflow-hidden flex flex-col items-center">
           <header className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 h-14 bg-white border-b-4 border-zinc-100">
-            <div className="flex items-center space-x-2">
-              <span className="material-symbols-outlined text-zinc-400 hover:opacity-80 transition-opacity active:scale-95">close</span>
-            </div>
+            <div className="w-8"></div>
             <h1 className="font-black tracking-tight text-xl text-zinc-900 uppercase">PeakCore</h1>
-            <div className="w-6"></div>
+            <div className="w-8"></div>
           </header>
-          <main className="w-full max-w-[480px] h-full flex flex-col px-6 pt-14 pb-[120px]">
+          <main className="w-full max-w-[390px] mx-auto h-full flex flex-col px-5 pt-14 pb-[120px]">
             <div className="w-full h-1 bg-[#E4E4E7] mt-4 relative rounded-full overflow-hidden">
               <div className="absolute top-0 left-0 h-full bg-[#FF6B2C] rounded-full" style={{ width: progressWidth }}></div>
             </div>
             <p className="text-[12px] text-[#71717A] text-center mt-2 leading-none">Step 1 of 18</p>
             <div className="flex-1 flex flex-col justify-center items-center w-full">
-              <h2 className="text-2xl font-bold text-[#1A1A1A] text-center mb-6 leading-tight">What&apos;s your main goal?</h2>
+              <h2 className="text-[20px] font-bold text-[#1A1A1A] text-center mb-6 leading-tight">What&apos;s your main goal?</h2>
               <div className="flex flex-col gap-3 w-full">
-                <button onClick={() => setSelected("longer")} className={`option-tap w-full h-[60px] bg-white border rounded-[12px] flex items-center justify-between px-5 transition-all ${selected === "longer" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:bg-orange-50/30"}`}>
+                <button onClick={() => setSelected("longer")} className={`option-tap w-full max-w-full h-[60px] bg-white border rounded-[12px] flex items-center justify-between px-5 transition-all ${selected === "longer" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:bg-orange-50/30"}`}>
                   <div className="flex items-center gap-4">
                     <span className={`text-[20px] ${selected === "longer" ? "icon-selected" : "icon-bounce"}`}>⏱️</span>
-                    <span className="text-base font-medium text-[#1A1A1A]">Last longer in bed</span>
+                    <span className="text-[15px] font-medium text-[#1A1A1A]">Last longer in bed</span>
                   </div>
                   <span className="text-[#AAAAAA] text-xl">&rsaquo;</span>
                 </button>
-                <button onClick={() => setSelected("control")} className={`option-tap w-full h-[60px] bg-white border rounded-[12px] flex items-center justify-between px-5 transition-all ${selected === "control" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:bg-orange-50/30"}`}>
+                <button onClick={() => setSelected("control")} className={`option-tap w-full max-w-full h-[60px] bg-white border rounded-[12px] flex items-center justify-between px-5 transition-all ${selected === "control" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:bg-orange-50/30"}`}>
                   <div className="flex items-center gap-4">
                     <span className={`text-[20px] ${selected === "control" ? "icon-selected" : "icon-bounce"}`}>🎯</span>
-                    <span className="text-base font-medium text-[#1A1A1A]">Better control</span>
+                    <span className="text-[15px] font-medium text-[#1A1A1A]">Better control</span>
                   </div>
                   <span className="text-[#AAAAAA] text-xl">&rsaquo;</span>
                 </button>
-                <button onClick={() => setSelected("stronger")} className={`option-tap w-full h-[60px] bg-white border rounded-[12px] flex items-center justify-between px-5 transition-all ${selected === "stronger" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:bg-orange-50/30"}`}>
+                <button onClick={() => setSelected("stronger")} className={`option-tap w-full max-w-full h-[60px] bg-white border rounded-[12px] flex items-center justify-between px-5 transition-all ${selected === "stronger" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:bg-orange-50/30"}`}>
                   <div className="flex items-center gap-4">
                     <span className={`text-[20px] ${selected === "stronger" ? "icon-selected" : "icon-bounce"}`}>⚡</span>
-                    <span className="text-base font-medium text-[#1A1A1A]">Stronger finish</span>
+                    <span className="text-[15px] font-medium text-[#1A1A1A]">Stronger finish</span>
                   </div>
                   <span className="text-[#AAAAAA] text-xl">&rsaquo;</span>
                 </button>
-                <button onClick={() => setSelected("health")} className={`option-tap w-full h-[60px] bg-white border rounded-[12px] flex items-center justify-between px-5 transition-all ${selected === "health" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:bg-orange-50/30"}`}>
+                <button onClick={() => setSelected("health")} className={`option-tap w-full max-w-full h-[60px] bg-white border rounded-[12px] flex items-center justify-between px-5 transition-all ${selected === "health" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:bg-orange-50/30"}`}>
                   <div className="flex items-center gap-4">
                     <span className={`text-[20px] ${selected === "health" ? "icon-selected" : "icon-bounce"}`}>❤️</span>
-                    <span className="text-base font-medium text-[#1A1A1A]">Overall health</span>
+                    <span className="text-[15px] font-medium text-[#1A1A1A]">Overall health</span>
                   </div>
                   <span className="text-[#AAAAAA] text-xl">&rsaquo;</span>
                 </button>
               </div>
             </div>
-            <p className="text-[#71717A] italic text-sm text-center mt-8">Small steps lead to peak performance 💪</p>
+            <p className="text-[#71717A] italic text-sm text-center mt-8">Small steps lead to peak performance</p>
           </main>
-          <div className="fixed bottom-0 left-0 right-0 z-50 px-6 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[480px] mx-auto">
-            <button disabled={!selected} onClick={() => { next(); }} className={`w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
+          <div className="fixed bottom-0 left-0 right-0 z-50 px-5 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[390px] mx-auto">
+            <button disabled={!selected} onClick={() => { next(); }} className={`w-full max-w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
           </div>
         </div>
       )}
@@ -92,17 +91,17 @@ export default function FlowPage() {
             <div className="h-full bg-[#ff7943]" style={{ width: progressWidth }}></div>
           </div>
           <header className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 h-14 bg-white border-b-4 border-zinc-100">
-            <button className="flex items-center justify-center w-8 h-8 transition-all duration-200 active:scale-95 hover:bg-zinc-50 rounded-full text-zinc-500">
-              <span className="material-symbols-outlined">close</span>
+            <button onClick={() => setStep(Math.max(0, step - 1))} className="flex items-center justify-center w-8 h-8 transition-all duration-200 active:scale-95 hover:bg-zinc-50 rounded-full text-zinc-500">
+              <span className="material-symbols-outlined">arrow_back</span>
             </button>
             <span className="text-xl font-black tracking-tighter text-zinc-900">PeakCore</span>
             <div className="w-8"></div>
           </header>
-          <main className="w-full max-w-[480px] px-6 pt-[60px] pb-[120px] flex-grow flex flex-col justify-center">
+          <main className="w-full max-w-[390px] mx-auto px-5 pt-[60px] pb-[120px] flex-grow flex flex-col justify-center">
             <div className="mb-2 text-center">
               <span className="text-sm font-medium text-[#76767f] uppercase tracking-wider">Step 2 of 18</span>
             </div>
-            <h1 className="text-3xl font-extrabold text-[#2d2e36] text-center mb-6 leading-tight">Your age?</h1>
+            <h1 className="text-[20px] font-extrabold text-[#2d2e36] text-center mb-6 leading-tight">Your age?</h1>
             <div className="grid grid-cols-2 gap-4 mb-8">
               <button onClick={() => setSelected("18-25")} className={`option-tap group flex flex-col items-center justify-center aspect-square bg-white border-2 rounded-xl transition-all duration-200 active:scale-[0.98] ${selected === "18-25" ? "option-selected border-[#FF6B2C]" : "border-[#adacb6] hover:border-[#a33700]"}`}>
                 <span className={`text-xl font-bold transition-colors ${selected === "18-25" ? "text-[#FF6B2C]" : "text-[#2d2e36] group-hover:text-[#a33700]"}`}>18-25</span>
@@ -124,8 +123,8 @@ export default function FlowPage() {
               </p>
             </div>
           </main>
-          <div className="fixed bottom-0 left-0 right-0 z-50 px-6 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[480px] mx-auto">
-            <button disabled={!selected} onClick={() => { next(); }} className={`w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
+          <div className="fixed bottom-0 left-0 right-0 z-50 px-5 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[390px] mx-auto">
+            <button disabled={!selected} onClick={() => { next(); }} className={`w-full max-w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
           </div>
         </div>
       )}
@@ -137,17 +136,17 @@ export default function FlowPage() {
             <div className="h-full bg-[#FF6B2C]" style={{ width: progressWidth }}></div>
           </div>
           <header className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 h-14 bg-white border-b border-zinc-200">
-            <button className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-zinc-100 transition-colors active:opacity-80 active:scale-95">
+            <button onClick={() => setStep(Math.max(0, step - 1))} className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-zinc-100 transition-colors active:opacity-80 active:scale-95">
               <span className="material-symbols-outlined text-zinc-500">arrow_back</span>
             </button>
             <h1 className="text-xl font-black tracking-tight text-[#1A1A1A]">PEAKCORE</h1>
             <div className="w-10"></div>
           </header>
-          <main className="w-full max-w-[480px] px-6 pt-[60px] pb-[120px] flex flex-col flex-grow">
+          <main className="w-full max-w-[390px] mx-auto px-5 pt-[60px] pb-[120px] flex flex-col flex-grow">
             <div className="text-center mb-2">
               <span className="text-[10px] font-bold tracking-widest text-[#71717A] uppercase">STEP 3 OF 18</span>
             </div>
-            <h2 className="text-3xl font-extrabold text-[#1A1A1A] text-center leading-tight mb-6">
+            <h2 className="text-[20px] font-extrabold text-[#1A1A1A] text-center leading-tight mb-6">
               How active are you?
             </h2>
             <div className="flex flex-col gap-4">
@@ -170,31 +169,31 @@ export default function FlowPage() {
               </p>
             </div>
           </main>
-          <div className="fixed bottom-0 left-0 right-0 z-50 px-6 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[480px] mx-auto">
-            <button disabled={!selected} onClick={() => { next(); }} className={`w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
+          <div className="fixed bottom-0 left-0 right-0 z-50 px-5 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[390px] mx-auto">
+            <button disabled={!selected} onClick={() => { next(); }} className={`w-full max-w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
           </div>
         </div>
       )}
 
       {/* ===== STEP 3: EXPERIENCE (stitch/04_experience.html) ===== */}
       {step === 3 && (
-        <div className="flex flex-col min-h-dvh max-h-dvh overflow-hidden max-w-[480px] mx-auto bg-white text-[#1A1A1A]">
-          <header className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 h-16 max-w-[480px] mx-auto bg-white border-b-4 border-[#E4E4E7]">
-            <button className="flex items-center justify-center w-10 h-10 hover:opacity-80 transition-opacity active:scale-95 duration-100">
+        <div className="flex flex-col min-h-dvh max-h-dvh overflow-hidden max-w-[390px] mx-auto bg-white text-[#1A1A1A]">
+          <header className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 h-16 max-w-[390px] mx-auto bg-white border-b-4 border-[#E4E4E7]">
+            <button onClick={() => setStep(Math.max(0, step - 1))} className="flex items-center justify-center w-10 h-10 hover:opacity-80 transition-opacity active:scale-95 duration-100">
               <span className="material-symbols-outlined text-[#71717A]">arrow_back</span>
             </button>
             <h1 className="text-xl font-black text-[#1A1A1A] tracking-tighter uppercase">PEAKCORE</h1>
             <div className="w-10"></div>
           </header>
-          <main className="flex-1 flex flex-col mt-16 px-6 pb-[120px]">
-            <div className="fixed top-16 left-0 w-full max-w-[480px] mx-auto z-40 bg-white">
+          <main className="flex-1 flex flex-col mt-16 px-5 pb-[120px]">
+            <div className="fixed top-16 left-0 w-full max-w-[390px] mx-auto z-40 bg-white">
               <div className="w-full h-[4px] bg-[#E4E4E7]">
                 <div className="h-full bg-[#FF6B2C] transition-all duration-500 ease-out" style={{ width: progressWidth }}></div>
               </div>
             </div>
             <div className="flex-1 flex flex-col pt-12">
               <p className="text-[14px] font-semibold text-[#71717A] tracking-tight mb-2">Step 4 of 18</p>
-              <h2 className="text-[28px] font-extrabold leading-tight tracking-tight mb-6 text-[#1A1A1A]">
+              <h2 className="text-[20px] font-extrabold leading-tight tracking-tight mb-6 text-[#1A1A1A]">
                 Tried pelvic exercises before?
               </h2>
               <div className="flex flex-col gap-4">
@@ -225,8 +224,8 @@ export default function FlowPage() {
               </p>
             </div>
           </main>
-          <div className="fixed bottom-0 left-0 right-0 z-50 px-6 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[480px] mx-auto">
-            <button disabled={!selected} onClick={() => { next(); }} className={`w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
+          <div className="fixed bottom-0 left-0 right-0 z-50 px-5 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[390px] mx-auto">
+            <button disabled={!selected} onClick={() => { next(); }} className={`w-full max-w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
           </div>
         </div>
       )}
@@ -238,17 +237,17 @@ export default function FlowPage() {
             <div className="h-full bg-[#FF6B2C]" style={{ width: progressWidth }}></div>
           </div>
           <header className="bg-white border-b-4 border-zinc-100 fixed top-0 w-full z-40">
-            <div className="flex items-center justify-between w-full px-4 h-16 max-w-[480px] mx-auto">
-              <button className="text-zinc-400 hover:bg-zinc-50 transition-colors active:scale-95 duration-100 p-2 rounded-full">
+            <div className="flex items-center justify-between w-full px-4 h-16 max-w-[390px] mx-auto">
+              <button onClick={() => setStep(Math.max(0, step - 1))} className="text-zinc-400 hover:bg-zinc-50 transition-colors active:scale-95 duration-100 p-2 rounded-full">
                 <span className="material-symbols-outlined">arrow_back</span>
               </button>
               <h1 className="text-orange-600 font-black tracking-tighter text-xl">PEAKCORE</h1>
               <div className="w-10"></div>
             </div>
           </header>
-          <main className="flex-1 w-full max-w-[480px] px-6 pt-[60px] pb-[120px] flex flex-col">
+          <main className="flex-1 w-full max-w-[390px] mx-auto px-5 pt-[60px] pb-[120px] flex flex-col">
             <div className="mt-6 mb-6 text-center">
-              <h2 className="text-2xl md:text-3xl font-black text-[#1A1A1A] leading-tight tracking-tight">
+              <h2 className="text-[20px] font-black text-[#1A1A1A] leading-tight tracking-tight">
                 When did you first notice?
               </h2>
             </div>
@@ -256,28 +255,28 @@ export default function FlowPage() {
               <button onClick={() => setSelected("recently")} className={`option-tap w-full h-14 px-5 flex items-center justify-between bg-white border rounded-xl transition-all ${selected === "recently" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:border-[#FF6B2C]"}`}>
                 <div className="flex items-center gap-4">
                   <span className={`text-xl ${selected === "recently" ? "icon-selected" : "icon-bounce"}`}>🕐</span>
-                  <span className="font-bold text-[#1A1A1A] text-lg">Recently</span>
+                  <span className="font-bold text-[#1A1A1A] text-[15px]">Recently</span>
                 </div>
                 <span className={`material-symbols-outlined ${selected === "recently" ? "text-[#FF6B2C]" : "text-zinc-400"}`}>chevron_right</span>
               </button>
               <button onClick={() => setSelected("1-2y")} className={`option-tap w-full h-14 px-5 flex items-center justify-between bg-white border rounded-xl transition-all ${selected === "1-2y" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:border-[#FF6B2C]"}`}>
                 <div className="flex items-center gap-4">
                   <span className={`text-xl ${selected === "1-2y" ? "icon-selected" : "icon-bounce"}`}>📅</span>
-                  <span className="font-bold text-[#1A1A1A] text-lg">1-2 years ago</span>
+                  <span className="font-bold text-[#1A1A1A] text-[15px]">1-2 years ago</span>
                 </div>
                 <span className={`material-symbols-outlined ${selected === "1-2y" ? "text-[#FF6B2C]" : "text-zinc-400"}`}>chevron_right</span>
               </button>
               <button onClick={() => setSelected("3+")} className={`option-tap w-full h-14 px-5 flex items-center justify-between bg-white border rounded-xl transition-all ${selected === "3+" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:border-[#FF6B2C]"}`}>
                 <div className="flex items-center gap-4">
                   <span className={`text-xl ${selected === "3+" ? "icon-selected" : "icon-bounce"}`}>📆</span>
-                  <span className="font-bold text-[#1A1A1A] text-lg">3+ years</span>
+                  <span className="font-bold text-[#1A1A1A] text-[15px]">3+ years</span>
                 </div>
                 <span className={`material-symbols-outlined ${selected === "3+" ? "text-[#FF6B2C]" : "text-zinc-400"}`}>chevron_right</span>
               </button>
               <button onClick={() => setSelected("always")} className={`option-tap w-full h-14 px-5 flex items-center justify-between bg-white border rounded-xl transition-all ${selected === "always" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:border-[#FF6B2C]"}`}>
                 <div className="flex items-center gap-4">
                   <span className={`text-xl ${selected === "always" ? "icon-selected" : "icon-bounce"}`}>🔄</span>
-                  <span className="font-bold text-[#1A1A1A] text-lg">Always been this way</span>
+                  <span className="font-bold text-[#1A1A1A] text-[15px]">Always been this way</span>
                 </div>
                 <span className={`material-symbols-outlined ${selected === "always" ? "text-[#FF6B2C]" : "text-zinc-400"}`}>chevron_right</span>
               </button>
@@ -288,8 +287,8 @@ export default function FlowPage() {
               </p>
             </div>
           </main>
-          <div className="fixed bottom-0 left-0 right-0 z-50 px-6 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[480px] mx-auto">
-            <button disabled={!selected} onClick={() => { next(); }} className={`w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
+          <div className="fixed bottom-0 left-0 right-0 z-50 px-5 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[390px] mx-auto">
+            <button disabled={!selected} onClick={() => { next(); }} className={`w-full max-w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
           </div>
         </div>
       )}
@@ -300,8 +299,8 @@ export default function FlowPage() {
           <div className="fixed top-0 left-0 w-full z-[60] h-1 bg-zinc-100">
             <div className="h-full bg-orange-600" style={{ width: progressWidth }}></div>
           </div>
-          <header className="fixed top-0 left-0 w-full z-50 h-16 flex items-center px-4 max-w-[480px] mx-auto bg-white border-b-4 border-zinc-100">
-            <button aria-label="Go back" className="text-orange-600 active:scale-95 transition-transform duration-150">
+          <header className="fixed top-0 left-0 w-full z-50 h-16 flex items-center px-4 max-w-[390px] mx-auto bg-white border-b-4 border-zinc-100">
+            <button onClick={() => setStep(Math.max(0, step - 1))} aria-label="Go back" className="text-orange-600 active:scale-95 transition-transform duration-150">
               <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 0, 'wght' 600" }}>arrow_back</span>
             </button>
             <div className="flex-1 flex justify-center">
@@ -309,30 +308,35 @@ export default function FlowPage() {
             </div>
             <div className="w-6"></div>
           </header>
-          <main className="flex-1 w-full max-w-[480px] px-6 pt-[60px] pb-[100px] flex flex-col items-center justify-center">
+          <main className="flex-1 w-full max-w-[390px] mx-auto px-5 pt-[60px] pb-[100px] flex flex-col items-center justify-center">
             <div className="w-full space-y-8">
               <div className="text-center">
                 <span className="text-zinc-500 font-medium text-sm">Step 6 of 18</span>
               </div>
-              <h1 className="text-3xl font-extrabold text-[#1A1A1A] text-center leading-tight">
+              <h1 className="text-[20px] font-extrabold text-[#1A1A1A] text-center leading-tight">
                 How often does this affect you?
               </h1>
               <div className="pt-12 pb-8 px-2">
                 <div className="relative w-full">
-                  <input className="cursor-pointer" max={100} min={0} type="range" defaultValue={50} />
+                  <div className="text-center mb-4">
+                    <span className="inline-block bg-[#FF6B2C] text-white text-[14px] font-bold px-4 py-1.5 rounded-full">
+                      {sliderValue <= 20 ? "Rarely" : sliderValue <= 40 ? "Sometimes" : sliderValue <= 60 ? "Often" : sliderValue <= 80 ? "Very often" : "Almost always"}
+                    </span>
+                  </div>
+                  <input className="cursor-pointer" max={100} min={0} type="range" value={sliderValue} onChange={(e) => setSliderValue(Number(e.target.value))} />
                   <div className="flex justify-between mt-6">
                     <span className="text-zinc-500 font-medium text-sm uppercase tracking-wide">Rarely</span>
                     <span className="text-zinc-500 font-medium text-sm uppercase tracking-wide">Almost always</span>
                   </div>
                 </div>
               </div>
-              <p className="text-center text-[#71717A] italic text-sm mt-8 mb-4 px-6">
+              <p className="text-center text-[#71717A] italic text-sm mt-8 mb-4 px-5">
                 Honesty helps us build your perfect plan
               </p>
             </div>
           </main>
-          <div className="fixed bottom-0 left-0 right-0 z-50 px-6 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[480px] mx-auto">
-            <button onClick={next} className="w-full h-[56px] rounded-[12px] font-bold text-base transition-all bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]">Continue</button>
+          <div className="fixed bottom-0 left-0 right-0 z-50 px-5 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[390px] mx-auto">
+            <button onClick={next} className="w-full max-w-full h-[56px] rounded-[12px] font-bold text-base transition-all bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]">Continue</button>
           </div>
         </div>
       )}
@@ -340,20 +344,20 @@ export default function FlowPage() {
       {/* ===== STEP 6: TRIED (stitch/07_tried.html) ===== */}
       {step === 6 && (
         <div className="flex justify-center items-start min-h-dvh max-h-dvh overflow-hidden">
-          <div className="w-full max-w-[480px] min-h-dvh max-h-dvh flex flex-col relative bg-white overflow-hidden">
+          <div className="w-full max-w-[390px] min-h-dvh max-h-dvh flex flex-col relative bg-white overflow-hidden">
             <div className="fixed top-0 left-0 w-full h-[4px] bg-[#E4E4E7] z-[60]">
               <div className="h-full bg-[#FF6B2C]" style={{ width: progressWidth }}></div>
             </div>
             <header className="fixed top-[4px] left-0 w-full z-50 flex items-center justify-between px-4 h-14 bg-white border-b border-[#E4E4E7]">
-              <div className="flex items-center justify-center w-10 h-10 hover:bg-zinc-100 transition-colors active:scale-95 duration-100 rounded-full cursor-pointer">
+              <div onClick={() => setStep(Math.max(0, step - 1))} className="flex items-center justify-center w-10 h-10 hover:bg-zinc-100 transition-colors active:scale-95 duration-100 rounded-full cursor-pointer">
                 <span className="material-symbols-outlined text-[#FF6B2C]">arrow_back</span>
               </div>
               <h1 className="text-lg font-black tracking-tighter text-[#1A1A1A] antialiased">PEAKCORE</h1>
               <div className="w-10"></div>
             </header>
-            <main className="flex-1 flex flex-col px-6 pt-[60px] pb-[120px]">
+            <main className="flex-1 flex flex-col px-5 pt-[60px] pb-[120px]">
               <div className="mt-8 mb-6 text-center">
-                <h2 className="text-[28px] leading-tight font-extrabold text-[#1A1A1A] tracking-tight">
+                <h2 className="text-[20px] leading-tight font-extrabold text-[#1A1A1A] tracking-tight">
                   Tried anything before?
                 </h2>
               </div>
@@ -386,8 +390,8 @@ export default function FlowPage() {
                 </p>
               </div>
             </main>
-            <div className="fixed bottom-0 left-0 right-0 z-50 px-6 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[480px] mx-auto">
-              <button disabled={!selected} onClick={() => { next(); }} className={`w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
+            <div className="fixed bottom-0 left-0 right-0 z-50 px-5 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[390px] mx-auto">
+              <button disabled={!selected} onClick={() => { next(); }} className={`w-full max-w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
             </div>
           </div>
         </div>
@@ -401,19 +405,19 @@ export default function FlowPage() {
               <div className="h-full bg-[#FF6B2C]" style={{ width: progressWidth }}></div>
             </div>
             <div className="flex items-center justify-between px-4 h-14 border-b-4 border-gray-100">
-              <button className="p-2 text-[#71717A] hover:bg-gray-100 transition-colors active:scale-95 duration-150">
+              <button onClick={() => setStep(Math.max(0, step - 1))} className="p-2 text-[#71717A] hover:bg-gray-100 transition-colors active:scale-95 duration-150">
                 <span className="material-symbols-outlined">arrow_back</span>
               </button>
               <h1 className="text-xl font-black tracking-tighter text-[#1A1A1A] font-sans antialiased uppercase">PEAKCORE</h1>
               <div className="w-10"></div>
             </div>
           </div>
-          <main className="w-full max-w-[480px] px-6 pt-[60px] pb-[120px] flex-grow flex flex-col justify-center">
+          <main className="w-full max-w-[390px] mx-auto px-5 pt-[60px] pb-[120px] flex-grow flex flex-col justify-center">
             <div className="mb-8 rounded-2xl overflow-hidden aspect-video bg-gray-50 flex items-center justify-center">
               <img className="w-full h-full object-cover opacity-90" alt="Modern high-end gym interior with clean lighting and premium equipment in soft focus, fitness lifestyle aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK2Nbme08-dBA_9t1THNRkFAKZKsrfLB_ZX0Rdb2_3jICvamphKufR1wq9Ij44XHdyZjGqAdnwArVQ6nSnYLFMuu1weEFdqIp4_NNNLTyAu1t0fNYo-aDvIdXEk7bNXHRaOpaR6BIhIjgdKbVsSaQMOGDrgQbXThGo_dZCHztjeqZfr4gOOCiVcpaRUzgGA34AmUJaMr7vJ1ojFEbQBk9vPXwGLFw0ZCIXJOaGcM6d-xajQhK2FVQ7TD1hGDz-evqfaEW5n_r6q2fe" />
             </div>
             <div className="text-center mb-6">
-              <h2 className="text-3xl font-extrabold tracking-tight text-[#1A1A1A] mb-3">Daily training time?</h2>
+              <h2 className="text-[20px] font-extrabold tracking-tight text-[#1A1A1A] mb-3">Daily training time?</h2>
               <p className="text-[#71717A] text-base">Select the duration that best fits your lifestyle. Consistency is key.</p>
             </div>
             <div className="grid grid-cols-3 gap-3 w-full">
@@ -441,8 +445,8 @@ export default function FlowPage() {
               </div>
             </div>
           </main>
-          <div className="fixed bottom-0 left-0 right-0 z-50 px-6 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[480px] mx-auto">
-            <button disabled={!selected} onClick={() => { next(); }} className={`w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
+          <div className="fixed bottom-0 left-0 right-0 z-50 px-5 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[390px] mx-auto">
+            <button disabled={!selected} onClick={() => { next(); }} className={`w-full max-w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
           </div>
         </div>
       )}
@@ -454,19 +458,19 @@ export default function FlowPage() {
             <div className="h-full bg-[#FF6B2C] transition-all duration-500" style={{ width: progressWidth }}></div>
           </div>
           <header className="fixed top-0 left-0 w-full z-50 flex items-center px-4 h-14 bg-white border-b-4 border-zinc-100">
-            <div className="flex items-center w-full max-w-[480px] mx-auto relative justify-center">
-              <button className="absolute left-0 text-zinc-500 hover:opacity-80 transition-opacity active:scale-95">
+            <div className="flex items-center w-full max-w-[390px] mx-auto relative justify-center">
+              <button onClick={() => setStep(Math.max(0, step - 1))} className="absolute left-0 text-zinc-500 hover:opacity-80 transition-opacity active:scale-95">
                 <span className="material-symbols-outlined">arrow_back</span>
               </button>
               <span className="font-black tracking-tight text-zinc-900 uppercase text-xl">PEAKCORE</span>
             </div>
           </header>
-          <main className="flex-1 w-full max-w-[480px] px-6 flex flex-col items-center justify-center text-center pt-20 pb-[100px]">
+          <main className="flex-1 w-full max-w-[390px] mx-auto px-5 flex flex-col items-center justify-center text-center pt-20 pb-[100px]">
             <div className="mb-8 flex items-center justify-center w-24 h-24 rounded-full bg-[#FF6B2C]/5">
               <span aria-label="trophy" className="text-6xl" role="img">🏆</span>
             </div>
             <div className="space-y-3">
-              <h1 className="text-3xl font-black leading-tight text-[#1A1A1A]">
+              <h1 className="text-[20px] font-black leading-tight text-[#1A1A1A]">
                 Pro athletes train their pelvic floor daily
               </h1>
               <p className="text-lg font-medium text-[#71717A]">
@@ -484,8 +488,8 @@ export default function FlowPage() {
               </div>
             </div>
           </main>
-          <div className="fixed bottom-0 left-0 right-0 z-50 px-6 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[480px] mx-auto">
-            <button onClick={next} className="w-full h-[56px] rounded-[12px] font-bold text-base transition-all bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]">Continue</button>
+          <div className="fixed bottom-0 left-0 right-0 z-50 px-5 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[390px] mx-auto">
+            <button onClick={next} className="w-full max-w-full h-[56px] rounded-[12px] font-bold text-base transition-all bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]">Continue</button>
           </div>
         </div>
       )}
@@ -497,15 +501,15 @@ export default function FlowPage() {
             <div className="h-full bg-[#FF6B2C]" style={{ width: progressWidth }}></div>
           </div>
           <header className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 h-16 bg-white border-b-4 border-zinc-100">
-            <button className="flex items-center justify-center w-10 h-10 text-zinc-400 hover:opacity-80 transition-opacity active:scale-95">
+            <button onClick={() => setStep(Math.max(0, step - 1))} className="flex items-center justify-center w-10 h-10 text-zinc-400 hover:opacity-80 transition-opacity active:scale-95">
               <span className="material-symbols-outlined">arrow_back</span>
             </button>
             <h1 className="text-xl font-black tracking-tighter text-zinc-900 antialiased">PEAKCORE</h1>
             <div className="w-10"></div>
           </header>
-          <main className="flex-1 w-full max-w-[480px] px-6 pt-[60px] pb-[120px] flex flex-col">
+          <main className="flex-1 w-full max-w-[390px] mx-auto px-5 pt-[60px] pb-[120px] flex flex-col">
             <div className="mt-6 mb-6">
-              <h2 className="text-[32px] font-extrabold leading-tight text-[#1A1A1A]">
+              <h2 className="text-[20px] font-extrabold leading-tight text-[#1A1A1A]">
                 Biggest concern?
               </h2>
             </div>
@@ -513,28 +517,28 @@ export default function FlowPage() {
               <button onClick={() => setSelected("age")} className={`option-tap group w-full h-[72px] px-5 flex items-center justify-between bg-white border-2 rounded-xl active:scale-[0.98] transition-all duration-200 ${selected === "age" ? "option-selected border-[#FF6B2C]" : "border-zinc-100 hover:border-[#FF6B2C]/30 hover:bg-[#FFF4EE]/20"}`}>
                 <div className="flex items-center gap-4">
                   <span className={`text-2xl ${selected === "age" ? "icon-selected" : "icon-bounce"}`}>📉</span>
-                  <span className="text-lg font-semibold text-zinc-800">Getting worse with age</span>
+                  <span className="text-[15px] font-semibold text-zinc-800">Getting worse with age</span>
                 </div>
                 <span className={`material-symbols-outlined transition-colors ${selected === "age" ? "text-[#FF6B2C]" : "text-zinc-300"}`}>chevron_right</span>
               </button>
               <button onClick={() => setSelected("partner")} className={`option-tap group w-full h-[72px] px-5 flex items-center justify-between bg-white border-2 rounded-xl active:scale-[0.98] transition-all duration-200 ${selected === "partner" ? "option-selected border-[#FF6B2C]" : "border-zinc-100 hover:border-[#FF6B2C]/30 hover:bg-[#FFF4EE]/20"}`}>
                 <div className="flex items-center gap-4">
                   <span className={`text-2xl ${selected === "partner" ? "icon-selected" : "icon-bounce"}`}>💑</span>
-                  <span className="text-lg font-semibold text-zinc-800">Partner satisfaction</span>
+                  <span className="text-[15px] font-semibold text-zinc-800">Partner satisfaction</span>
                 </div>
                 <span className={`material-symbols-outlined transition-colors ${selected === "partner" ? "text-[#FF6B2C]" : "text-zinc-300"}`}>chevron_right</span>
               </button>
               <button onClick={() => setSelected("missing")} className={`option-tap group w-full h-[72px] px-5 flex items-center justify-between bg-white border-2 rounded-xl active:scale-[0.98] transition-all duration-200 ${selected === "missing" ? "option-selected border-[#FF6B2C]" : "border-zinc-100 hover:border-[#FF6B2C]/30 hover:bg-[#FFF4EE]/20"}`}>
                 <div className="flex items-center gap-4">
                   <span className={`text-2xl ${selected === "missing" ? "icon-selected" : "icon-bounce"}`}>🚫</span>
-                  <span className="text-lg font-semibold text-zinc-800">Missing better experiences</span>
+                  <span className="text-[15px] font-semibold text-zinc-800">Missing better experiences</span>
                 </div>
                 <span className={`material-symbols-outlined transition-colors ${selected === "missing" ? "text-[#FF6B2C]" : "text-zinc-300"}`}>chevron_right</span>
               </button>
               <button onClick={() => setSelected("health")} className={`option-tap group w-full h-[72px] px-5 flex items-center justify-between bg-white border-2 rounded-xl active:scale-[0.98] transition-all duration-200 ${selected === "health" ? "option-selected border-[#FF6B2C]" : "border-zinc-100 hover:border-[#FF6B2C]/30 hover:bg-[#FFF4EE]/20"}`}>
                 <div className="flex items-center gap-4">
                   <span className={`text-2xl ${selected === "health" ? "icon-selected" : "icon-bounce"}`}>🏥</span>
-                  <span className="text-lg font-semibold text-zinc-800">Health decline</span>
+                  <span className="text-[15px] font-semibold text-zinc-800">Health decline</span>
                 </div>
                 <span className={`material-symbols-outlined transition-colors ${selected === "health" ? "text-[#FF6B2C]" : "text-zinc-300"}`}>chevron_right</span>
               </button>
@@ -545,8 +549,8 @@ export default function FlowPage() {
               </p>
             </div>
           </main>
-          <div className="fixed bottom-0 left-0 right-0 z-50 px-6 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[480px] mx-auto">
-            <button disabled={!selected} onClick={() => { next(); }} className={`w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
+          <div className="fixed bottom-0 left-0 right-0 z-50 px-5 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[390px] mx-auto">
+            <button disabled={!selected} onClick={() => { next(); }} className={`w-full max-w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
           </div>
         </div>
       )}
@@ -555,7 +559,7 @@ export default function FlowPage() {
       {step === 10 && (
         <div className="bg-white text-[#1A1A1A] antialiased min-h-dvh max-h-dvh overflow-hidden flex flex-col items-center">
           <header className="fixed top-0 left-0 w-full z-50 flex justify-between items-center h-14 px-4 bg-white border-b-4 border-zinc-100">
-            <button className="text-orange-600 hover:opacity-80 transition-opacity active:scale-95 flex items-center justify-center">
+            <button onClick={() => setStep(Math.max(0, step - 1))} className="text-orange-600 hover:opacity-80 transition-opacity active:scale-95 flex items-center justify-center">
               <span className="material-symbols-outlined">arrow_back</span>
             </button>
             <h1 className="font-sans font-bold text-zinc-900 text-lg font-black tracking-tighter">PEAKCORE</h1>
@@ -564,8 +568,8 @@ export default function FlowPage() {
           <div className="fixed top-14 left-0 w-full h-1 bg-zinc-100 z-40">
             <div className="h-full bg-[#FF6B2C] transition-all duration-500" style={{ width: progressWidth }}></div>
           </div>
-          <main className="flex-1 w-full max-w-[480px] px-6 pt-[60px] pb-[120px] flex flex-col justify-center items-center">
-            <h2 className="text-2xl md:text-3xl font-extrabold text-[#1A1A1A] text-center mb-6 leading-tight">
+          <main className="flex-1 w-full max-w-[390px] mx-auto px-5 pt-[60px] pb-[120px] flex flex-col justify-center items-center">
+            <h2 className="text-[20px] font-extrabold text-[#1A1A1A] text-center mb-6 leading-tight">
               How quickly do you want results?
             </h2>
             <div className="grid grid-cols-3 gap-3 w-full">
@@ -595,7 +599,7 @@ export default function FlowPage() {
               </button>
             </div>
           </main>
-          <div className="fixed bottom-0 left-0 right-0 z-50 px-6 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[480px] mx-auto">
+          <div className="fixed bottom-0 left-0 right-0 z-50 px-5 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[390px] mx-auto">
             <button disabled={!selected} onClick={() => { next(); }} className={`w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
           </div>
         </div>
@@ -604,24 +608,24 @@ export default function FlowPage() {
       {/* ===== STEP 11: INFO GOOD (stitch/12_info_good.html) ===== */}
       {step === 11 && (
         <div className="bg-white text-[#1A1A1A] antialiased min-h-dvh max-h-dvh overflow-hidden">
-          <div className="flex flex-col min-h-dvh max-h-dvh max-w-[480px] mx-auto relative overflow-hidden">
-            <div className="fixed top-0 left-0 right-0 z-50 bg-white max-w-[480px] mx-auto">
+          <div className="flex flex-col min-h-dvh max-h-dvh max-w-[390px] mx-auto relative overflow-hidden">
+            <div className="fixed top-0 left-0 right-0 z-50 bg-white max-w-[390px] mx-auto">
               <div className="w-full h-1 bg-zinc-100">
                 <div className="h-full bg-[#FF6B2C]" style={{ width: progressWidth }}></div>
               </div>
             </div>
-            <header className="flex items-center justify-between px-4 h-16 w-full max-w-[480px] mx-auto border-b-4 border-orange-600">
-              <div className="flex items-center">
+            <header className="flex items-center justify-between px-4 h-16 w-full max-w-[390px] mx-auto border-b-4 border-orange-600">
+              <div className="flex items-center" onClick={() => setStep(Math.max(0, step - 1))}>
                 <span className="material-symbols-outlined text-zinc-500 hover:bg-zinc-100 transition-colors active:scale-95 duration-150 p-2 rounded-full cursor-pointer">arrow_back</span>
               </div>
               <h1 className="text-xl font-black tracking-tighter text-zinc-900 uppercase">PEAKCORE</h1>
               <div className="w-10"></div>
             </header>
-            <main className="flex-grow flex flex-col items-center justify-center px-6 text-center py-12">
+            <main className="flex-grow flex flex-col items-center justify-center px-5 text-center py-12">
               <div className="mb-6 flex items-center justify-center w-20 h-20 rounded-full bg-green-50">
                 <span className="material-symbols-outlined text-[#22C55E] text-[48px] fill-icon">check_circle</span>
               </div>
-              <h2 className="text-3xl font-extrabold text-[#1A1A1A] tracking-tight mb-2">Good news!</h2>
+              <h2 className="text-[20px] font-extrabold text-[#1A1A1A] tracking-tight mb-2">Good news!</h2>
               <div className="my-8">
                 <span className="text-7xl font-black text-[#FF6B2C] leading-none tracking-tighter">87%</span>
               </div>
@@ -658,15 +662,15 @@ export default function FlowPage() {
             <div className="h-full bg-[#FF6B2C]" style={{ width: progressWidth }}></div>
           </div>
           <header className="fixed top-1 left-0 w-full z-50 bg-white px-4 h-14 flex items-center justify-between">
-            <button aria-label="Go back" className="w-10 h-10 flex items-center justify-start text-zinc-900 active:scale-95 transition-transform">
+            <button onClick={() => setStep(Math.max(0, step - 1))} aria-label="Go back" className="w-10 h-10 flex items-center justify-start text-zinc-900 active:scale-95 transition-transform">
               <span className="material-symbols-outlined text-2xl">arrow_back</span>
             </button>
             <div className="text-xl font-black tracking-tighter text-zinc-900">PEAKCORE</div>
             <div className="w-10"></div>
           </header>
-          <main className="flex-1 w-full max-w-[480px] flex flex-col px-6 pt-[60px] pb-[120px]">
+          <main className="flex-1 w-full max-w-[390px] mx-auto flex flex-col px-5 pt-[60px] pb-[120px]">
             <div className="flex-1 flex flex-col justify-center">
-              <h1 className="text-3xl font-extrabold text-[#1A1A1A] leading-tight mb-6 text-center">
+              <h1 className="text-[20px] font-extrabold text-[#1A1A1A] leading-tight mb-6 text-center">
                 Preferred training time?
               </h1>
               <div className="grid grid-cols-3 gap-3">
@@ -685,7 +689,7 @@ export default function FlowPage() {
               </div>
             </div>
           </main>
-          <div className="fixed bottom-0 left-0 right-0 z-50 px-6 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[480px] mx-auto">
+          <div className="fixed bottom-0 left-0 right-0 z-50 px-5 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[390px] mx-auto">
             <button disabled={!selected} onClick={() => { next(); }} className={`w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
           </div>
         </div>
@@ -694,9 +698,9 @@ export default function FlowPage() {
       {/* ===== STEP 13: REMINDERS (stitch/14_reminders.html) ===== */}
       {step === 13 && (
         <div className="bg-white text-[#1A1A1A] antialiased flex justify-center min-h-dvh max-h-dvh overflow-hidden">
-          <div className="w-full max-w-[480px] min-h-dvh max-h-dvh flex flex-col relative overflow-hidden">
-            <header className="fixed top-0 left-0 right-0 w-full max-w-[480px] mx-auto z-50 flex items-center justify-between px-4 h-14 bg-white border-b-4 border-zinc-100">
-              <button className="flex items-center justify-center p-2 hover:opacity-80 transition-opacity active:scale-95 text-orange-600">
+          <div className="w-full max-w-[390px] min-h-dvh max-h-dvh flex flex-col relative overflow-hidden">
+            <header className="fixed top-0 left-0 right-0 w-full max-w-[390px] mx-auto z-50 flex items-center justify-between px-4 h-14 bg-white border-b-4 border-zinc-100">
+              <button onClick={() => setStep(Math.max(0, step - 1))} className="flex items-center justify-center p-2 hover:opacity-80 transition-opacity active:scale-95 text-orange-600">
                 <span className="material-symbols-outlined">arrow_back</span>
               </button>
               <h1 className="font-black tracking-tighter text-xl text-orange-600">PEAKCORE</h1>
@@ -709,7 +713,7 @@ export default function FlowPage() {
                 </div>
               </div>
               <div className="flex-grow flex flex-col items-center justify-center px-6 text-center">
-                <h2 className="text-[32px] font-extrabold leading-tight tracking-tight text-[#1A1A1A] mb-6">
+                <h2 className="text-[20px] font-extrabold leading-tight tracking-tight text-[#1A1A1A] mb-6">
                   Want daily reminders?
                 </h2>
                 <div className="w-full p-8 rounded-xl bg-[#F7F7F8] border border-[#E4E4E7] mb-6 flex flex-col items-center">
@@ -722,7 +726,7 @@ export default function FlowPage() {
                 </div>
               </div>
             </main>
-            <div className="fixed bottom-0 left-0 right-0 w-full max-w-[480px] mx-auto px-6 pb-8 pt-4 bg-white bg-opacity-95 backdrop-blur-sm">
+            <div className="fixed bottom-0 left-0 right-0 w-full max-w-[390px] mx-auto px-5 pb-8 pt-4 bg-white bg-opacity-95 backdrop-blur-sm">
               <div className="flex flex-col gap-3">
                 <button onClick={() => setSelected("yes")} className={`option-tap w-full h-[56px] rounded-xl font-bold text-lg flex items-center justify-center active:scale-[0.98] transition-all ${selected === "yes" ? "bg-[#FF6B2C] text-white shadow-lg shadow-orange-200 option-selected" : "bg-white text-[#FF6B2C] border-2 border-[#FF6B2C]"}`}>
                   ✅ Yes, keep me on track
