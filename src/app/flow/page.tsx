@@ -467,21 +467,54 @@ export default function FlowPage() {
       {step === 8 && (
         <div className="bg-white min-h-dvh max-h-dvh overflow-hidden flex flex-col max-w-[390px] mx-auto px-5">
           <div className="flex-1 flex flex-col justify-center items-center">
-            {/* Pelvic Floor Anatomy SVG - simplified cross section */}
-            <div className="w-[280px] h-[180px] relative mb-6">
-              <svg viewBox="0 0 280 180" className="w-full h-full">
-                {/* Body outline */}
-                <ellipse cx="140" cy="90" rx="120" ry="80" fill="#F3F4F6" stroke="#E5E5E5" strokeWidth="1.5"/>
-                {/* Bladder */}
-                <ellipse cx="120" cy="60" rx="35" ry="25" fill="#E5E5E5" stroke="#D1D5DB" strokeWidth="1"/>
-                <text x="120" y="65" textAnchor="middle" fontSize="10" fill="#71717A">Bladder</text>
-                {/* Pelvic floor muscles - the hero element */}
-                <path d="M 40 120 Q 140 145 240 120" stroke="#FF6B2C" strokeWidth="6" fill="none" strokeLinecap="round"/>
-                <path d="M 40 120 Q 140 150 240 120" stroke="#FF6B2C" strokeWidth="3" fill="none" opacity="0.3" strokeLinecap="round"/>
-                <text x="140" y="165" textAnchor="middle" fontSize="11" fill="#FF6B2C" fontWeight="600">Pelvic Floor Muscles</text>
-                {/* Prostate */}
-                <circle cx="140" cy="95" r="12" fill="#E5E5E5" stroke="#D1D5DB" strokeWidth="1"/>
-                <text x="140" y="99" textAnchor="middle" fontSize="8" fill="#71717A">Prostate</text>
+            {/* Pelvic Floor Anatomy SVG - detailed cross section */}
+            <div className="flex justify-center mb-6">
+              <svg viewBox="0 0 320 280" className="w-full max-w-[300px] h-auto">
+                {/* Background circle */}
+                <circle cx="160" cy="140" r="130" fill="#FFF7ED" opacity="0.5"/>
+
+                {/* Pelvis outline - stylized side view */}
+                <path d="M 60 60 C 60 40, 100 20, 160 25 C 220 30, 260 50, 270 80 L 280 140 C 285 180, 270 220, 240 245 L 200 255 C 170 260, 130 260, 100 250 L 70 240 C 40 220, 35 180, 40 140 Z" fill="#F9FAFB" stroke="#E5E7EB" strokeWidth="1.5"/>
+
+                {/* Spine indication */}
+                <path d="M 250 40 L 260 80 L 265 120 L 260 160" fill="none" stroke="#E5E7EB" strokeWidth="3" strokeLinecap="round"/>
+
+                {/* Bladder - pear shaped */}
+                <path d="M 120 70 C 110 55, 130 40, 155 42 C 180 44, 195 55, 190 72 C 185 90, 170 100, 155 102 C 135 104, 115 90, 120 70 Z" fill="#DBEAFE" stroke="#93C5FD" strokeWidth="1.5"/>
+
+                {/* Prostate - walnut shape */}
+                <path d="M 135 120 C 130 110, 145 105, 158 105 C 172 105, 185 110, 182 120 C 179 132, 168 138, 158 138 C 145 138, 132 132, 135 120 Z" fill="#D1FAE5" stroke="#86EFAC" strokeWidth="1.5"/>
+
+                {/* Rectum */}
+                <path d="M 200 90 C 210 100, 215 130, 212 160 C 210 185, 205 210, 195 230" fill="none" stroke="#D1D5DB" strokeWidth="8" strokeLinecap="round"/>
+                <path d="M 200 90 C 210 100, 215 130, 212 160 C 210 185, 205 210, 195 230" fill="none" stroke="#F3F4F6" strokeWidth="5" strokeLinecap="round"/>
+
+                {/* PELVIC FLOOR MUSCLES - the hero element - broad curved band */}
+                {/* Glow layer */}
+                <path d="M 55 195 Q 110 235 160 238 Q 210 235 265 195" fill="none" stroke="#FF6B2C" strokeWidth="28" strokeLinecap="round" opacity="0.1"/>
+                {/* Main band */}
+                <path d="M 65 200 Q 115 232 160 235 Q 205 232 255 200" fill="none" stroke="#FF6B2C" strokeWidth="16" strokeLinecap="round" opacity="0.3"/>
+                <path d="M 70 202 Q 118 230 160 233 Q 202 230 250 202" fill="none" stroke="#FF6B2C" strokeWidth="8" strokeLinecap="round" opacity="0.8"/>
+                {/* Fiber texture lines */}
+                <path d="M 80 198 Q 120 222 160 225 Q 200 222 240 198" fill="none" stroke="#FF6B2C" strokeWidth="2" strokeLinecap="round" opacity="0.5"/>
+                <path d="M 75 206 Q 118 236 160 239 Q 202 236 245 206" fill="none" stroke="#FF6B2C" strokeWidth="2" strokeLinecap="round" opacity="0.4"/>
+
+                {/* Label lines and text */}
+                {/* Bladder label */}
+                <line x1="155" y1="42" x2="60" y2="35" stroke="#D1D5DB" strokeWidth="1"/>
+                <text x="15" y="38" fontSize="11" fill="#6B7280" fontFamily="Inter, sans-serif">Bladder</text>
+
+                {/* Prostate label */}
+                <line x1="182" y1="120" x2="250" y2="105" stroke="#D1D5DB" strokeWidth="1"/>
+                <text x="255" y="108" fontSize="10" fill="#6B7280" fontFamily="Inter, sans-serif">Prostate</text>
+
+                {/* Rectum label */}
+                <line x1="212" y1="160" x2="270" y2="155" stroke="#D1D5DB" strokeWidth="1"/>
+                <text x="275" y="158" fontSize="10" fill="#6B7280" fontFamily="Inter, sans-serif">Rectum</text>
+
+                {/* Pelvic floor label */}
+                <line x1="160" y1="240" x2="160" y2="262" stroke="#FF6B2C" strokeWidth="1"/>
+                <text x="160" y="275" textAnchor="middle" fontSize="12" fill="#FF6B2C" fontWeight="600" fontFamily="Inter, sans-serif">Pelvic Floor Muscles</text>
               </svg>
             </div>
             <h2 className="text-[20px] font-bold text-[#1A1A1A] text-center mb-3">This is your pelvic floor</h2>
@@ -576,13 +609,18 @@ export default function FlowPage() {
             <div className="flex gap-4 mb-8 w-full">
               <div className="flex-1 text-center">
                 <div className="h-[100px] flex items-center justify-center mb-3">
-                  <svg viewBox="0 0 80 80" className="w-[80px] h-[80px]">
-                    {/* Weak fibers - thin, loose */}
-                    <line x1="10" y1="15" x2="70" y2="20" stroke="#D1D5DB" strokeWidth="1.5" opacity="0.5"/>
-                    <line x1="10" y1="30" x2="70" y2="28" stroke="#D1D5DB" strokeWidth="1" opacity="0.4"/>
-                    <line x1="10" y1="45" x2="70" y2="48" stroke="#D1D5DB" strokeWidth="1.5" opacity="0.3"/>
-                    <line x1="10" y1="58" x2="70" y2="55" stroke="#D1D5DB" strokeWidth="1" opacity="0.5"/>
-                    <line x1="10" y1="70" x2="70" y2="68" stroke="#D1D5DB" strokeWidth="1" opacity="0.3"/>
+                  <svg viewBox="0 0 120 120" className="w-[120px] h-[120px]">
+                    {/* Loose, wavy, irregular fibers */}
+                    <path d="M 10 15 Q 30 10 50 18 Q 70 25 90 14 Q 100 10 110 16" stroke="#D1D5DB" strokeWidth="2" fill="none" opacity="0.4" strokeLinecap="round"/>
+                    <path d="M 10 30 Q 25 38 45 28 Q 65 18 85 32 Q 100 40 110 30" stroke="#D1D5DB" strokeWidth="1.5" fill="none" opacity="0.3" strokeLinecap="round"/>
+                    <path d="M 10 45 Q 35 52 55 42 Q 75 32 95 48 Q 105 54 110 46" stroke="#D1D5DB" strokeWidth="2" fill="none" opacity="0.5" strokeLinecap="round"/>
+                    {/* Broken/dashed fibers */}
+                    <path d="M 10 60 Q 30 55 50 62" stroke="#D1D5DB" strokeWidth="1.5" fill="none" opacity="0.3" strokeLinecap="round"/>
+                    <path d="M 65 58 Q 85 65 110 60" stroke="#D1D5DB" strokeWidth="1.5" fill="none" opacity="0.25" strokeLinecap="round"/>
+                    <path d="M 10 75 Q 40 82 60 73 Q 80 64 110 78" stroke="#D1D5DB" strokeWidth="1" fill="none" opacity="0.35" strokeLinecap="round"/>
+                    <path d="M 10 90 Q 25 85 40 92" stroke="#D1D5DB" strokeWidth="2" fill="none" opacity="0.3" strokeLinecap="round"/>
+                    <path d="M 55 88 Q 75 95 90 87 Q 100 82 110 90" stroke="#D1D5DB" strokeWidth="1.5" fill="none" opacity="0.2" strokeLinecap="round"/>
+                    <path d="M 10 105 Q 50 112 70 100 Q 90 90 110 104" stroke="#D1D5DB" strokeWidth="1" fill="none" opacity="0.3" strokeLinecap="round"/>
                   </svg>
                 </div>
                 <p className="text-[13px] font-bold text-[#71717A]">Weakened</p>
@@ -591,13 +629,18 @@ export default function FlowPage() {
               <div className="w-px bg-[#E4E4E7]"></div>
               <div className="flex-1 text-center">
                 <div className="h-[100px] flex items-center justify-center mb-3">
-                  <svg viewBox="0 0 80 80" className="w-[80px] h-[80px]">
-                    {/* Strong fibers - thick, tight */}
-                    <line x1="10" y1="12" x2="70" y2="12" stroke="#FF6B2C" strokeWidth="4" strokeLinecap="round"/>
-                    <line x1="10" y1="26" x2="70" y2="26" stroke="#FF6B2C" strokeWidth="4" strokeLinecap="round" opacity="0.9"/>
-                    <line x1="10" y1="40" x2="70" y2="40" stroke="#FF6B2C" strokeWidth="4" strokeLinecap="round"/>
-                    <line x1="10" y1="54" x2="70" y2="54" stroke="#FF6B2C" strokeWidth="4" strokeLinecap="round" opacity="0.9"/>
-                    <line x1="10" y1="68" x2="70" y2="68" stroke="#FF6B2C" strokeWidth="4" strokeLinecap="round"/>
+                  <svg viewBox="0 0 120 120" className="w-[120px] h-[120px]">
+                    {/* Tight bundle outline */}
+                    <rect x="15" y="8" width="90" height="104" rx="8" fill="#FFF7ED" stroke="#FF6B2C" strokeWidth="1" opacity="0.3"/>
+                    {/* Dense, parallel, strong fibers */}
+                    <line x1="20" y1="16" x2="100" y2="16" stroke="#FF6B2C" strokeWidth="4" strokeLinecap="round" opacity="0.9"/>
+                    <line x1="20" y1="28" x2="100" y2="28" stroke="#FF6B2C" strokeWidth="4" strokeLinecap="round" opacity="1"/>
+                    <line x1="20" y1="40" x2="100" y2="40" stroke="#FF6B2C" strokeWidth="4" strokeLinecap="round" opacity="0.9"/>
+                    <line x1="20" y1="52" x2="100" y2="52" stroke="#FF6B2C" strokeWidth="4" strokeLinecap="round" opacity="1"/>
+                    <line x1="20" y1="64" x2="100" y2="64" stroke="#FF6B2C" strokeWidth="4" strokeLinecap="round" opacity="0.9"/>
+                    <line x1="20" y1="76" x2="100" y2="76" stroke="#FF6B2C" strokeWidth="4" strokeLinecap="round" opacity="1"/>
+                    <line x1="20" y1="88" x2="100" y2="88" stroke="#FF6B2C" strokeWidth="4" strokeLinecap="round" opacity="0.9"/>
+                    <line x1="20" y1="100" x2="100" y2="100" stroke="#FF6B2C" strokeWidth="4" strokeLinecap="round" opacity="1"/>
                   </svg>
                 </div>
                 <p className="text-[13px] font-bold text-[#FF6B2C]">Trained</p>
@@ -764,9 +807,6 @@ export default function FlowPage() {
               <button onClick={next} className="w-full h-[56px] rounded-[12px] font-bold text-base transition-all bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]">Continue</button>
             </div>
           </div>
-          <div className="hidden">
-            <img alt="a professional athletic man smiling confidently in a clean modern fitness studio setting with warm natural sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAbq-IL7YAgc93V-2ti9yYqFlmSebxHjs5LL98h3Ft9boCBY-hWEsOLfMmO9j1T3hMiqDfQ51wOmSUPzSclrWYcgv3JaZQzZPlL7SI0A7sRpOlumIhL0YQ06RlAFH_GOm2rnq-Dvo2mgLbrsBwdDfhUW0vDEKyBQq9e1Lnv28vDJPXonTBiiaRit6y0u7UYZ85pQ2vK-mwUWgdeGh8bvuMNi59cpzXwTVYEbmh-pBMu7SgvN1gNp58VuU0fgEwOAtFFKZj7X6Fhsvd" />
-          </div>
         </div>
       )}
 
@@ -787,9 +827,6 @@ export default function FlowPage() {
           </div>
           <main className="w-full max-w-[390px] mx-auto px-5 pt-[60px] pb-[120px] flex-grow flex flex-col justify-center">
             <span className="text-zinc-500 font-medium text-sm text-center block mb-4">Step {stepCounterMap[14]} of 12</span>
-            <div className="mb-8 rounded-2xl overflow-hidden aspect-video bg-gray-50 flex items-center justify-center">
-              <img className="w-full h-full object-cover opacity-90" alt="Modern high-end gym interior with clean lighting and premium equipment in soft focus, fitness lifestyle aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK2Nbme08-dBA_9t1THNRkFAKZKsrfLB_ZX0Rdb2_3jICvamphKufR1wq9Ij44XHdyZjGqAdnwArVQ6nSnYLFMuu1weEFdqIp4_NNNLTyAu1t0fNYo-aDvIdXEk7bNXHRaOpaR6BIhIjgdKbVsSaQMOGDrgQbXThGo_dZCHztjeqZfr4gOOCiVcpaRUzgGA34AmUJaMr7vJ1ojFEbQBk9vPXwGLFw0ZCIXJOaGcM6d-xajQhK2FVQ7TD1hGDz-evqfaEW5n_r6q2fe" />
-            </div>
             <div className="text-center mb-6">
               <h2 className="text-[20px] font-extrabold tracking-tight text-[#1A1A1A] mb-3">Daily training time?</h2>
               <p className="text-[#71717A] text-base">Select the duration that best fits your lifestyle. Consistency is key.</p>
