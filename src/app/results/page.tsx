@@ -46,7 +46,7 @@ export default function ResultsPage() {
   const handleSpin = () => {
     if (isSpinning) return;
     setIsSpinning(true);
-    setSpinRotation((prev) => prev + 360 * 5 + 300); // 5 full rotations + land on 75%
+    setSpinRotation((prev) => prev + 360 * 5 + 30); // 5 full rotations + land on 75% segment (300-360deg, center at 330deg)
     setTimeout(() => {
       setShowSpinWheel(false);
       setShowCelebration(true);
@@ -95,80 +95,6 @@ export default function ResultsPage() {
               <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
               Build a habit
             </span>
-          </div>
-        </section>
-
-        {/* SECTION 2: Proven by science */}
-        <section className="px-5 py-8 bg-[#fcf9f8]">
-          <h2 className="text-[18px] font-bold text-[#1A1A1A] mb-5 flex items-center gap-2">
-            <span className="material-symbols-outlined text-[#1A1A1A]">science</span>
-            Proven by science
-          </h2>
-          <div className="flex flex-col gap-4">
-            {/* Card 1 */}
-            <div className="flex items-start gap-4 p-5 bg-[#F7F7F8] rounded-xl">
-              <div className="flex-shrink-0">
-                <span className="text-[36px] font-extrabold text-[#ff6b2c] tracking-tight">75%</span>
-              </div>
-              <div className="flex flex-col gap-1">
-                <p className="text-[14px] leading-snug text-[#1c1b1b]">of men see noticeable improvement within the first 2-4 weeks of daily pelvic training</p>
-                <span className="text-[11px] italic text-[#9CA3AF]">British Journal of General Practice</span>
-              </div>
-            </div>
-            {/* Card 2 */}
-            <div className="flex items-start gap-4 p-5 bg-[#F7F7F8] rounded-xl">
-              <div className="flex-shrink-0">
-                <span className="text-[36px] font-extrabold text-[#ff6b2c] tracking-tight">5 min</span>
-              </div>
-              <div className="flex flex-col gap-1">
-                <p className="text-[14px] leading-snug text-[#1c1b1b]">per day is all it takes. Short daily sessions outperform longer weekly workouts</p>
-                <span className="text-[11px] italic text-[#9CA3AF]">Journal of Urology, 2019</span>
-              </div>
-            </div>
-            {/* Card 3 */}
-            <div className="flex items-start gap-4 p-5 bg-[#F7F7F8] rounded-xl">
-              <div className="flex-shrink-0">
-                <span className="text-[36px] font-extrabold text-[#ff6b2c] tracking-tight">83%</span>
-              </div>
-              <div className="flex flex-col gap-1">
-                <p className="text-[14px] leading-snug text-[#1c1b1b]">of men reported improved confidence and performance after completing a structured program</p>
-                <span className="text-[11px] italic text-[#9CA3AF]">International Journal of Impotence Research</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* SECTION 3: 3-step visual timeline */}
-        <section className="px-8 py-10">
-          <div className="relative flex flex-col gap-10">
-            {/* Timeline Connector */}
-            <div className="absolute left-[13.5px] top-4 bottom-4 w-[1px] bg-[#ff6b2c]"></div>
-            {/* Step 1 */}
-            <div className="relative flex items-start gap-6">
-              <div className="z-10 w-7 h-7 flex-shrink-0 flex items-center justify-center bg-[#ff6b2c] text-white text-[14px] font-bold rounded-full">1</div>
-              <div className="flex flex-col gap-0.5">
-                <h3 className="text-[16px] font-bold text-[#1c1b1b]">Build the foundation</h3>
-                <p className="text-[14px] text-[#9CA3AF]">Learn correct technique with guided sessions</p>
-              </div>
-            </div>
-            {/* Step 2 */}
-            <div className="relative flex items-start gap-6">
-              <div className="z-10 w-7 h-7 flex-shrink-0 flex items-center justify-center bg-[#ff6b2c] text-white text-[14px] font-bold rounded-full">2</div>
-              <div className="flex flex-col gap-0.5">
-                <h3 className="text-[16px] font-bold text-[#1c1b1b]">Get stronger every day</h3>
-                <p className="text-[14px] text-[#9CA3AF]">Progressive intensity, real measurable gains</p>
-              </div>
-            </div>
-            {/* Step 3 */}
-            <div className="relative flex items-start gap-6">
-              <div className="z-10 w-7 h-7 flex-shrink-0 flex items-center justify-center bg-[#22C55E] text-white text-[14px] font-bold rounded-full">
-                <span className="material-symbols-outlined text-[18px]">check</span>
-              </div>
-              <div className="flex flex-col gap-0.5">
-                <h3 className="text-[16px] font-bold text-[#1c1b1b]">Reach your goal</h3>
-                <p className="text-[14px] text-[#9CA3AF]">See the results. Maintain with easy routine</p>
-              </div>
-            </div>
           </div>
         </section>
 
@@ -268,6 +194,73 @@ export default function ResultsPage() {
           <p className="mt-4 text-[11px] text-zinc-400 italic text-center leading-relaxed px-4">
             Based on men with similar profiles who completed the program
           </p>
+        </section>
+
+        {/* SECTION: Proven by science */}
+        <section className="px-5 py-8 bg-[#fcf9f8]">
+          <h2 className="text-[18px] font-bold text-[#1A1A1A] mb-5 flex items-center gap-2">
+            <span className="material-symbols-outlined text-[#1A1A1A]">science</span>
+            Proven by science
+          </h2>
+          <div className="flex flex-col gap-4">
+            <div className="flex items-start gap-4 p-5 bg-[#F7F7F8] rounded-xl">
+              <div className="flex-shrink-0">
+                <span className="text-[36px] font-extrabold text-[#ff6b2c] tracking-tight">75%</span>
+              </div>
+              <div className="flex flex-col gap-1">
+                <p className="text-[14px] leading-snug text-[#1c1b1b]">of men see noticeable improvement within the first 2-4 weeks of daily pelvic training</p>
+                <span className="text-[11px] italic text-[#9CA3AF]">British Journal of General Practice</span>
+              </div>
+            </div>
+            <div className="flex items-start gap-4 p-5 bg-[#F7F7F8] rounded-xl">
+              <div className="flex-shrink-0">
+                <span className="text-[36px] font-extrabold text-[#ff6b2c] tracking-tight">5 min</span>
+              </div>
+              <div className="flex flex-col gap-1">
+                <p className="text-[14px] leading-snug text-[#1c1b1b]">per day is all it takes. Short daily sessions outperform longer weekly workouts</p>
+                <span className="text-[11px] italic text-[#9CA3AF]">Journal of Urology, 2019</span>
+              </div>
+            </div>
+            <div className="flex items-start gap-4 p-5 bg-[#F7F7F8] rounded-xl">
+              <div className="flex-shrink-0">
+                <span className="text-[36px] font-extrabold text-[#ff6b2c] tracking-tight">83%</span>
+              </div>
+              <div className="flex flex-col gap-1">
+                <p className="text-[14px] leading-snug text-[#1c1b1b]">of men reported improved confidence and performance after completing a structured program</p>
+                <span className="text-[11px] italic text-[#9CA3AF]">International Journal of Impotence Research</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION: 3-step visual timeline */}
+        <section className="px-8 py-10">
+          <div className="relative flex flex-col gap-10">
+            <div className="absolute left-[13.5px] top-4 bottom-4 w-[1px] bg-[#ff6b2c]"></div>
+            <div className="relative flex items-start gap-6">
+              <div className="z-10 w-7 h-7 flex-shrink-0 flex items-center justify-center bg-[#ff6b2c] text-white text-[14px] font-bold rounded-full">1</div>
+              <div className="flex flex-col gap-0.5">
+                <h3 className="text-[16px] font-bold text-[#1c1b1b]">Build the foundation</h3>
+                <p className="text-[14px] text-[#9CA3AF]">Learn correct technique with guided sessions</p>
+              </div>
+            </div>
+            <div className="relative flex items-start gap-6">
+              <div className="z-10 w-7 h-7 flex-shrink-0 flex items-center justify-center bg-[#ff6b2c] text-white text-[14px] font-bold rounded-full">2</div>
+              <div className="flex flex-col gap-0.5">
+                <h3 className="text-[16px] font-bold text-[#1c1b1b]">Get stronger every day</h3>
+                <p className="text-[14px] text-[#9CA3AF]">Progressive intensity, real measurable gains</p>
+              </div>
+            </div>
+            <div className="relative flex items-start gap-6">
+              <div className="z-10 w-7 h-7 flex-shrink-0 flex items-center justify-center bg-[#22C55E] text-white text-[14px] font-bold rounded-full">
+                <span className="material-symbols-outlined text-[18px]">check</span>
+              </div>
+              <div className="flex flex-col gap-0.5">
+                <h3 className="text-[16px] font-bold text-[#1c1b1b]">Reach your goal</h3>
+                <p className="text-[14px] text-[#9CA3AF]">See the results. Maintain with easy routine</p>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* Feature Grid Section */}
@@ -376,21 +369,6 @@ export default function ResultsPage() {
                 </button>
               </section>
 
-              {/* FOOTER / TRUST */}
-              <footer className="px-5 py-8 text-center bg-[#fcf9f8]">
-                <div className="flex flex-col items-center gap-2">
-                  <div className="flex items-center gap-2 text-[16px] font-bold text-[#1A1A1A]">
-                    <span className="material-symbols-outlined text-[#1A1A1A] text-[20px]">shield</span>
-                    30-Day Money-Back Guarantee
-                  </div>
-                  <p className="text-[13px] text-[#71717A]">No results in 30 days? Full refund. Zero questions.</p>
-                  <p className="text-[11px] text-[#9CA3AF] mt-4 leading-relaxed max-w-[280px]">Subscription auto-renews at full price unless cancelled. See Terms.</p>
-                </div>
-                {/* Visual closure */}
-                <div className="mt-10 flex justify-center opacity-10 grayscale">
-                  <div className="w-24 h-6 bg-current rounded"></div>
-                </div>
-              </footer>
             </>
           ) : (
             <>
@@ -510,18 +488,6 @@ export default function ResultsPage() {
                 <span className="text-[11px] text-[#71717A]">This offer won&apos;t be available if you leave this page</span>
               </div>
 
-              {/* Footer */}
-              <footer className="flex flex-col items-center justify-center w-full max-w-[390px] py-12 px-6 space-y-4 text-center bg-[#f6f3f2]">
-                <div className="font-black text-[#1c1b1b]">PEAKCORE</div>
-                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", fontWeight: 500, letterSpacing: "-0.01em", textTransform: "uppercase", color: "#4a4a4a" }}>
-                  &copy; 2024 PEAKCORE. 100% MONEY-BACK GUARANTEE. LIMIT ONE PER CUSTOMER.
-                </p>
-                <div className="flex gap-4">
-                  <a className="text-[10px] font-bold uppercase tracking-tight text-[#4a4a4a] hover:text-[#ff6b2c] transition-colors" href="#">Privacy</a>
-                  <a className="text-[10px] font-bold uppercase tracking-tight text-[#4a4a4a] hover:text-[#ff6b2c] transition-colors" href="#">Terms</a>
-                  <a className="text-[10px] font-bold uppercase tracking-tight text-[#4a4a4a] hover:text-[#ff6b2c] transition-colors" href="#">Support</a>
-                </div>
-              </footer>
             </>
           )}
         </div>
@@ -661,25 +627,6 @@ export default function ResultsPage() {
         </div>
       )}
 
-      {/* Bottom Navigation Shell */}
-      <nav className="fixed bottom-0 w-full z-50 bg-[#f6f3f2] h-20 flex justify-around items-center px-4">
-        <div className="flex flex-col items-center justify-center text-zinc-400 active:scale-90 transition-transform">
-          <span className="material-symbols-outlined mb-1">fitness_center</span>
-          <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: "10px", letterSpacing: "0.1em", textTransform: "uppercase" }}>TRAIN</span>
-        </div>
-        <div className="flex flex-col items-center justify-center text-[#ff6b2c] active:scale-90 transition-transform">
-          <span className="material-symbols-outlined mb-1" style={{ fontVariationSettings: "'FILL' 1" }}>monitoring</span>
-          <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: "10px", letterSpacing: "0.1em", textTransform: "uppercase" }}>RESULTS</span>
-        </div>
-        <div className="flex flex-col items-center justify-center text-zinc-400 active:scale-90 transition-transform">
-          <span className="material-symbols-outlined mb-1">analytics</span>
-          <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: "10px", letterSpacing: "0.1em", textTransform: "uppercase" }}>METRICS</span>
-        </div>
-        <div className="flex flex-col items-center justify-center text-zinc-400 active:scale-90 transition-transform">
-          <span className="material-symbols-outlined mb-1">person</span>
-          <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 700, fontSize: "10px", letterSpacing: "0.1em", textTransform: "uppercase" }}>PROFILE</span>
-        </div>
-      </nav>
     </div>
   );
 }

@@ -71,7 +71,11 @@ export default function LoadingScreen() {
         {/* Status Messaging */}
         <div className="text-center space-y-2">
           <p className="text-lg md:text-xl font-semibold text-[#1A1A1A] tracking-tight">
-            Building your 8-week plan...
+            {progress < 33
+              ? "Analyzing your profile..."
+              : progress < 66
+              ? "Matching your goals..."
+              : "Building your personal plan..."}
           </p>
           <p className="text-sm md:text-base text-[#5c5b5b] font-medium max-w-[240px] mx-auto leading-relaxed">
             Tailoring exercises to your unique peak performance goals.

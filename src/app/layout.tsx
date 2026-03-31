@@ -11,7 +11,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "PeakCore — Pelvic Floor Training",
   description:
-    "Personalized pelvic floor training plans for peak male performance. Take the quiz and get your custom 8-week program.",
+    "Personalized pelvic floor training plans for peak male performance. Take the quiz and get your custom personal plan.",
 };
 
 export default function RootLayout({
