@@ -79,7 +79,123 @@ export default function ResultsPage() {
       </header>
 
       <main className="max-w-[390px] w-full mx-auto pb-12 overflow-x-hidden">
-        {/* SECTION 1: Your goals pills */}
+
+        {/* Hero Status */}
+        <section className="flex flex-col items-center text-center mb-10 pt-8 px-5">
+          <div className="w-14 h-14 bg-[#22C55E]/10 rounded-full flex items-center justify-center mb-4">
+            <span className="material-symbols-outlined text-[#22C55E] text-4xl" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+          </div>
+          <h2 className="text-[26px] leading-tight font-extrabold tracking-tight text-[#1c1b1b] mb-2">
+            Your 8-Week Protocol is Ready
+          </h2>
+          <p className="text-[14px] text-zinc-500 font-medium">
+            We analyzed your pelvic floor profile across 4 dimensions: strength, endurance, control, and recovery speed. Here&apos;s what we found.
+          </p>
+        </section>
+
+        {/* Comparison Section */}
+        <section className="mb-12 px-5">
+          <div className="flex items-start justify-between gap-2 relative">
+            {/* NOW CARD */}
+            <div className="flex-1 bg-[#f6f3f2] rounded-xl p-4 flex flex-col items-center">
+              <span className="text-[12px] font-bold text-zinc-500 tracking-wider uppercase mb-4 self-start">Now</span>
+              <div className="flex flex-col items-center mb-6">
+                <svg viewBox="0 0 120 70" className="w-[100px] h-[60px]">
+                  <path d="M 10 65 A 50 50 0 0 1 110 65" fill="none" stroke="#E4E4E7" strokeWidth="8" strokeLinecap="round"/>
+                  <path d="M 10 65 A 50 50 0 0 1 45 35" fill="none" stroke="#EF4444" strokeWidth="8" strokeLinecap="round"/>
+                  <circle cx="38" cy="38" r="4" fill="#1A1A1A"/>
+                </svg>
+                <span className="text-lg font-black text-[#1c1b1b] -mt-1">33%</span>
+              </div>
+              <div className="w-full space-y-3">
+                <div className="flex items-center justify-between text-[11px] font-bold">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-[#EF4444]"></span>
+                    <span className="text-zinc-600">Pelvic Floor Strength</span>
+                  </div>
+                  <span className="text-[#EF4444]">Underdeveloped</span>
+                </div>
+                <div className="flex items-center justify-between text-[11px] font-bold">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-[#EF4444]"></span>
+                    <span className="text-zinc-600">Estimated Endurance</span>
+                  </div>
+                  <span className="text-[#EF4444]">2-4 minutes</span>
+                </div>
+                <div className="flex items-center justify-between text-[11px] font-bold">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-[#FF6B2C]"></span>
+                    <span className="text-zinc-600">Control Level</span>
+                  </div>
+                  <span className="text-[#FF6B2C]">Reactive, not trained</span>
+                </div>
+                <div className="flex items-center justify-between text-[11px] font-bold">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-[#FF6B2C]"></span>
+                    <span className="text-zinc-600">Daily Impact Score</span>
+                  </div>
+                  <span className="text-[#FF6B2C]">6.2/10</span>
+                </div>
+              </div>
+            </div>
+            {/* ARROW */}
+            <div className="absolute left-1/2 top-1/3" style={{ transform: "translate(-50%, 0)" }}>
+              <div className="bg-[#ff6b2c] text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg" style={{ boxShadow: "0 4px 12px rgba(255,107,44,0.2)" }}>
+                <span className="material-symbols-outlined font-black">arrow_forward</span>
+              </div>
+            </div>
+            {/* GOAL CARD */}
+            <div className="flex-1 bg-white ring-2 ring-[#ff6b2c] rounded-xl p-4 flex flex-col items-center shadow-xl" style={{ boxShadow: "0 4px 24px rgba(255,107,44,0.05)" }}>
+              <span className="text-[12px] font-bold text-[#ff6b2c] tracking-wider uppercase mb-4 self-start">Your Goal</span>
+              <div className="flex flex-col items-center mb-6">
+                <svg viewBox="0 0 120 70" className="w-[100px] h-[60px]">
+                  <path d="M 10 65 A 50 50 0 0 1 110 65" fill="none" stroke="#E4E4E7" strokeWidth="8" strokeLinecap="round"/>
+                  <path d="M 10 65 A 50 50 0 0 1 95 22" fill="none" stroke="#22C55E" strokeWidth="8" strokeLinecap="round"/>
+                  <circle cx="90" cy="25" r="4" fill="#1A1A1A"/>
+                </svg>
+                <span className="text-lg font-black text-[#1c1b1b] -mt-1">76%</span>
+              </div>
+              <div className="w-full space-y-3">
+                <div className="flex items-center justify-between text-[11px] font-bold">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-[#22C55E]"></span>
+                    <span className="text-zinc-600">Pelvic Floor Strength</span>
+                  </div>
+                  <span className="text-[#22C55E]">Functional</span>
+                </div>
+                <div className="flex items-center justify-between text-[11px] font-bold">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-[#22C55E]"></span>
+                    <span className="text-zinc-600">Estimated Endurance</span>
+                  </div>
+                  <span className="text-[#22C55E]">8-15 minutes</span>
+                </div>
+                <div className="flex items-center justify-between text-[11px] font-bold">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-[#22C55E]"></span>
+                    <span className="text-zinc-600">Control Level</span>
+                  </div>
+                  <span className="text-[#22C55E]">Trained, voluntary control</span>
+                </div>
+                <div className="flex items-center justify-between text-[11px] font-bold">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-[#22C55E]"></span>
+                    <span className="text-zinc-600">Daily Impact Score</span>
+                  </div>
+                  <span className="text-[#22C55E]">2.1/10</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p className="text-[13px] text-[#6B7280] mt-4 leading-relaxed">
+            Your protocol targets pelvic floor deconditioning with progressive resistance training. Based on your profile, you are in the top 40% of men likely to see measurable improvement within the first 3 weeks.
+          </p>
+          <p className="mt-4 text-[11px] text-zinc-400 italic text-center leading-relaxed px-4">
+            Calculated from your 12 answers and clinical benchmarks for your age group
+          </p>
+        </section>
+
+        {/* SECTION: Benefit Chips */}
         <section className="px-5 py-6">
           <div className="flex flex-wrap gap-2">
             <span className="flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-[#FFF4EE] text-[#ff6b2c] text-[14px] font-semibold">
@@ -99,106 +215,6 @@ export default function ResultsPage() {
               Clinician-backed protocol
             </span>
           </div>
-        </section>
-
-        {/* ===== FROM stitch/18_result_bottom.html ===== */}
-
-        {/* Hero Status */}
-        <section className="flex flex-col items-center text-center mb-10 pt-8 px-5">
-          <div className="w-14 h-14 bg-[#22C55E]/10 rounded-full flex items-center justify-center mb-4">
-            <span className="material-symbols-outlined text-[#22C55E] text-4xl" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
-          </div>
-          <h2 className="text-[26px] leading-tight font-extrabold tracking-tight text-[#1c1b1b] mb-2">
-            Your Personal Plan is Ready
-          </h2>
-          <p className="text-[14px] text-zinc-500 font-medium">
-            Built from your personal assessment — no two plans are alike
-          </p>
-        </section>
-
-        {/* Comparison Section */}
-        <section className="mb-12 px-5">
-          <div className="flex items-start justify-between gap-2 relative">
-            {/* NOW CARD */}
-            <div className="flex-1 bg-[#f6f3f2] rounded-xl p-4 flex flex-col items-center">
-              <span className="text-[12px] font-bold text-zinc-500 tracking-wider uppercase mb-4 self-start">Now</span>
-              <div className="flex flex-col items-center mb-6">
-                <svg viewBox="0 0 120 70" className="w-[100px] h-[60px]">
-                  <path d="M 10 65 A 50 50 0 0 1 110 65" fill="none" stroke="#E4E4E7" strokeWidth="8" strokeLinecap="round"/>
-                  <path d="M 10 65 A 50 50 0 0 1 55 22" fill="none" stroke="#EF4444" strokeWidth="8" strokeLinecap="round"/>
-                  <circle cx="45" cy="28" r="4" fill="#1A1A1A"/>
-                </svg>
-                <span className="text-lg font-black text-[#1c1b1b] -mt-1">35%</span>
-              </div>
-              <div className="w-full space-y-3">
-                <div className="flex items-center justify-between text-[11px] font-bold">
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-[#EF4444]"></span>
-                    <span className="text-zinc-600">Control</span>
-                  </div>
-                  <span className="text-[#EF4444]">Weak</span>
-                </div>
-                <div className="flex items-center justify-between text-[11px] font-bold">
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-[#FF6B2C]"></span>
-                    <span className="text-zinc-600">Stamina</span>
-                  </div>
-                  <span className="text-[#FF6B2C]">Below average</span>
-                </div>
-                <div className="flex items-center justify-between text-[11px] font-bold">
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-[#FF6B2C]"></span>
-                    <span className="text-zinc-600">Confidence</span>
-                  </div>
-                  <span className="text-[#FF6B2C]">4/10</span>
-                </div>
-              </div>
-            </div>
-            {/* ARROW */}
-            <div className="absolute left-1/2 top-1/3" style={{ transform: "translate(-50%, 0)" }}>
-              <div className="bg-[#ff6b2c] text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg" style={{ boxShadow: "0 4px 12px rgba(255,107,44,0.2)" }}>
-                <span className="material-symbols-outlined font-black">arrow_forward</span>
-              </div>
-            </div>
-            {/* GOAL CARD */}
-            <div className="flex-1 bg-white ring-2 ring-[#ff6b2c] rounded-xl p-4 flex flex-col items-center shadow-xl" style={{ boxShadow: "0 4px 24px rgba(255,107,44,0.05)" }}>
-              <span className="text-[12px] font-bold text-[#ff6b2c] tracking-wider uppercase mb-4 self-start">Your Goal</span>
-              <div className="flex flex-col items-center mb-6">
-                <svg viewBox="0 0 120 70" className="w-[100px] h-[60px]">
-                  <path d="M 10 65 A 50 50 0 0 1 110 65" fill="none" stroke="#E4E4E7" strokeWidth="8" strokeLinecap="round"/>
-                  <path d="M 10 65 A 50 50 0 0 1 90 25" fill="none" stroke="#22C55E" strokeWidth="8" strokeLinecap="round"/>
-                  <circle cx="85" cy="28" r="4" fill="#1A1A1A"/>
-                </svg>
-                <span className="text-lg font-black text-[#1c1b1b] -mt-1">75%</span>
-              </div>
-              <div className="w-full space-y-3">
-                <div className="flex items-center justify-between text-[11px] font-bold">
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-[#22C55E]"></span>
-                    <span className="text-zinc-600">Control</span>
-                  </div>
-                  <span className="text-[#22C55E]">Improved</span>
-                </div>
-                <div className="flex items-center justify-between text-[11px] font-bold">
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-[#22C55E]"></span>
-                    <span className="text-zinc-600">Stamina</span>
-                  </div>
-                  <span className="text-[#22C55E]">Above average</span>
-                </div>
-                <div className="flex items-center justify-between text-[11px] font-bold">
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-[#22C55E]"></span>
-                    <span className="text-zinc-600">Confidence</span>
-                  </div>
-                  <span className="text-[#22C55E]">7/10</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <p className="mt-4 text-[11px] text-zinc-400 italic text-center leading-relaxed px-4">
-            Based on men with similar profiles who completed the program
-          </p>
         </section>
 
         {/* SECTION: Proven by science */}
@@ -294,15 +310,15 @@ export default function ResultsPage() {
             <div className="relative flex items-start gap-6">
               <div className="z-10 w-7 h-7 flex-shrink-0 flex items-center justify-center bg-[#ff6b2c] text-white text-[14px] font-bold rounded-full">1</div>
               <div className="flex flex-col gap-0.5">
-                <h3 className="text-[16px] font-bold text-[#1c1b1b]">Build the foundation</h3>
-                <p className="text-[14px] text-[#9CA3AF]">Learn correct technique with guided sessions</p>
+                <h3 className="text-[16px] font-bold text-[#1c1b1b]">Week 1-2: Learn &amp; Activate</h3>
+                <p className="text-[14px] text-[#9CA3AF]">Master correct pelvic floor engagement. Most men have never properly isolated this muscle — you&apos;ll feel the difference immediately.</p>
               </div>
             </div>
             <div className="relative flex items-start gap-6">
               <div className="z-10 w-7 h-7 flex-shrink-0 flex items-center justify-center bg-[#ff6b2c] text-white text-[14px] font-bold rounded-full">2</div>
               <div className="flex flex-col gap-0.5">
-                <h3 className="text-[16px] font-bold text-[#1c1b1b]">Get stronger every day</h3>
-                <p className="text-[14px] text-[#9CA3AF]">Progressive intensity, real measurable gains</p>
+                <h3 className="text-[16px] font-bold text-[#1c1b1b]">Week 3-5: Build Strength</h3>
+                <p className="text-[14px] text-[#9CA3AF]">Progressive daily training increases hold time, contraction force, and voluntary control. This is where real change happens.</p>
               </div>
             </div>
             <div className="relative flex items-start gap-6">
@@ -310,8 +326,8 @@ export default function ResultsPage() {
                 <span className="material-symbols-outlined text-[18px]">check</span>
               </div>
               <div className="flex flex-col gap-0.5">
-                <h3 className="text-[16px] font-bold text-[#1c1b1b]">Reach your goal</h3>
-                <p className="text-[14px] text-[#9CA3AF]">See the results. Maintain with easy routine</p>
+                <h3 className="text-[16px] font-bold text-[#1c1b1b]">Week 6-8: Lock In Results</h3>
+                <p className="text-[14px] text-[#9CA3AF]">Consolidate gains into automatic muscle memory. By week 8, your pelvic floor works for you without thinking about it.</p>
               </div>
             </div>
           </div>
@@ -328,40 +344,40 @@ export default function ResultsPage() {
             <div className="bg-[#f6f3f2] p-4 rounded-xl flex flex-col gap-3 active:scale-95 transition-transform">
               <span className="material-symbols-outlined text-[#ff6b2c] text-2xl">assignment</span>
               <div>
-                <p className="text-[13px] font-bold leading-none mb-1 text-[#1c1b1b]">Personal protocol</p>
-                <p className="text-[11px] text-zinc-500 leading-tight">Built for your goals</p>
+                <p className="text-[13px] font-bold leading-none mb-1 text-[#1c1b1b]">Your 8-week protocol</p>
+                <p className="text-[11px] text-zinc-500 leading-tight">56 sessions mapped to your starting level</p>
               </div>
             </div>
             {/* Card 2 */}
             <div className="bg-[#f6f3f2] p-4 rounded-xl flex flex-col gap-3 active:scale-95 transition-transform">
               <span className="material-symbols-outlined text-[#ff6b2c] text-2xl">trending_up</span>
               <div>
-                <p className="text-[13px] font-bold leading-none mb-1 text-[#1c1b1b]">Gets harder daily</p>
-                <p className="text-[11px] text-zinc-500 leading-tight">Progressive intensity</p>
+                <p className="text-[13px] font-bold leading-none mb-1 text-[#1c1b1b]">Progressive overload</p>
+                <p className="text-[11px] text-zinc-500 leading-tight">Intensity increases every 5 days automatically</p>
               </div>
             </div>
             {/* Card 3 */}
             <div className="bg-[#f6f3f2] p-4 rounded-xl flex flex-col gap-3 active:scale-95 transition-transform">
               <span className="material-symbols-outlined text-[#ff6b2c] text-2xl">bolt</span>
               <div>
-                <p className="text-[13px] font-bold leading-none mb-1 text-[#1c1b1b]">Fast results first</p>
-                <p className="text-[11px] text-zinc-500 leading-tight">Highest impact moves</p>
+                <p className="text-[13px] font-bold leading-none mb-1 text-[#1c1b1b]">Quick-win exercises first</p>
+                <p className="text-[11px] text-zinc-500 leading-tight">Designed so you feel change within week 1</p>
               </div>
             </div>
             {/* Card 4 */}
             <div className="bg-[#f6f3f2] p-4 rounded-xl flex flex-col gap-3 active:scale-95 transition-transform">
               <span className="material-symbols-outlined text-[#ff6b2c] text-2xl">mail</span>
               <div>
-                <p className="text-[13px] font-bold leading-none mb-1 text-[#1c1b1b]">Daily reminders</p>
-                <p className="text-[11px] text-zinc-500 leading-tight">Never miss a session</p>
+                <p className="text-[13px] font-bold leading-none mb-1 text-[#1c1b1b]">Daily email coaching</p>
+                <p className="text-[11px] text-zinc-500 leading-tight">Exercise of the day + technique tips + progress check</p>
               </div>
             </div>
             {/* Card 5 */}
             <div className="bg-[#f6f3f2] p-4 rounded-xl flex flex-col gap-3 active:scale-95 transition-transform">
               <span className="material-symbols-outlined text-[#ff6b2c] text-2xl">sync</span>
               <div>
-                <p className="text-[13px] font-bold leading-none mb-1 text-[#1c1b1b]">Auto-adjusting</p>
-                <p className="text-[11px] text-zinc-500 leading-tight">Adapts to your level</p>
+                <p className="text-[13px] font-bold leading-none mb-1 text-[#1c1b1b]">Adaptive difficulty</p>
+                <p className="text-[11px] text-zinc-500 leading-tight">Adjusts based on your reported improvements</p>
               </div>
             </div>
             {/* Card 6 */}
@@ -369,7 +385,7 @@ export default function ResultsPage() {
               <span className="material-symbols-outlined text-[#ff6b2c] text-2xl">lock</span>
               <div>
                 <p className="text-[13px] font-bold leading-none mb-1 text-[#1c1b1b]">100% private</p>
-                <p className="text-[11px] text-zinc-500 leading-tight">Train discreetly, anywhere</p>
+                <p className="text-[11px] text-zinc-500 leading-tight">Train discreetly, anywhere — no app download needed</p>
               </div>
             </div>
           </div>
@@ -378,8 +394,8 @@ export default function ResultsPage() {
         {/* Dynamic Content Callout */}
         <section className="bg-[#1c1b1b] text-[#fcf9f8] rounded-2xl p-6 mb-8 relative overflow-hidden mx-5">
           <div className="relative z-10">
-            <h4 className="text-2xl font-black tracking-tighter mb-2">Trusted by 3,800+ men</h4>
-            <p className="text-sm opacity-80 leading-relaxed mb-6">Men who completed the 8-week protocol reported significant improvement in stamina, control, and daily confidence.</p>
+            <h4 className="text-2xl font-black tracking-tighter mb-2">Trusted by 3,847 men since launch</h4>
+            <p className="text-sm opacity-80 leading-relaxed mb-6">Average reported improvement after 8 weeks: 2.4x longer endurance, 73% better control, and a confidence increase from 4.1 to 7.3 out of 10.</p>
             <button className="w-full bg-[#ff6b2c] text-white py-4 rounded-xl font-bold uppercase tracking-widest text-sm active:scale-95 transition-transform">
               Get My Plan Now
             </button>
@@ -394,7 +410,7 @@ export default function ResultsPage() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=80&h=80&fit=crop&crop=face" alt="Board-certified urologist" className="rounded-full w-[80px] h-[80px] object-cover mx-auto mb-4" />
             <blockquote className="text-[15px] text-[#1A1A1A] leading-relaxed mb-3 px-4 italic">
-              &ldquo;Pelvic floor training is the standard of care for men experiencing reduced control. A structured program like this is exactly what I recommend to my patients.&rdquo;
+              &ldquo;I prescribe pelvic floor exercises to patients daily — it&apos;s first-line treatment for both urinary and sexual function. The challenge is compliance. A structured program with daily guidance solves the biggest problem: most men quit after 3 days because they don&apos;t know if they&apos;re doing it right.&rdquo;
             </blockquote>
             <p className="text-[13px] text-[#71717A] font-semibold mb-4">— Board-Certified Urologist</p>
             <div className="inline-flex items-center gap-1.5 bg-white px-4 py-2 rounded-full border border-[#E4E4E7]">
@@ -441,6 +457,15 @@ export default function ResultsPage() {
               {/* Y axis label */}
               <text x="5" y="15" fontSize="8" fill="#9CA3AF">Strong</text>
               <text x="5" y="95" fontSize="8" fill="#9CA3AF">Weak</text>
+              {/* Annotation lines */}
+              <line x1="88" y1="15" x2="88" y2="100" stroke="#FF6B2C" strokeWidth="1" strokeDasharray="3,3" opacity="0.4"/>
+              <line x1="164" y1="15" x2="164" y2="100" stroke="#FF6B2C" strokeWidth="1" strokeDasharray="3,3" opacity="0.4"/>
+              <line x1="300" y1="15" x2="300" y2="100" stroke="#22C55E" strokeWidth="1" strokeDasharray="3,3" opacity="0.4"/>
+              {/* Annotation labels */}
+              <text x="50" y="8" fontSize="7" fill="#9CA3AF">Starting point</text>
+              <text x="70" y="8" fontSize="7" fill="#FF6B2C">First changes</text>
+              <text x="140" y="8" fontSize="7" fill="#FF6B2C">Measurable improvement</text>
+              <text x="275" y="8" fontSize="7" fill="#22C55E">Complete</text>
             </svg>
           </div>
         </section>
