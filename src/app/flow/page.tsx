@@ -470,7 +470,7 @@ export default function FlowPage() {
             {/* Animated Pelvic Floor Anatomy */}
             <div className="flex justify-center mb-6">
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/1116_Muscles_of_the_Pelvic_Floor.png/800px-1116_Muscles_of_the_Pelvic_Floor.png"
+                src="/images/pelvic-floor.jpg"
                 alt="Male pelvic floor anatomy showing muscles that control bladder function and sexual stamina"
                 className="w-full max-w-[280px] mx-auto rounded-xl"
               />
