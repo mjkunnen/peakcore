@@ -9,7 +9,7 @@ export default function FlowPage() {
   const [selected, setSelected] = useState<string | null>(null);
   const [sliderValue, setSliderValue] = useState(50);
   const router = useRouter();
-  const totalSteps = 15;
+  const totalSteps = 17;
 
   // Reset selection when step changes
   useEffect(() => { setSelected(null); }, [step]);
@@ -44,6 +44,8 @@ export default function FlowPage() {
             </div>
             <p className="text-[12px] text-[#71717A] text-center mt-2 leading-none">Step 1 of 18</p>
             <div className="flex-1 flex flex-col justify-center items-center w-full">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=200&fit=crop&crop=face" alt="" className="w-full h-[140px] object-cover rounded-xl opacity-15 mb-4" />
               <h2 className="text-[20px] font-bold text-[#1A1A1A] text-center mb-6 leading-tight">What&apos;s your main goal?</h2>
               <div className="flex flex-col gap-3 w-full">
                 <button onClick={() => setSelected("stamina")} className={`option-tap w-full max-w-full h-[60px] bg-white border rounded-[12px] flex items-center justify-between px-5 transition-all ${selected === "stamina" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:bg-orange-50/30"}`}>
@@ -230,8 +232,51 @@ export default function FlowPage() {
         </div>
       )}
 
-      {/* ===== STEP 4: NOTICE (stitch/05_notice.html) ===== */}
+      {/* ===== STEP 4: ANATOMY INTERSTITIAL ===== */}
       {step === 4 && (
+        <div className="bg-white min-h-dvh max-h-dvh overflow-hidden flex flex-col max-w-[390px] mx-auto px-5">
+          <div className="flex-1 flex flex-col justify-center items-center">
+            {/* Pelvic Floor Anatomy SVG - simplified cross section */}
+            <div className="w-[280px] h-[180px] relative mb-6">
+              <svg viewBox="0 0 280 180" className="w-full h-full">
+                {/* Body outline */}
+                <ellipse cx="140" cy="90" rx="120" ry="80" fill="#F3F4F6" stroke="#E5E5E5" strokeWidth="1.5"/>
+                {/* Bladder */}
+                <ellipse cx="120" cy="60" rx="35" ry="25" fill="#E5E5E5" stroke="#D1D5DB" strokeWidth="1"/>
+                <text x="120" y="65" textAnchor="middle" fontSize="10" fill="#71717A">Bladder</text>
+                {/* Pelvic floor muscles - the hero element */}
+                <path d="M 40 120 Q 140 145 240 120" stroke="#FF6B2C" strokeWidth="6" fill="none" strokeLinecap="round"/>
+                <path d="M 40 120 Q 140 150 240 120" stroke="#FF6B2C" strokeWidth="3" fill="none" opacity="0.3" strokeLinecap="round"/>
+                <text x="140" y="165" textAnchor="middle" fontSize="11" fill="#FF6B2C" fontWeight="600">Pelvic Floor Muscles</text>
+                {/* Prostate */}
+                <circle cx="140" cy="95" r="12" fill="#E5E5E5" stroke="#D1D5DB" strokeWidth="1"/>
+                <text x="140" y="99" textAnchor="middle" fontSize="8" fill="#71717A">Prostate</text>
+              </svg>
+            </div>
+            <h2 className="text-[20px] font-bold text-[#1A1A1A] text-center mb-3">This is your pelvic floor</h2>
+            <p className="text-[14px] text-[#71717A] text-center leading-relaxed max-w-[320px] mb-8">
+              A group of muscles that controls bladder function, sexual stamina, and core stability. Like any muscle — it weakens without training.
+            </p>
+            <div className="flex gap-3 w-full">
+              <div className="flex-1 bg-[#F3F4F6] rounded-xl p-4 text-center">
+                <p className="text-[28px] font-bold text-[#FF6B2C]">1 in 3</p>
+                <p className="text-[11px] text-[#71717A] mt-1">men over 30 experience weakening</p>
+              </div>
+              <div className="flex-1 bg-[#F3F4F6] rounded-xl p-4 text-center">
+                <p className="text-[28px] font-bold text-[#FF6B2C]">100%</p>
+                <p className="text-[11px] text-[#71717A] mt-1">trainable at any age</p>
+              </div>
+            </div>
+          </div>
+          {/* Floating CTA */}
+          <div className="fixed bottom-0 left-0 right-0 z-50 px-5 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[390px] mx-auto">
+            <button onClick={next} className="w-full h-[56px] rounded-[12px] font-bold text-base bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97] transition-all">Continue</button>
+          </div>
+        </div>
+      )}
+
+      {/* ===== STEP 5: NOTICE (stitch/05_notice.html) ===== */}
+      {step === 5 && (
         <div className="bg-white text-[#2d2e36] min-h-dvh max-h-dvh overflow-hidden flex flex-col items-center">
           <div className="fixed top-0 left-0 w-full h-1 bg-zinc-100 z-50">
             <div className="h-full bg-[#FF6B2C]" style={{ width: progressWidth }}></div>
@@ -293,8 +338,8 @@ export default function FlowPage() {
         </div>
       )}
 
-      {/* ===== STEP 5: FREQUENCY (stitch/06_frequency.html) ===== */}
-      {step === 5 && (
+      {/* ===== STEP 6: FREQUENCY (stitch/06_frequency.html) ===== */}
+      {step === 6 && (
         <div className="bg-white text-zinc-900 min-h-dvh max-h-dvh overflow-hidden flex flex-col items-center">
           <div className="fixed top-0 left-0 w-full z-[60] h-1 bg-zinc-100">
             <div className="h-full bg-orange-600" style={{ width: progressWidth }}></div>
@@ -341,8 +386,8 @@ export default function FlowPage() {
         </div>
       )}
 
-      {/* ===== STEP 6: TRIED (stitch/07_tried.html) ===== */}
-      {step === 6 && (
+      {/* ===== STEP 7: TRIED (stitch/07_tried.html) ===== */}
+      {step === 7 && (
         <div className="flex justify-center items-start min-h-dvh max-h-dvh overflow-hidden">
           <div className="w-full max-w-[390px] min-h-dvh max-h-dvh flex flex-col relative bg-white overflow-hidden">
             <div className="fixed top-0 left-0 w-full h-[4px] bg-[#E4E4E7] z-[60]">
@@ -404,8 +449,8 @@ export default function FlowPage() {
         </div>
       )}
 
-      {/* ===== STEP 7: TIME (stitch/08_time.html) ===== */}
-      {step === 7 && (
+      {/* ===== STEP 8: TIME (stitch/08_time.html) ===== */}
+      {step === 8 && (
         <div className="bg-white text-[#1A1A1A] min-h-dvh max-h-dvh overflow-hidden flex flex-col items-center">
           <div className="fixed top-0 left-0 w-full z-50 flex flex-col bg-white">
             <div className="w-full h-1 bg-gray-100">
@@ -458,8 +503,65 @@ export default function FlowPage() {
         </div>
       )}
 
-      {/* ===== STEP 8: INFO PRO (stitch/09_info_pro.html) ===== */}
-      {step === 8 && (
+      {/* ===== STEP 9: SCIENCE INTERSTITIAL ===== */}
+      {step === 9 && (
+        <div className="bg-white min-h-dvh max-h-dvh overflow-hidden flex flex-col max-w-[390px] mx-auto px-5">
+          <div className="flex-1 flex flex-col justify-center items-center">
+            {/* Muscle Fiber Comparison */}
+            <div className="flex gap-4 mb-8 w-full">
+              <div className="flex-1 text-center">
+                <div className="h-[100px] flex items-center justify-center mb-3">
+                  <svg viewBox="0 0 80 80" className="w-[80px] h-[80px]">
+                    {/* Weak fibers - thin, loose */}
+                    <line x1="10" y1="15" x2="70" y2="20" stroke="#D1D5DB" strokeWidth="1.5" opacity="0.5"/>
+                    <line x1="10" y1="30" x2="70" y2="28" stroke="#D1D5DB" strokeWidth="1" opacity="0.4"/>
+                    <line x1="10" y1="45" x2="70" y2="48" stroke="#D1D5DB" strokeWidth="1.5" opacity="0.3"/>
+                    <line x1="10" y1="58" x2="70" y2="55" stroke="#D1D5DB" strokeWidth="1" opacity="0.5"/>
+                    <line x1="10" y1="70" x2="70" y2="68" stroke="#D1D5DB" strokeWidth="1" opacity="0.3"/>
+                  </svg>
+                </div>
+                <p className="text-[13px] font-bold text-[#71717A]">Weakened</p>
+                <p className="text-[11px] text-[#9CA3AF]">Loose, thin fibers</p>
+              </div>
+              <div className="w-px bg-[#E4E4E7]"></div>
+              <div className="flex-1 text-center">
+                <div className="h-[100px] flex items-center justify-center mb-3">
+                  <svg viewBox="0 0 80 80" className="w-[80px] h-[80px]">
+                    {/* Strong fibers - thick, tight */}
+                    <line x1="10" y1="12" x2="70" y2="12" stroke="#FF6B2C" strokeWidth="4" strokeLinecap="round"/>
+                    <line x1="10" y1="26" x2="70" y2="26" stroke="#FF6B2C" strokeWidth="4" strokeLinecap="round" opacity="0.9"/>
+                    <line x1="10" y1="40" x2="70" y2="40" stroke="#FF6B2C" strokeWidth="4" strokeLinecap="round"/>
+                    <line x1="10" y1="54" x2="70" y2="54" stroke="#FF6B2C" strokeWidth="4" strokeLinecap="round" opacity="0.9"/>
+                    <line x1="10" y1="68" x2="70" y2="68" stroke="#FF6B2C" strokeWidth="4" strokeLinecap="round"/>
+                  </svg>
+                </div>
+                <p className="text-[13px] font-bold text-[#FF6B2C]">Trained</p>
+                <p className="text-[11px] text-[#9CA3AF]">Dense, strong fibers</p>
+              </div>
+            </div>
+            <h2 className="text-[20px] font-bold text-[#1A1A1A] text-center mb-6">The science is clear</h2>
+            {/* Research stats */}
+            <div className="space-y-4 w-full">
+              <div className="bg-[#F3F4F6] rounded-xl p-4">
+                <p className="text-[32px] font-bold text-[#FF6B2C]">75%</p>
+                <p className="text-[13px] text-[#1A1A1A] mt-1">of men see noticeable improvement within 2-4 weeks of daily training</p>
+                <p className="text-[10px] text-[#9CA3AF] mt-2 italic">British Journal of General Practice</p>
+              </div>
+              <div className="bg-[#F3F4F6] rounded-xl p-4">
+                <p className="text-[32px] font-bold text-[#FF6B2C]">5 min</p>
+                <p className="text-[13px] text-[#1A1A1A] mt-1">per day outperforms longer weekly sessions</p>
+                <p className="text-[10px] text-[#9CA3AF] mt-2 italic">Journal of Urology, 2019</p>
+              </div>
+            </div>
+          </div>
+          <div className="fixed bottom-0 left-0 right-0 z-50 px-5 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[390px] mx-auto">
+            <button onClick={next} className="w-full h-[56px] rounded-[12px] font-bold text-base bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97] transition-all">Continue</button>
+          </div>
+        </div>
+      )}
+
+      {/* ===== STEP 10: INFO PRO (stitch/09_info_pro.html) ===== */}
+      {step === 10 && (
         <div className="bg-white text-[#1A1A1A] min-h-dvh max-h-dvh overflow-hidden flex flex-col items-center">
           <div className="fixed top-0 left-0 w-full h-1 bg-zinc-100 z-[60]">
             <div className="h-full bg-[#FF6B2C] transition-all duration-500" style={{ width: progressWidth }}></div>
@@ -501,8 +603,8 @@ export default function FlowPage() {
         </div>
       )}
 
-      {/* ===== STEP 9: CONCERN (stitch/10_concern.html) ===== */}
-      {step === 9 && (
+      {/* ===== STEP 11: CONCERN (stitch/10_concern.html) ===== */}
+      {step === 11 && (
         <div className="bg-white text-[#1A1A1A] min-h-dvh max-h-dvh overflow-hidden flex flex-col items-center">
           <div className="fixed top-0 left-0 w-full h-1 bg-zinc-100 z-[60]">
             <div className="h-full bg-[#FF6B2C]" style={{ width: progressWidth }}></div>
@@ -562,8 +664,8 @@ export default function FlowPage() {
         </div>
       )}
 
-      {/* ===== STEP 10: SPEED (stitch/11_speed.html) ===== */}
-      {step === 10 && (
+      {/* ===== STEP 12: SPEED (stitch/11_speed.html) ===== */}
+      {step === 12 && (
         <div className="bg-white text-[#1A1A1A] antialiased min-h-dvh max-h-dvh overflow-hidden flex flex-col items-center">
           <header className="fixed top-0 left-0 w-full z-50 flex justify-between items-center h-14 px-4 bg-white border-b-4 border-zinc-100">
             <button onClick={() => setStep(Math.max(0, step - 1))} className="text-orange-600 hover:opacity-80 transition-opacity active:scale-95 flex items-center justify-center">
@@ -613,8 +715,8 @@ export default function FlowPage() {
         </div>
       )}
 
-      {/* ===== STEP 11: INFO GOOD (stitch/12_info_good.html) ===== */}
-      {step === 11 && (
+      {/* ===== STEP 13: INFO GOOD (stitch/12_info_good.html) ===== */}
+      {step === 13 && (
         <div className="bg-white text-[#1A1A1A] antialiased min-h-dvh max-h-dvh overflow-hidden">
           <div className="flex flex-col min-h-dvh max-h-dvh max-w-[390px] mx-auto relative overflow-hidden">
             <div className="fixed top-0 left-0 right-0 z-50 bg-white max-w-[390px] mx-auto">
@@ -663,8 +765,8 @@ export default function FlowPage() {
         </div>
       )}
 
-      {/* ===== STEP 12: COMMITMENT ===== */}
-      {step === 12 && (
+      {/* ===== STEP 14: COMMITMENT ===== */}
+      {step === 14 && (
         <div className="bg-white text-[#1A1A1A] antialiased min-h-dvh max-h-dvh overflow-hidden flex flex-col items-center">
           <div className="fixed top-0 left-0 w-full h-1 bg-zinc-200 z-[60]">
             <div className="h-full bg-[#FF6B2C]" style={{ width: progressWidth }}></div>
@@ -706,8 +808,8 @@ export default function FlowPage() {
         </div>
       )}
 
-      {/* ===== STEP 13: TESTIMONIALS ===== */}
-      {step === 13 && (
+      {/* ===== STEP 15: TESTIMONIALS ===== */}
+      {step === 15 && (
         <div className="bg-white text-[#1A1A1A] antialiased flex justify-center min-h-dvh max-h-dvh overflow-hidden">
           <div className="w-full max-w-[390px] min-h-dvh max-h-dvh flex flex-col relative overflow-hidden">
             <header className="fixed top-0 left-0 right-0 w-full max-w-[390px] mx-auto z-50 flex items-center justify-between px-4 h-14 bg-white border-b-4 border-zinc-100">
@@ -723,11 +825,14 @@ export default function FlowPage() {
                   <div className="progress-bar-fill" style={{ width: progressWidth }}></div>
                 </div>
               </div>
-              <span className="text-6xl text-[#FF6B2C] mb-6">&#10077;</span>
+              <div className="star-rating text-[20px] mb-2">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <span className="quote-mark mb-2">&#10077;</span>
               <blockquote className="text-[18px] font-semibold text-[#1A1A1A] leading-relaxed mb-3 px-2">
                 &ldquo;I went from lasting under 2 minutes to over 15. My only regret is not starting sooner.&rdquo;
               </blockquote>
               <p className="text-[13px] text-[#9CA3AF] mb-10">— Verified user, age 41</p>
+              <div className="star-rating text-[20px] mb-2">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <span className="quote-mark mb-2">&#10077;</span>
               <blockquote className="text-[15px] text-[#3F3F46] leading-relaxed mb-3 px-4 italic">
                 &ldquo;My urologist recommended pelvic floor exercises. This program made it simple.&rdquo;
               </blockquote>
@@ -742,8 +847,8 @@ export default function FlowPage() {
         </div>
       )}
 
-      {/* ===== STEP 14: EMAIL (stitch/15_email.html) ===== */}
-      {step === 14 && (
+      {/* ===== STEP 16: EMAIL (stitch/15_email.html) ===== */}
+      {step === 16 && (
         <div className="flex items-center justify-center min-h-dvh max-h-dvh overflow-hidden bg-[#fcf9f8]">
           <main className="w-[390px] h-[844px] bg-[#fcf9f8] relative overflow-hidden flex flex-col">
             <div className="w-full h-1 bg-[#e5e2e1]">

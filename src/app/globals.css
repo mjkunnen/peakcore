@@ -215,3 +215,18 @@ input[type=range]::-moz-range-thumb {
 .option-tap:active {
   transform: scale(0.97);
 }
+
+/* Strength Gauge */
+.gauge-bg {
+  background: conic-gradient(from 220deg, #EF4444 0deg 40deg, #F59E0B 40deg 80deg, #22C55E 80deg 140deg, transparent 140deg 360deg);
+}
+
+/* Star rating */
+.star-rating { color: #FF6B2C; letter-spacing: 2px; }
+
+/* Quote marks */
+.quote-mark { color: #E4E4E7; font-size: 48px; line-height: 1; font-family: Georgia, serif; }
+
+/* Progress chart gradient */
+.chart-line { stroke: url(#chartGradient); stroke-width: 3; fill: none; stroke-linecap: round; }
+.chart-area { fill: url(#chartAreaGradient); }

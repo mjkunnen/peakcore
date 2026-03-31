@@ -122,12 +122,13 @@ export default function ResultsPage() {
             {/* NOW CARD */}
             <div className="flex-1 bg-[#f6f3f2] rounded-xl p-4 flex flex-col items-center">
               <span className="text-[12px] font-bold text-zinc-500 tracking-wider uppercase mb-4 self-start">Now</span>
-              <div className="relative w-20 h-20 flex items-center justify-center mb-6">
-                <svg className="w-full h-full" style={{ transform: "rotate(-90deg)" }}>
-                  <circle className="text-[#e5e2e1]" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" strokeWidth="6" />
-                  <circle cx="40" cy="40" fill="transparent" r="34" stroke="#EF4444" strokeDasharray="213" strokeDashoffset="160" strokeLinecap="round" strokeWidth="6" />
+              <div className="flex flex-col items-center mb-6">
+                <svg viewBox="0 0 120 70" className="w-[100px] h-[60px]">
+                  <path d="M 10 65 A 50 50 0 0 1 110 65" fill="none" stroke="#E4E4E7" strokeWidth="8" strokeLinecap="round"/>
+                  <path d="M 10 65 A 50 50 0 0 1 45 20" fill="none" stroke="#EF4444" strokeWidth="8" strokeLinecap="round"/>
+                  <circle cx="35" cy="30" r="4" fill="#1A1A1A"/>
                 </svg>
-                <span className="absolute text-lg font-black text-[#1c1b1b]">25%</span>
+                <span className="text-lg font-black text-[#1c1b1b] -mt-1">25%</span>
               </div>
               <div className="w-full space-y-3">
                 <div className="flex items-center justify-between text-[11px] font-bold">
@@ -162,12 +163,13 @@ export default function ResultsPage() {
             {/* GOAL CARD */}
             <div className="flex-1 bg-white ring-2 ring-[#ff6b2c] rounded-xl p-4 flex flex-col items-center shadow-xl" style={{ boxShadow: "0 4px 24px rgba(255,107,44,0.05)" }}>
               <span className="text-[12px] font-bold text-[#ff6b2c] tracking-wider uppercase mb-4 self-start">Your Goal</span>
-              <div className="relative w-20 h-20 flex items-center justify-center mb-6">
-                <svg className="w-full h-full" style={{ transform: "rotate(-90deg)" }}>
-                  <circle className="text-[#f6f3f2]" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" strokeWidth="6" />
-                  <circle cx="40" cy="40" fill="transparent" r="34" stroke="#22C55E" strokeDasharray="213" strokeDashoffset="21" strokeLinecap="round" strokeWidth="6" />
+              <div className="flex flex-col items-center mb-6">
+                <svg viewBox="0 0 120 70" className="w-[100px] h-[60px]">
+                  <path d="M 10 65 A 50 50 0 0 1 110 65" fill="none" stroke="#E4E4E7" strokeWidth="8" strokeLinecap="round"/>
+                  <path d="M 10 65 A 50 50 0 0 1 95 30" fill="none" stroke="#22C55E" strokeWidth="8" strokeLinecap="round"/>
+                  <circle cx="95" cy="30" r="4" fill="#1A1A1A"/>
                 </svg>
-                <span className="absolute text-lg font-black text-[#1c1b1b]">90%</span>
+                <span className="text-lg font-black text-[#1c1b1b] -mt-1">90%</span>
               </div>
               <div className="w-full space-y-3">
                 <div className="flex items-center justify-between text-[11px] font-bold">
@@ -233,6 +235,28 @@ export default function ResultsPage() {
                 <span className="text-[11px] italic text-[#9CA3AF]">International Journal of Impotence Research</span>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* SECTION: What You're Training */}
+        <section className="px-5 py-8">
+          <div className="flex flex-col items-center">
+            <div className="w-[240px] h-[150px] relative mb-5">
+              <svg viewBox="0 0 280 180" className="w-full h-full">
+                <ellipse cx="140" cy="90" rx="120" ry="80" fill="#F3F4F6" stroke="#E5E5E5" strokeWidth="1.5"/>
+                <ellipse cx="120" cy="60" rx="35" ry="25" fill="#E5E5E5" stroke="#D1D5DB" strokeWidth="1"/>
+                <text x="120" y="65" textAnchor="middle" fontSize="10" fill="#71717A">Bladder</text>
+                <path d="M 40 120 Q 140 145 240 120" stroke="#FF6B2C" strokeWidth="6" fill="none" strokeLinecap="round"/>
+                <path d="M 40 120 Q 140 150 240 120" stroke="#FF6B2C" strokeWidth="3" fill="none" opacity="0.3" strokeLinecap="round"/>
+                <text x="140" y="165" textAnchor="middle" fontSize="11" fill="#FF6B2C" fontWeight="600">Pelvic Floor Muscles</text>
+                <circle cx="140" cy="95" r="12" fill="#E5E5E5" stroke="#D1D5DB" strokeWidth="1"/>
+                <text x="140" y="99" textAnchor="middle" fontSize="8" fill="#71717A">Prostate</text>
+              </svg>
+            </div>
+            <h3 className="text-[18px] font-bold text-[#1A1A1A] mb-2 text-center">What you&apos;re training</h3>
+            <p className="text-[14px] text-[#71717A] text-center leading-relaxed max-w-[320px]">
+              The pelvic floor is a group of muscles that supports bladder control, sexual function, and core stability. Our protocol strengthens these through progressive daily training.
+            </p>
           </div>
         </section>
 
@@ -335,6 +359,63 @@ export default function ResultsPage() {
           </div>
           {/* Decorative kinetic element */}
           <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-[#a83900]/20 blur-3xl rounded-full"></div>
+        </section>
+
+        {/* SECTION: Doctor Endorsement */}
+        <section className="px-5 py-8 bg-[#F9FAFB]">
+          <div className="flex flex-col items-center text-center">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=80&h=80&fit=crop&crop=face" alt="Board-certified urologist" className="rounded-full w-[80px] h-[80px] object-cover mx-auto mb-4" />
+            <blockquote className="text-[15px] text-[#1A1A1A] leading-relaxed mb-3 px-4 italic">
+              &ldquo;Pelvic floor training is the standard of care for men experiencing reduced control. A structured program like this is exactly what I recommend to my patients.&rdquo;
+            </blockquote>
+            <p className="text-[13px] text-[#71717A] font-semibold mb-4">— Board-Certified Urologist</p>
+            <div className="inline-flex items-center gap-1.5 bg-white px-4 py-2 rounded-full border border-[#E4E4E7]">
+              <span className="material-symbols-outlined text-[14px] text-[#22C55E]" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
+              <span className="text-[12px] text-[#71717A] font-medium">Developed in consultation with men&apos;s health specialists</span>
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION: Progress Chart */}
+        <section className="px-5 py-8">
+          <div className="mb-8">
+            <h3 className="text-[16px] font-bold text-[#1A1A1A] mb-2">Your projected improvement</h3>
+            <p className="text-[12px] text-[#71717A] mb-4">Based on men with your profile who followed the protocol</p>
+            <svg viewBox="0 0 320 120" className="w-full h-[100px]">
+              <defs>
+                <linearGradient id="chartGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stopColor="#D1D5DB"/>
+                  <stop offset="100%" stopColor="#FF6B2C"/>
+                </linearGradient>
+                <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#FF6B2C" stopOpacity="0.15"/>
+                  <stop offset="100%" stopColor="#FF6B2C" stopOpacity="0"/>
+                </linearGradient>
+              </defs>
+              {/* Grid lines */}
+              <line x1="40" y1="10" x2="40" y2="100" stroke="#F3F4F6" strokeWidth="1"/>
+              <line x1="40" y1="100" x2="310" y2="100" stroke="#E4E4E7" strokeWidth="1"/>
+              {/* Week labels */}
+              <text x="57" y="115" fontSize="9" fill="#9CA3AF">W1</text>
+              <text x="95" y="115" fontSize="9" fill="#9CA3AF">W2</text>
+              <text x="133" y="115" fontSize="9" fill="#9CA3AF">W3</text>
+              <text x="171" y="115" fontSize="9" fill="#9CA3AF">W4</text>
+              <text x="209" y="115" fontSize="9" fill="#9CA3AF">W5</text>
+              <text x="247" y="115" fontSize="9" fill="#9CA3AF">W6</text>
+              <text x="285" y="115" fontSize="9" fill="#9CA3AF">W8</text>
+              {/* Area fill */}
+              <path d="M 50 90 L 88 75 L 126 68 L 164 55 L 202 42 L 240 30 L 278 20 L 300 15 L 300 100 L 50 100 Z" fill="url(#areaGrad)"/>
+              {/* Progress line */}
+              <path d="M 50 90 L 88 75 L 126 68 L 164 55 L 202 42 L 240 30 L 278 20 L 300 15" stroke="url(#chartGrad)" strokeWidth="3" fill="none" strokeLinecap="round"/>
+              {/* Dots */}
+              <circle cx="50" cy="90" r="3" fill="#D1D5DB"/>
+              <circle cx="300" cy="15" r="4" fill="#FF6B2C"/>
+              {/* Y axis label */}
+              <text x="5" y="15" fontSize="8" fill="#9CA3AF">Strong</text>
+              <text x="5" y="95" fontSize="8" fill="#9CA3AF">Weak</text>
+            </svg>
+          </div>
         </section>
 
         {/* ===== BOTTOM SECTION: PRICING ===== */}
