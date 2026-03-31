@@ -8,8 +8,14 @@ export default function FlowPage() {
   const [email, setEmail] = useState("");
   const [selected, setSelected] = useState<string | null>(null);
   const [sliderValue, setSliderValue] = useState(50);
+  const [confidenceValue, setConfidenceValue] = useState(50);
   const router = useRouter();
-  const totalSteps = 17;
+  const totalSteps = 18;
+
+  // Step counter mapping: only real questions show "Step X of 12"
+  const stepCounterMap: Record<number, number> = {
+    0: 1, 1: 2, 2: 3, 3: 4, 4: 5, 5: 6, 6: 7, 7: 8, 9: 9, 12: 10, 14: 11, 15: 12
+  };
 
   // Reset selection when step changes
   useEffect(() => { setSelected(null); }, [step]);
@@ -26,11 +32,11 @@ export default function FlowPage() {
     }
   }
 
-  const progressWidth = `${((step + 1) / 18) * 100}%`;
+  const progressWidth = `${((step + 1) / totalSteps) * 100}%`;
 
   return (
     <>
-      {/* ===== STEP 0: GOAL (stitch/01_goal.html) ===== */}
+      {/* ===== STEP 0: GOAL ===== */}
       {step === 0 && (
         <div className="bg-white text-on-surface min-h-dvh max-h-dvh overflow-hidden flex flex-col items-center">
           <header className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 h-14 bg-white border-b-4 border-zinc-100">
@@ -42,7 +48,7 @@ export default function FlowPage() {
             <div className="w-full h-1 bg-[#E4E4E7] mt-4 relative rounded-full overflow-hidden">
               <div className="absolute top-0 left-0 h-full bg-[#FF6B2C] rounded-full" style={{ width: progressWidth }}></div>
             </div>
-            <p className="text-[12px] text-[#71717A] text-center mt-2 leading-none">Step 1 of 18</p>
+            <p className="text-[12px] text-[#71717A] text-center mt-2 leading-none">Step {stepCounterMap[0]} of 12</p>
             <div className="flex-1 flex flex-col justify-center items-center w-full">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=200&fit=crop&crop=face" alt="" className="w-full h-[140px] object-cover rounded-xl opacity-15 mb-4" />
@@ -86,7 +92,7 @@ export default function FlowPage() {
         </div>
       )}
 
-      {/* ===== STEP 1: AGE (stitch/02_age.html) ===== */}
+      {/* ===== STEP 1: AGE ===== */}
       {step === 1 && (
         <div className="bg-white text-[#2d2e36] antialiased min-h-dvh max-h-dvh overflow-hidden flex flex-col items-center">
           <div className="fixed top-0 left-0 w-full h-1 bg-[#dcdce9] z-[60]">
@@ -101,7 +107,7 @@ export default function FlowPage() {
           </header>
           <main className="w-full max-w-[390px] mx-auto px-5 pt-[60px] pb-[120px] flex-grow flex flex-col justify-center">
             <div className="mb-2 text-center">
-              <span className="text-sm font-medium text-[#76767f] uppercase tracking-wider">Step 2 of 18</span>
+              <span className="text-sm font-medium text-[#76767f] uppercase tracking-wider">Step {stepCounterMap[1]} of 12</span>
             </div>
             <h1 className="text-[20px] font-extrabold text-[#2d2e36] text-center mb-6 leading-tight">Your age?</h1>
             <div className="grid grid-cols-2 gap-4 mb-8">
@@ -131,7 +137,7 @@ export default function FlowPage() {
         </div>
       )}
 
-      {/* ===== STEP 2: ACTIVITY (stitch/03_activity.html) ===== */}
+      {/* ===== STEP 2: FITNESS ===== */}
       {step === 2 && (
         <div className="bg-white text-[#1A1A1A] min-h-dvh max-h-dvh overflow-hidden flex flex-col items-center">
           <div className="fixed top-0 left-0 w-full h-1 bg-[#E4E4E7] z-[60]">
@@ -146,7 +152,7 @@ export default function FlowPage() {
           </header>
           <main className="w-full max-w-[390px] mx-auto px-5 pt-[60px] pb-[120px] flex flex-col flex-grow">
             <div className="text-center mb-2">
-              <span className="text-[10px] font-bold tracking-widest text-[#71717A] uppercase">STEP 3 OF 18</span>
+              <span className="text-[10px] font-bold tracking-widest text-[#71717A] uppercase">STEP {stepCounterMap[2]} OF 12</span>
             </div>
             <h2 className="text-[20px] font-extrabold text-[#1A1A1A] text-center leading-tight mb-6">
               How would you describe your current fitness?
@@ -177,7 +183,7 @@ export default function FlowPage() {
         </div>
       )}
 
-      {/* ===== STEP 3: EXPERIENCE (stitch/04_experience.html) ===== */}
+      {/* ===== STEP 3: TRIED PELVIC ===== */}
       {step === 3 && (
         <div className="flex flex-col min-h-dvh max-h-dvh overflow-hidden max-w-[390px] mx-auto bg-white text-[#1A1A1A]">
           <header className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 h-16 max-w-[390px] mx-auto bg-white border-b-4 border-[#E4E4E7]">
@@ -194,7 +200,7 @@ export default function FlowPage() {
               </div>
             </div>
             <div className="flex-1 flex flex-col pt-12">
-              <p className="text-[14px] font-semibold text-[#71717A] tracking-tight mb-2">Step 4 of 18</p>
+              <p className="text-[14px] font-semibold text-[#71717A] tracking-tight mb-2">Step {stepCounterMap[3]} of 12</p>
               <h2 className="text-[20px] font-extrabold leading-tight tracking-tight mb-6 text-[#1A1A1A]">
                 Tried pelvic exercises before?
               </h2>
@@ -232,51 +238,8 @@ export default function FlowPage() {
         </div>
       )}
 
-      {/* ===== STEP 4: ANATOMY INTERSTITIAL ===== */}
+      {/* ===== STEP 4: WHEN NOTICED (was step 5) ===== */}
       {step === 4 && (
-        <div className="bg-white min-h-dvh max-h-dvh overflow-hidden flex flex-col max-w-[390px] mx-auto px-5">
-          <div className="flex-1 flex flex-col justify-center items-center">
-            {/* Pelvic Floor Anatomy SVG - simplified cross section */}
-            <div className="w-[280px] h-[180px] relative mb-6">
-              <svg viewBox="0 0 280 180" className="w-full h-full">
-                {/* Body outline */}
-                <ellipse cx="140" cy="90" rx="120" ry="80" fill="#F3F4F6" stroke="#E5E5E5" strokeWidth="1.5"/>
-                {/* Bladder */}
-                <ellipse cx="120" cy="60" rx="35" ry="25" fill="#E5E5E5" stroke="#D1D5DB" strokeWidth="1"/>
-                <text x="120" y="65" textAnchor="middle" fontSize="10" fill="#71717A">Bladder</text>
-                {/* Pelvic floor muscles - the hero element */}
-                <path d="M 40 120 Q 140 145 240 120" stroke="#FF6B2C" strokeWidth="6" fill="none" strokeLinecap="round"/>
-                <path d="M 40 120 Q 140 150 240 120" stroke="#FF6B2C" strokeWidth="3" fill="none" opacity="0.3" strokeLinecap="round"/>
-                <text x="140" y="165" textAnchor="middle" fontSize="11" fill="#FF6B2C" fontWeight="600">Pelvic Floor Muscles</text>
-                {/* Prostate */}
-                <circle cx="140" cy="95" r="12" fill="#E5E5E5" stroke="#D1D5DB" strokeWidth="1"/>
-                <text x="140" y="99" textAnchor="middle" fontSize="8" fill="#71717A">Prostate</text>
-              </svg>
-            </div>
-            <h2 className="text-[20px] font-bold text-[#1A1A1A] text-center mb-3">This is your pelvic floor</h2>
-            <p className="text-[14px] text-[#71717A] text-center leading-relaxed max-w-[320px] mb-8">
-              A group of muscles that controls bladder function, sexual stamina, and core stability. Like any muscle — it weakens without training.
-            </p>
-            <div className="flex gap-3 w-full">
-              <div className="flex-1 bg-[#F3F4F6] rounded-xl p-4 text-center">
-                <p className="text-[28px] font-bold text-[#FF6B2C]">1 in 3</p>
-                <p className="text-[11px] text-[#71717A] mt-1">men over 30 experience weakening</p>
-              </div>
-              <div className="flex-1 bg-[#F3F4F6] rounded-xl p-4 text-center">
-                <p className="text-[28px] font-bold text-[#FF6B2C]">100%</p>
-                <p className="text-[11px] text-[#71717A] mt-1">trainable at any age</p>
-              </div>
-            </div>
-          </div>
-          {/* Floating CTA */}
-          <div className="fixed bottom-0 left-0 right-0 z-50 px-5 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[390px] mx-auto">
-            <button onClick={next} className="w-full h-[56px] rounded-[12px] font-bold text-base bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97] transition-all">Continue</button>
-          </div>
-        </div>
-      )}
-
-      {/* ===== STEP 5: NOTICE (stitch/05_notice.html) ===== */}
-      {step === 5 && (
         <div className="bg-white text-[#2d2e36] min-h-dvh max-h-dvh overflow-hidden flex flex-col items-center">
           <div className="fixed top-0 left-0 w-full h-1 bg-zinc-100 z-50">
             <div className="h-full bg-[#FF6B2C]" style={{ width: progressWidth }}></div>
@@ -292,7 +255,8 @@ export default function FlowPage() {
           </header>
           <main className="flex-1 w-full max-w-[390px] mx-auto px-5 pt-[60px] pb-[120px] flex flex-col">
             <div className="mt-6 mb-6 text-center">
-              <h2 className="text-[20px] font-black text-[#1A1A1A] leading-tight tracking-tight">
+              <span className="text-sm font-medium text-[#76767f] uppercase tracking-wider">Step {stepCounterMap[4]} of 12</span>
+              <h2 className="text-[20px] font-black text-[#1A1A1A] leading-tight tracking-tight mt-2">
                 When did you first notice changes?
               </h2>
             </div>
@@ -338,8 +302,8 @@ export default function FlowPage() {
         </div>
       )}
 
-      {/* ===== STEP 6: FREQUENCY (stitch/06_frequency.html) ===== */}
-      {step === 6 && (
+      {/* ===== STEP 5: FREQUENCY SLIDER (was step 6) ===== */}
+      {step === 5 && (
         <div className="bg-white text-zinc-900 min-h-dvh max-h-dvh overflow-hidden flex flex-col items-center">
           <div className="fixed top-0 left-0 w-full z-[60] h-1 bg-zinc-100">
             <div className="h-full bg-orange-600" style={{ width: progressWidth }}></div>
@@ -356,7 +320,7 @@ export default function FlowPage() {
           <main className="flex-1 w-full max-w-[390px] mx-auto px-5 pt-[60px] pb-[100px] flex flex-col items-center justify-center">
             <div className="w-full space-y-8">
               <div className="text-center">
-                <span className="text-zinc-500 font-medium text-sm">Step 6 of 18</span>
+                <span className="text-zinc-500 font-medium text-sm">Step {stepCounterMap[5]} of 12</span>
               </div>
               <h1 className="text-[20px] font-extrabold text-[#1A1A1A] text-center leading-tight">
                 In the past 3 months, how often has this been an issue?
@@ -386,8 +350,8 @@ export default function FlowPage() {
         </div>
       )}
 
-      {/* ===== STEP 7: TRIED (stitch/07_tried.html) ===== */}
-      {step === 7 && (
+      {/* ===== STEP 6: TRIED ANYTHING (was step 7) ===== */}
+      {step === 6 && (
         <div className="flex justify-center items-start min-h-dvh max-h-dvh overflow-hidden">
           <div className="w-full max-w-[390px] min-h-dvh max-h-dvh flex flex-col relative bg-white overflow-hidden">
             <div className="fixed top-0 left-0 w-full h-[4px] bg-[#E4E4E7] z-[60]">
@@ -402,7 +366,8 @@ export default function FlowPage() {
             </header>
             <main className="flex-1 flex flex-col px-5 pt-[60px] pb-[120px]">
               <div className="mt-8 mb-6 text-center">
-                <h2 className="text-[20px] leading-tight font-extrabold text-[#1A1A1A] tracking-tight">
+                <span className="text-zinc-500 font-medium text-sm">Step {stepCounterMap[6]} of 12</span>
+                <h2 className="text-[20px] leading-tight font-extrabold text-[#1A1A1A] tracking-tight mt-2">
                   Tried anything before?
                 </h2>
               </div>
@@ -449,52 +414,152 @@ export default function FlowPage() {
         </div>
       )}
 
-      {/* ===== STEP 8: TIME (stitch/08_time.html) ===== */}
-      {step === 8 && (
-        <div className="bg-white text-[#1A1A1A] min-h-dvh max-h-dvh overflow-hidden flex flex-col items-center">
-          <div className="fixed top-0 left-0 w-full z-50 flex flex-col bg-white">
-            <div className="w-full h-1 bg-gray-100">
-              <div className="h-full bg-[#FF6B2C]" style={{ width: progressWidth }}></div>
+      {/* ===== STEP 7: NEW — CONFIDENCE IMPACT SLIDER ===== */}
+      {step === 7 && (
+        <div className="bg-white text-zinc-900 min-h-dvh max-h-dvh overflow-hidden flex flex-col items-center">
+          <div className="fixed top-0 left-0 w-full z-[60] h-1 bg-zinc-100">
+            <div className="h-full bg-orange-600" style={{ width: progressWidth }}></div>
+          </div>
+          <header className="fixed top-0 left-0 w-full z-50 h-16 flex items-center px-4 max-w-[390px] mx-auto bg-white border-b-4 border-zinc-100">
+            <button onClick={() => setStep(Math.max(0, step - 1))} aria-label="Go back" className="text-orange-600 active:scale-95 transition-transform duration-150">
+              <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 0, 'wght' 600" }}>arrow_back</span>
+            </button>
+            <div className="flex-1 flex justify-center">
+              <span className="text-orange-600 font-black text-xl tracking-tight">PEAKCORE</span>
             </div>
-            <div className="flex items-center justify-between px-4 h-14 border-b-4 border-gray-100">
-              <button onClick={() => setStep(Math.max(0, step - 1))} className="p-2 text-[#71717A] hover:bg-gray-100 transition-colors active:scale-95 duration-150">
-                <span className="material-symbols-outlined">arrow_back</span>
-              </button>
-              <h1 className="text-xl font-black tracking-tighter text-[#1A1A1A] font-sans antialiased uppercase">PEAKCORE</h1>
-              <div className="w-10"></div>
+            <div className="w-6"></div>
+          </header>
+          <main className="flex-1 w-full max-w-[390px] mx-auto px-5 pt-[60px] pb-[100px] flex flex-col items-center justify-center">
+            <div className="w-full space-y-8">
+              <div className="text-center">
+                <span className="text-zinc-500 font-medium text-sm">Step {stepCounterMap[7]} of 12</span>
+              </div>
+              <h1 className="text-[20px] font-extrabold text-[#1A1A1A] text-center leading-tight">
+                How much does this affect your daily confidence?
+              </h1>
+              <div className="pt-12 pb-8 px-2">
+                <div className="relative w-full">
+                  <div className="text-center mb-4">
+                    <span className="inline-block bg-[#FF6B2C] text-white text-[14px] font-bold px-4 py-1.5 rounded-full">
+                      {confidenceValue <= 20 ? "Not at all" : confidenceValue <= 40 ? "A little" : confidenceValue <= 60 ? "Moderately" : confidenceValue <= 80 ? "Quite a bit" : "Significantly"}
+                    </span>
+                  </div>
+                  <input className="cursor-pointer" max={100} min={0} type="range" value={confidenceValue} onChange={(e) => setConfidenceValue(Number(e.target.value))} />
+                  <div className="flex justify-between mt-6">
+                    <span className="text-zinc-500 font-medium text-sm uppercase tracking-wide">Not at all</span>
+                    <span className="text-zinc-500 font-medium text-sm uppercase tracking-wide">Significantly</span>
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center justify-center gap-2 text-[#71717A] italic text-sm mt-4">
+                <span>🔒</span>
+                <p>This stays between us — your privacy is guaranteed</p>
+              </div>
+            </div>
+          </main>
+          <div className="fixed bottom-0 left-0 right-0 z-50 px-5 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[390px] mx-auto">
+            <button onClick={next} className="w-full max-w-full h-[56px] rounded-[12px] font-bold text-base transition-all bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]">Continue</button>
+          </div>
+        </div>
+      )}
+
+      {/* ===== STEP 8: ANATOMY INTERSTITIAL (was step 4) — no step counter ===== */}
+      {step === 8 && (
+        <div className="bg-white min-h-dvh max-h-dvh overflow-hidden flex flex-col max-w-[390px] mx-auto px-5">
+          <div className="flex-1 flex flex-col justify-center items-center">
+            {/* Pelvic Floor Anatomy SVG - simplified cross section */}
+            <div className="w-[280px] h-[180px] relative mb-6">
+              <svg viewBox="0 0 280 180" className="w-full h-full">
+                {/* Body outline */}
+                <ellipse cx="140" cy="90" rx="120" ry="80" fill="#F3F4F6" stroke="#E5E5E5" strokeWidth="1.5"/>
+                {/* Bladder */}
+                <ellipse cx="120" cy="60" rx="35" ry="25" fill="#E5E5E5" stroke="#D1D5DB" strokeWidth="1"/>
+                <text x="120" y="65" textAnchor="middle" fontSize="10" fill="#71717A">Bladder</text>
+                {/* Pelvic floor muscles - the hero element */}
+                <path d="M 40 120 Q 140 145 240 120" stroke="#FF6B2C" strokeWidth="6" fill="none" strokeLinecap="round"/>
+                <path d="M 40 120 Q 140 150 240 120" stroke="#FF6B2C" strokeWidth="3" fill="none" opacity="0.3" strokeLinecap="round"/>
+                <text x="140" y="165" textAnchor="middle" fontSize="11" fill="#FF6B2C" fontWeight="600">Pelvic Floor Muscles</text>
+                {/* Prostate */}
+                <circle cx="140" cy="95" r="12" fill="#E5E5E5" stroke="#D1D5DB" strokeWidth="1"/>
+                <text x="140" y="99" textAnchor="middle" fontSize="8" fill="#71717A">Prostate</text>
+              </svg>
+            </div>
+            <h2 className="text-[20px] font-bold text-[#1A1A1A] text-center mb-3">This is your pelvic floor</h2>
+            <p className="text-[14px] text-[#71717A] text-center leading-relaxed max-w-[320px] mb-8">
+              A group of muscles that controls bladder function, sexual stamina, and core stability. Like any muscle — it weakens without training.
+            </p>
+            <div className="flex gap-3 w-full">
+              <div className="flex-1 bg-[#F3F4F6] rounded-xl p-4 text-center">
+                <p className="text-[28px] font-bold text-[#FF6B2C]">1 in 3</p>
+                <p className="text-[11px] text-[#71717A] mt-1">men over 30 experience weakening</p>
+              </div>
+              <div className="flex-1 bg-[#F3F4F6] rounded-xl p-4 text-center">
+                <p className="text-[28px] font-bold text-[#FF6B2C]">100%</p>
+                <p className="text-[11px] text-[#71717A] mt-1">trainable at any age</p>
+              </div>
             </div>
           </div>
-          <main className="w-full max-w-[390px] mx-auto px-5 pt-[60px] pb-[120px] flex-grow flex flex-col justify-center">
-            <div className="mb-8 rounded-2xl overflow-hidden aspect-video bg-gray-50 flex items-center justify-center">
-              <img className="w-full h-full object-cover opacity-90" alt="Modern high-end gym interior with clean lighting and premium equipment in soft focus, fitness lifestyle aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK2Nbme08-dBA_9t1THNRkFAKZKsrfLB_ZX0Rdb2_3jICvamphKufR1wq9Ij44XHdyZjGqAdnwArVQ6nSnYLFMuu1weEFdqIp4_NNNLTyAu1t0fNYo-aDvIdXEk7bNXHRaOpaR6BIhIjgdKbVsSaQMOGDrgQbXThGo_dZCHztjeqZfr4gOOCiVcpaRUzgGA34AmUJaMr7vJ1ojFEbQBk9vPXwGLFw0ZCIXJOaGcM6d-xajQhK2FVQ7TD1hGDz-evqfaEW5n_r6q2fe" />
+          {/* Floating CTA */}
+          <div className="fixed bottom-0 left-0 right-0 z-50 px-5 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[390px] mx-auto">
+            <button onClick={next} className="w-full h-[56px] rounded-[12px] font-bold text-base bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97] transition-all">Continue</button>
+          </div>
+        </div>
+      )}
+
+      {/* ===== STEP 9: BIGGEST CONCERN (was step 11) ===== */}
+      {step === 9 && (
+        <div className="bg-white text-[#1A1A1A] min-h-dvh max-h-dvh overflow-hidden flex flex-col items-center">
+          <div className="fixed top-0 left-0 w-full h-1 bg-zinc-100 z-[60]">
+            <div className="h-full bg-[#FF6B2C]" style={{ width: progressWidth }}></div>
+          </div>
+          <header className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 h-16 bg-white border-b-4 border-zinc-100">
+            <button onClick={() => setStep(Math.max(0, step - 1))} className="flex items-center justify-center w-10 h-10 text-zinc-400 hover:opacity-80 transition-opacity active:scale-95">
+              <span className="material-symbols-outlined">arrow_back</span>
+            </button>
+            <h1 className="text-xl font-black tracking-tighter text-zinc-900 antialiased">PEAKCORE</h1>
+            <div className="w-10"></div>
+          </header>
+          <main className="flex-1 w-full max-w-[390px] mx-auto px-5 pt-[60px] pb-[120px] flex flex-col">
+            <div className="mt-6 mb-6">
+              <span className="text-sm font-medium text-[#76767f] uppercase tracking-wider">Step {stepCounterMap[9]} of 12</span>
+              <h2 className="text-[20px] font-extrabold leading-tight text-[#1A1A1A] mt-2">
+                Biggest concern?
+              </h2>
             </div>
-            <div className="text-center mb-6">
-              <h2 className="text-[20px] font-extrabold tracking-tight text-[#1A1A1A] mb-3">Daily training time?</h2>
-              <p className="text-[#71717A] text-base">Select the duration that best fits your lifestyle. Consistency is key.</p>
+            <div className="flex flex-col gap-4">
+              <button onClick={() => setSelected("age")} className={`option-tap group w-full h-[72px] px-5 flex items-center justify-between bg-white border-2 rounded-xl active:scale-[0.98] transition-all duration-200 ${selected === "age" ? "option-selected border-[#FF6B2C]" : "border-zinc-100 hover:border-[#FF6B2C]/30 hover:bg-[#FFF4EE]/20"}`}>
+                <div className="flex items-center gap-4">
+                  <span className={`text-2xl ${selected === "age" ? "icon-selected" : "icon-bounce"}`}>📉</span>
+                  <span className="text-[15px] font-semibold text-zinc-800">Losing more control as I age</span>
+                </div>
+                <span className={`material-symbols-outlined transition-colors ${selected === "age" ? "text-[#FF6B2C]" : "text-zinc-300"}`}>chevron_right</span>
+              </button>
+              <button onClick={() => setSelected("partner")} className={`option-tap group w-full h-[72px] px-5 flex items-center justify-between bg-white border-2 rounded-xl active:scale-[0.98] transition-all duration-200 ${selected === "partner" ? "option-selected border-[#FF6B2C]" : "border-zinc-100 hover:border-[#FF6B2C]/30 hover:bg-[#FFF4EE]/20"}`}>
+                <div className="flex items-center gap-4">
+                  <span className={`text-2xl ${selected === "partner" ? "icon-selected" : "icon-bounce"}`}>💑</span>
+                  <span className="text-[15px] font-semibold text-zinc-800">Not satisfying my partner</span>
+                </div>
+                <span className={`material-symbols-outlined transition-colors ${selected === "partner" ? "text-[#FF6B2C]" : "text-zinc-300"}`}>chevron_right</span>
+              </button>
+              <button onClick={() => setSelected("missing")} className={`option-tap group w-full h-[72px] px-5 flex items-center justify-between bg-white border-2 rounded-xl active:scale-[0.98] transition-all duration-200 ${selected === "missing" ? "option-selected border-[#FF6B2C]" : "border-zinc-100 hover:border-[#FF6B2C]/30 hover:bg-[#FFF4EE]/20"}`}>
+                <div className="flex items-center gap-4">
+                  <span className={`text-2xl ${selected === "missing" ? "icon-selected" : "icon-bounce"}`}>💭</span>
+                  <span className="text-[15px] font-semibold text-zinc-800">Knowing I could feel more</span>
+                </div>
+                <span className={`material-symbols-outlined transition-colors ${selected === "missing" ? "text-[#FF6B2C]" : "text-zinc-300"}`}>chevron_right</span>
+              </button>
+              <button onClick={() => setSelected("health")} className={`option-tap group w-full h-[72px] px-5 flex items-center justify-between bg-white border-2 rounded-xl active:scale-[0.98] transition-all duration-200 ${selected === "health" ? "option-selected border-[#FF6B2C]" : "border-zinc-100 hover:border-[#FF6B2C]/30 hover:bg-[#FFF4EE]/20"}`}>
+                <div className="flex items-center gap-4">
+                  <span className={`text-2xl ${selected === "health" ? "icon-selected" : "icon-bounce"}`}>🏥</span>
+                  <span className="text-[15px] font-semibold text-zinc-800">Bladder control or recovery concerns</span>
+                </div>
+                <span className={`material-symbols-outlined transition-colors ${selected === "health" ? "text-[#FF6B2C]" : "text-zinc-300"}`}>chevron_right</span>
+              </button>
             </div>
-            <div className="grid grid-cols-3 gap-3 w-full">
-              <button onClick={() => setSelected("3min")} className={`option-tap group flex flex-col items-center justify-center p-4 border rounded-xl aspect-square transition-all duration-200 active:scale-95 ${selected === "3min" ? "option-selected border-[#FF6B2C]" : "bg-white border-[#E4E4E7] hover:border-[#FF6B2C] hover:bg-[#FFF4EE]"}`}>
-                <span className={`text-3xl mb-3 ${selected === "3min" ? "icon-selected" : "icon-bounce"}`}>⚡</span>
-                <span className="text-sm font-bold text-[#1A1A1A]">3 min</span>
-              </button>
-              <button onClick={() => setSelected("5min")} className={`option-tap group flex flex-col items-center justify-center p-4 border rounded-xl aspect-square transition-all duration-200 active:scale-95 ${selected === "5min" ? "option-selected border-[#FF6B2C]" : "bg-white border-[#E4E4E7] hover:border-[#FF6B2C] hover:bg-[#FFF4EE]"}`}>
-                <span className={`text-3xl mb-3 ${selected === "5min" ? "icon-selected" : "icon-bounce"}`}>⏱️</span>
-                <span className="text-sm font-bold text-[#1A1A1A]">5 min</span>
-              </button>
-              <button onClick={() => setSelected("10min")} className={`option-tap group flex flex-col items-center justify-center p-4 border rounded-xl aspect-square transition-all duration-200 active:scale-95 ${selected === "10min" ? "option-selected border-[#FF6B2C]" : "bg-white border-[#E4E4E7] hover:border-[#FF6B2C] hover:bg-[#FFF4EE]"}`}>
-                <span className={`text-3xl mb-3 ${selected === "10min" ? "icon-selected" : "icon-bounce"}`}>💪</span>
-                <span className="text-sm font-bold text-[#1A1A1A]">10+ min</span>
-              </button>
-            </div>
-            <p className="text-center text-xs text-[#71717A] italic mt-6 mb-2">Even 3 minutes a day builds real, lasting strength</p>
-            <div className="mt-6 p-5 bg-[#F7F7F8] rounded-2xl flex items-start gap-4">
-              <div className="bg-[#FFF4EE] p-2 rounded-lg">
-                <span className="material-symbols-outlined text-[#FF6B2C]">info</span>
-              </div>
-              <div>
-                <h4 className="text-sm font-bold text-[#1A1A1A] mb-1">PeakCore Tip</h4>
-                <p className="text-xs text-[#71717A] leading-relaxed">Urologists recommend 5 minutes of daily pelvic floor training as a first-line approach for men over 30.</p>
-              </div>
+            <div className="mt-6 text-center">
+              <p className="text-xs italic text-zinc-500 font-normal">
+                We hear you. Your plan will target exactly this.
+              </p>
             </div>
           </main>
           <div className="fixed bottom-0 left-0 right-0 z-50 px-5 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[390px] mx-auto">
@@ -503,8 +568,8 @@ export default function FlowPage() {
         </div>
       )}
 
-      {/* ===== STEP 9: SCIENCE INTERSTITIAL ===== */}
-      {step === 9 && (
+      {/* ===== STEP 10: SCIENCE INTERSTITIAL (was step 9) — no step counter ===== */}
+      {step === 10 && (
         <div className="bg-white min-h-dvh max-h-dvh overflow-hidden flex flex-col max-w-[390px] mx-auto px-5">
           <div className="flex-1 flex flex-col justify-center items-center">
             {/* Muscle Fiber Comparison */}
@@ -560,8 +625,8 @@ export default function FlowPage() {
         </div>
       )}
 
-      {/* ===== STEP 10: INFO PRO (stitch/09_info_pro.html) ===== */}
-      {step === 10 && (
+      {/* ===== STEP 11: UROLOGIST RECOMMENDATION (was step 10) — no step counter ===== */}
+      {step === 11 && (
         <div className="bg-white text-[#1A1A1A] min-h-dvh max-h-dvh overflow-hidden flex flex-col items-center">
           <div className="fixed top-0 left-0 w-full h-1 bg-zinc-100 z-[60]">
             <div className="h-full bg-[#FF6B2C] transition-all duration-500" style={{ width: progressWidth }}></div>
@@ -603,68 +668,7 @@ export default function FlowPage() {
         </div>
       )}
 
-      {/* ===== STEP 11: CONCERN (stitch/10_concern.html) ===== */}
-      {step === 11 && (
-        <div className="bg-white text-[#1A1A1A] min-h-dvh max-h-dvh overflow-hidden flex flex-col items-center">
-          <div className="fixed top-0 left-0 w-full h-1 bg-zinc-100 z-[60]">
-            <div className="h-full bg-[#FF6B2C]" style={{ width: progressWidth }}></div>
-          </div>
-          <header className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 h-16 bg-white border-b-4 border-zinc-100">
-            <button onClick={() => setStep(Math.max(0, step - 1))} className="flex items-center justify-center w-10 h-10 text-zinc-400 hover:opacity-80 transition-opacity active:scale-95">
-              <span className="material-symbols-outlined">arrow_back</span>
-            </button>
-            <h1 className="text-xl font-black tracking-tighter text-zinc-900 antialiased">PEAKCORE</h1>
-            <div className="w-10"></div>
-          </header>
-          <main className="flex-1 w-full max-w-[390px] mx-auto px-5 pt-[60px] pb-[120px] flex flex-col">
-            <div className="mt-6 mb-6">
-              <h2 className="text-[20px] font-extrabold leading-tight text-[#1A1A1A]">
-                Biggest concern?
-              </h2>
-            </div>
-            <div className="flex flex-col gap-4">
-              <button onClick={() => setSelected("age")} className={`option-tap group w-full h-[72px] px-5 flex items-center justify-between bg-white border-2 rounded-xl active:scale-[0.98] transition-all duration-200 ${selected === "age" ? "option-selected border-[#FF6B2C]" : "border-zinc-100 hover:border-[#FF6B2C]/30 hover:bg-[#FFF4EE]/20"}`}>
-                <div className="flex items-center gap-4">
-                  <span className={`text-2xl ${selected === "age" ? "icon-selected" : "icon-bounce"}`}>📉</span>
-                  <span className="text-[15px] font-semibold text-zinc-800">Losing more control as I age</span>
-                </div>
-                <span className={`material-symbols-outlined transition-colors ${selected === "age" ? "text-[#FF6B2C]" : "text-zinc-300"}`}>chevron_right</span>
-              </button>
-              <button onClick={() => setSelected("partner")} className={`option-tap group w-full h-[72px] px-5 flex items-center justify-between bg-white border-2 rounded-xl active:scale-[0.98] transition-all duration-200 ${selected === "partner" ? "option-selected border-[#FF6B2C]" : "border-zinc-100 hover:border-[#FF6B2C]/30 hover:bg-[#FFF4EE]/20"}`}>
-                <div className="flex items-center gap-4">
-                  <span className={`text-2xl ${selected === "partner" ? "icon-selected" : "icon-bounce"}`}>💑</span>
-                  <span className="text-[15px] font-semibold text-zinc-800">Not satisfying my partner</span>
-                </div>
-                <span className={`material-symbols-outlined transition-colors ${selected === "partner" ? "text-[#FF6B2C]" : "text-zinc-300"}`}>chevron_right</span>
-              </button>
-              <button onClick={() => setSelected("missing")} className={`option-tap group w-full h-[72px] px-5 flex items-center justify-between bg-white border-2 rounded-xl active:scale-[0.98] transition-all duration-200 ${selected === "missing" ? "option-selected border-[#FF6B2C]" : "border-zinc-100 hover:border-[#FF6B2C]/30 hover:bg-[#FFF4EE]/20"}`}>
-                <div className="flex items-center gap-4">
-                  <span className={`text-2xl ${selected === "missing" ? "icon-selected" : "icon-bounce"}`}>💭</span>
-                  <span className="text-[15px] font-semibold text-zinc-800">Knowing I could feel more</span>
-                </div>
-                <span className={`material-symbols-outlined transition-colors ${selected === "missing" ? "text-[#FF6B2C]" : "text-zinc-300"}`}>chevron_right</span>
-              </button>
-              <button onClick={() => setSelected("health")} className={`option-tap group w-full h-[72px] px-5 flex items-center justify-between bg-white border-2 rounded-xl active:scale-[0.98] transition-all duration-200 ${selected === "health" ? "option-selected border-[#FF6B2C]" : "border-zinc-100 hover:border-[#FF6B2C]/30 hover:bg-[#FFF4EE]/20"}`}>
-                <div className="flex items-center gap-4">
-                  <span className={`text-2xl ${selected === "health" ? "icon-selected" : "icon-bounce"}`}>🏥</span>
-                  <span className="text-[15px] font-semibold text-zinc-800">Bladder control or recovery concerns</span>
-                </div>
-                <span className={`material-symbols-outlined transition-colors ${selected === "health" ? "text-[#FF6B2C]" : "text-zinc-300"}`}>chevron_right</span>
-              </button>
-            </div>
-            <div className="mt-6 text-center">
-              <p className="text-xs italic text-zinc-500 font-normal">
-                We hear you. Your plan will target exactly this.
-              </p>
-            </div>
-          </main>
-          <div className="fixed bottom-0 left-0 right-0 z-50 px-5 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[390px] mx-auto">
-            <button disabled={!selected} onClick={() => { next(); }} className={`w-full max-w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
-          </div>
-        </div>
-      )}
-
-      {/* ===== STEP 12: SPEED (stitch/11_speed.html) ===== */}
+      {/* ===== STEP 12: HOW QUICKLY RESULTS (was step 12) ===== */}
       {step === 12 && (
         <div className="bg-white text-[#1A1A1A] antialiased min-h-dvh max-h-dvh overflow-hidden flex flex-col items-center">
           <header className="fixed top-0 left-0 w-full z-50 flex justify-between items-center h-14 px-4 bg-white border-b-4 border-zinc-100">
@@ -678,6 +682,7 @@ export default function FlowPage() {
             <div className="h-full bg-[#FF6B2C] transition-all duration-500" style={{ width: progressWidth }}></div>
           </div>
           <main className="flex-1 w-full max-w-[390px] mx-auto px-5 pt-[60px] pb-[120px] flex flex-col justify-center items-center">
+            <span className="text-zinc-500 font-medium text-sm mb-4">Step {stepCounterMap[12]} of 12</span>
             <h2 className="text-[20px] font-extrabold text-[#1A1A1A] text-center mb-6 leading-tight">
               How quickly do you want results?
             </h2>
@@ -715,7 +720,7 @@ export default function FlowPage() {
         </div>
       )}
 
-      {/* ===== STEP 13: INFO GOOD (stitch/12_info_good.html) ===== */}
+      {/* ===== STEP 13: STRONG MATCH INFO (was step 13) — no step counter ===== */}
       {step === 13 && (
         <div className="bg-white text-[#1A1A1A] antialiased min-h-dvh max-h-dvh overflow-hidden">
           <div className="flex flex-col min-h-dvh max-h-dvh max-w-[390px] mx-auto relative overflow-hidden">
@@ -765,8 +770,63 @@ export default function FlowPage() {
         </div>
       )}
 
-      {/* ===== STEP 14: COMMITMENT ===== */}
+      {/* ===== STEP 14: DAILY TRAINING TIME (was step 8) ===== */}
       {step === 14 && (
+        <div className="bg-white text-[#1A1A1A] min-h-dvh max-h-dvh overflow-hidden flex flex-col items-center">
+          <div className="fixed top-0 left-0 w-full z-50 flex flex-col bg-white">
+            <div className="w-full h-1 bg-gray-100">
+              <div className="h-full bg-[#FF6B2C]" style={{ width: progressWidth }}></div>
+            </div>
+            <div className="flex items-center justify-between px-4 h-14 border-b-4 border-gray-100">
+              <button onClick={() => setStep(Math.max(0, step - 1))} className="p-2 text-[#71717A] hover:bg-gray-100 transition-colors active:scale-95 duration-150">
+                <span className="material-symbols-outlined">arrow_back</span>
+              </button>
+              <h1 className="text-xl font-black tracking-tighter text-[#1A1A1A] font-sans antialiased uppercase">PEAKCORE</h1>
+              <div className="w-10"></div>
+            </div>
+          </div>
+          <main className="w-full max-w-[390px] mx-auto px-5 pt-[60px] pb-[120px] flex-grow flex flex-col justify-center">
+            <span className="text-zinc-500 font-medium text-sm text-center block mb-4">Step {stepCounterMap[14]} of 12</span>
+            <div className="mb-8 rounded-2xl overflow-hidden aspect-video bg-gray-50 flex items-center justify-center">
+              <img className="w-full h-full object-cover opacity-90" alt="Modern high-end gym interior with clean lighting and premium equipment in soft focus, fitness lifestyle aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK2Nbme08-dBA_9t1THNRkFAKZKsrfLB_ZX0Rdb2_3jICvamphKufR1wq9Ij44XHdyZjGqAdnwArVQ6nSnYLFMuu1weEFdqIp4_NNNLTyAu1t0fNYo-aDvIdXEk7bNXHRaOpaR6BIhIjgdKbVsSaQMOGDrgQbXThGo_dZCHztjeqZfr4gOOCiVcpaRUzgGA34AmUJaMr7vJ1ojFEbQBk9vPXwGLFw0ZCIXJOaGcM6d-xajQhK2FVQ7TD1hGDz-evqfaEW5n_r6q2fe" />
+            </div>
+            <div className="text-center mb-6">
+              <h2 className="text-[20px] font-extrabold tracking-tight text-[#1A1A1A] mb-3">Daily training time?</h2>
+              <p className="text-[#71717A] text-base">Select the duration that best fits your lifestyle. Consistency is key.</p>
+            </div>
+            <div className="grid grid-cols-3 gap-3 w-full">
+              <button onClick={() => setSelected("3min")} className={`option-tap group flex flex-col items-center justify-center p-4 border rounded-xl aspect-square transition-all duration-200 active:scale-95 ${selected === "3min" ? "option-selected border-[#FF6B2C]" : "bg-white border-[#E4E4E7] hover:border-[#FF6B2C] hover:bg-[#FFF4EE]"}`}>
+                <span className={`text-3xl mb-3 ${selected === "3min" ? "icon-selected" : "icon-bounce"}`}>⚡</span>
+                <span className="text-sm font-bold text-[#1A1A1A]">3 min</span>
+              </button>
+              <button onClick={() => setSelected("5min")} className={`option-tap group flex flex-col items-center justify-center p-4 border rounded-xl aspect-square transition-all duration-200 active:scale-95 ${selected === "5min" ? "option-selected border-[#FF6B2C]" : "bg-white border-[#E4E4E7] hover:border-[#FF6B2C] hover:bg-[#FFF4EE]"}`}>
+                <span className={`text-3xl mb-3 ${selected === "5min" ? "icon-selected" : "icon-bounce"}`}>⏱️</span>
+                <span className="text-sm font-bold text-[#1A1A1A]">5 min</span>
+              </button>
+              <button onClick={() => setSelected("10min")} className={`option-tap group flex flex-col items-center justify-center p-4 border rounded-xl aspect-square transition-all duration-200 active:scale-95 ${selected === "10min" ? "option-selected border-[#FF6B2C]" : "bg-white border-[#E4E4E7] hover:border-[#FF6B2C] hover:bg-[#FFF4EE]"}`}>
+                <span className={`text-3xl mb-3 ${selected === "10min" ? "icon-selected" : "icon-bounce"}`}>💪</span>
+                <span className="text-sm font-bold text-[#1A1A1A]">10+ min</span>
+              </button>
+            </div>
+            <p className="text-center text-xs text-[#71717A] italic mt-6 mb-2">Even 3 minutes a day builds real, lasting strength</p>
+            <div className="mt-6 p-5 bg-[#F7F7F8] rounded-2xl flex items-start gap-4">
+              <div className="bg-[#FFF4EE] p-2 rounded-lg">
+                <span className="material-symbols-outlined text-[#FF6B2C]">info</span>
+              </div>
+              <div>
+                <h4 className="text-sm font-bold text-[#1A1A1A] mb-1">PeakCore Tip</h4>
+                <p className="text-xs text-[#71717A] leading-relaxed">Urologists recommend 5 minutes of daily pelvic floor training as a first-line approach for men over 30.</p>
+              </div>
+            </div>
+          </main>
+          <div className="fixed bottom-0 left-0 right-0 z-50 px-5 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[390px] mx-auto">
+            <button disabled={!selected} onClick={() => { next(); }} className={`w-full max-w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
+          </div>
+        </div>
+      )}
+
+      {/* ===== STEP 15: COMMITMENT (was step 14) ===== */}
+      {step === 15 && (
         <div className="bg-white text-[#1A1A1A] antialiased min-h-dvh max-h-dvh overflow-hidden flex flex-col items-center">
           <div className="fixed top-0 left-0 w-full h-1 bg-zinc-200 z-[60]">
             <div className="h-full bg-[#FF6B2C]" style={{ width: progressWidth }}></div>
@@ -780,6 +840,7 @@ export default function FlowPage() {
           </header>
           <main className="flex-1 w-full max-w-[390px] mx-auto flex flex-col px-5 pt-[60px] pb-[120px]">
             <div className="flex-1 flex flex-col justify-center items-center">
+              <span className="text-zinc-500 font-medium text-sm mb-4">Step {stepCounterMap[15]} of 12</span>
               <h1 className="text-[20px] font-extrabold text-[#1A1A1A] leading-tight mb-8 text-center">
                 Are you ready to commit to 5 minutes a day for the next 30 days?
               </h1>
@@ -808,8 +869,8 @@ export default function FlowPage() {
         </div>
       )}
 
-      {/* ===== STEP 15: TESTIMONIALS ===== */}
-      {step === 15 && (
+      {/* ===== STEP 16: TESTIMONIALS (was step 15) — no step counter ===== */}
+      {step === 16 && (
         <div className="bg-white text-[#1A1A1A] antialiased flex justify-center min-h-dvh max-h-dvh overflow-hidden">
           <div className="w-full max-w-[390px] min-h-dvh max-h-dvh flex flex-col relative overflow-hidden">
             <header className="fixed top-0 left-0 right-0 w-full max-w-[390px] mx-auto z-50 flex items-center justify-between px-4 h-14 bg-white border-b-4 border-zinc-100">
@@ -847,8 +908,8 @@ export default function FlowPage() {
         </div>
       )}
 
-      {/* ===== STEP 16: EMAIL (stitch/15_email.html) ===== */}
-      {step === 16 && (
+      {/* ===== STEP 17: EMAIL CAPTURE (was step 16) — no step counter ===== */}
+      {step === 17 && (
         <div className="flex items-center justify-center min-h-dvh max-h-dvh overflow-hidden bg-[#fcf9f8]">
           <main className="w-[390px] h-[844px] bg-[#fcf9f8] relative overflow-hidden flex flex-col">
             <div className="w-full h-1 bg-[#e5e2e1]">
@@ -856,7 +917,7 @@ export default function FlowPage() {
             </div>
             <div className="mt-4 flex justify-center">
               <span className="font-label text-[0.75rem] uppercase tracking-widest text-[#594139] font-medium">
-                Step 18 of 18
+                Final Step
               </span>
             </div>
             <section className="flex-grow flex flex-col justify-center px-8 pb-12">

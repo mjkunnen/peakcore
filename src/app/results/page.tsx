@@ -24,7 +24,7 @@ export default function ResultsPage() {
       if (scrolledEnough) return;
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (docHeight > 0 && scrollTop / docHeight >= 0.85) {
+      if (docHeight > 0 && scrollTop / docHeight >= 0.60) {
         setScrolledEnough(true);
       }
     };
@@ -125,10 +125,10 @@ export default function ResultsPage() {
               <div className="flex flex-col items-center mb-6">
                 <svg viewBox="0 0 120 70" className="w-[100px] h-[60px]">
                   <path d="M 10 65 A 50 50 0 0 1 110 65" fill="none" stroke="#E4E4E7" strokeWidth="8" strokeLinecap="round"/>
-                  <path d="M 10 65 A 50 50 0 0 1 45 20" fill="none" stroke="#EF4444" strokeWidth="8" strokeLinecap="round"/>
-                  <circle cx="35" cy="30" r="4" fill="#1A1A1A"/>
+                  <path d="M 10 65 A 50 50 0 0 1 55 22" fill="none" stroke="#EF4444" strokeWidth="8" strokeLinecap="round"/>
+                  <circle cx="45" cy="28" r="4" fill="#1A1A1A"/>
                 </svg>
-                <span className="text-lg font-black text-[#1c1b1b] -mt-1">25%</span>
+                <span className="text-lg font-black text-[#1c1b1b] -mt-1">35%</span>
               </div>
               <div className="w-full space-y-3">
                 <div className="flex items-center justify-between text-[11px] font-bold">
@@ -136,21 +136,21 @@ export default function ResultsPage() {
                     <span className="w-2 h-2 rounded-full bg-[#EF4444]"></span>
                     <span className="text-zinc-600">Control</span>
                   </div>
-                  <span className="text-[#EF4444]">Low</span>
+                  <span className="text-[#EF4444]">Weak</span>
                 </div>
                 <div className="flex items-center justify-between text-[11px] font-bold">
                   <div className="flex items-center gap-1.5">
                     <span className="w-2 h-2 rounded-full bg-[#FF6B2C]"></span>
                     <span className="text-zinc-600">Stamina</span>
                   </div>
-                  <span className="text-[#FF6B2C]">Below avg</span>
+                  <span className="text-[#FF6B2C]">Below average</span>
                 </div>
                 <div className="flex items-center justify-between text-[11px] font-bold">
                   <div className="flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-[#EF4444]"></span>
+                    <span className="w-2 h-2 rounded-full bg-[#FF6B2C]"></span>
                     <span className="text-zinc-600">Confidence</span>
                   </div>
-                  <span className="text-[#EF4444]">2/10</span>
+                  <span className="text-[#FF6B2C]">4/10</span>
                 </div>
               </div>
             </div>
@@ -166,10 +166,10 @@ export default function ResultsPage() {
               <div className="flex flex-col items-center mb-6">
                 <svg viewBox="0 0 120 70" className="w-[100px] h-[60px]">
                   <path d="M 10 65 A 50 50 0 0 1 110 65" fill="none" stroke="#E4E4E7" strokeWidth="8" strokeLinecap="round"/>
-                  <path d="M 10 65 A 50 50 0 0 1 95 30" fill="none" stroke="#22C55E" strokeWidth="8" strokeLinecap="round"/>
-                  <circle cx="95" cy="30" r="4" fill="#1A1A1A"/>
+                  <path d="M 10 65 A 50 50 0 0 1 90 25" fill="none" stroke="#22C55E" strokeWidth="8" strokeLinecap="round"/>
+                  <circle cx="85" cy="28" r="4" fill="#1A1A1A"/>
                 </svg>
-                <span className="text-lg font-black text-[#1c1b1b] -mt-1">90%</span>
+                <span className="text-lg font-black text-[#1c1b1b] -mt-1">75%</span>
               </div>
               <div className="w-full space-y-3">
                 <div className="flex items-center justify-between text-[11px] font-bold">
@@ -177,21 +177,21 @@ export default function ResultsPage() {
                     <span className="w-2 h-2 rounded-full bg-[#22C55E]"></span>
                     <span className="text-zinc-600">Control</span>
                   </div>
-                  <span className="text-[#22C55E]">Strong</span>
+                  <span className="text-[#22C55E]">Improved</span>
                 </div>
                 <div className="flex items-center justify-between text-[11px] font-bold">
                   <div className="flex items-center gap-1.5">
                     <span className="w-2 h-2 rounded-full bg-[#22C55E]"></span>
                     <span className="text-zinc-600">Stamina</span>
                   </div>
-                  <span className="text-[#22C55E]">Above avg</span>
+                  <span className="text-[#22C55E]">Above average</span>
                 </div>
                 <div className="flex items-center justify-between text-[11px] font-bold">
                   <div className="flex items-center gap-1.5">
                     <span className="w-2 h-2 rounded-full bg-[#22C55E]"></span>
                     <span className="text-zinc-600">Confidence</span>
                   </div>
-                  <span className="text-[#22C55E]">9/10</span>
+                  <span className="text-[#22C55E]">7/10</span>
                 </div>
               </div>
             </div>
@@ -342,7 +342,7 @@ export default function ResultsPage() {
               <span className="material-symbols-outlined text-[#ff6b2c] text-2xl">lock</span>
               <div>
                 <p className="text-[13px] font-bold leading-none mb-1 text-[#1c1b1b]">100% private</p>
-                <p className="text-[11px] text-zinc-500 leading-tight">No app. Just email.</p>
+                <p className="text-[11px] text-zinc-500 leading-tight">Train discreetly, anywhere</p>
               </div>
             </div>
           </div>
@@ -428,36 +428,36 @@ export default function ResultsPage() {
               </section>
 
               <div className="flex flex-col gap-3 px-4 mt-6">
-                {/* Card 1: 1 Week */}
-                <div onClick={() => setSelectedPlan("1week")} className={`option-tap cursor-pointer flex flex-col p-5 bg-white border-2 rounded-xl shadow-sm active:scale-[0.98] transition-all ${selectedPlan === "1week" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7]"}`}>
+                {/* Card 1: 2 Week Starter */}
+                <div onClick={() => setSelectedPlan("2week")} className={`option-tap cursor-pointer flex flex-col p-5 bg-white border-2 rounded-xl shadow-sm active:scale-[0.98] transition-all ${selectedPlan === "2week" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7]"}`}>
                   <div className="flex justify-between items-start">
                     <div className="flex flex-col">
-                      <span className="text-[14px] font-bold tracking-tight text-[#1c1b1b]">1-WEEK TRIAL</span>
+                      <span className="text-[14px] font-bold tracking-tight text-[#1c1b1b]">2-WEEK STARTER</span>
                     </div>
                     <div className="flex flex-col items-end">
-                      <span className="text-[20px] font-bold text-[#1c1b1b]">$9.99</span>
+                      <span className="text-[20px] font-bold text-[#1c1b1b]">$14.99</span>
                     </div>
                   </div>
                   <div className="flex justify-end mt-1">
-                    <span className="text-[12px] text-[#71717A]">$1.43/day</span>
+                    <span className="text-[12px] text-[#71717A]">$1.07/day</span>
                   </div>
                 </div>
 
-                {/* Card 2: 4 Weeks HIGHLIGHTED */}
-                <div onClick={() => setSelectedPlan("4week")} className={`option-tap cursor-pointer relative flex flex-col p-5 border-2 rounded-xl active:scale-[0.98] transition-all ${selectedPlan === "4week" ? "option-selected border-[#FF6B2C] bg-[#FFF4EE]" : "bg-white border-[#E4E4E7]"}`}>
+                {/* Card 2: 8 Weeks HIGHLIGHTED */}
+                <div onClick={() => setSelectedPlan("8week")} className={`option-tap cursor-pointer relative flex flex-col p-5 border-2 rounded-xl active:scale-[0.98] transition-all ${selectedPlan === "8week" ? "option-selected border-[#FF6B2C] bg-[#FFF4EE]" : "bg-white border-[#E4E4E7]"}`}>
                   <div className="absolute -top-3 right-4 bg-[#FF6B2C] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                     MOST POPULAR
                   </div>
                   <div className="flex justify-between items-start pt-1">
                     <div className="flex flex-col">
-                      <span className="text-[14px] font-bold tracking-tight text-[#1c1b1b]">4-WEEK PLAN</span>
+                      <span className="text-[14px] font-bold tracking-tight text-[#1c1b1b]">8-WEEK PROGRAM</span>
                     </div>
                     <div className="flex flex-col items-end">
-                      <span className="text-[28px] font-bold text-[#1c1b1b] leading-none">$39.99</span>
+                      <span className="text-[28px] font-bold text-[#1c1b1b] leading-none">$49.99</span>
                     </div>
                   </div>
                   <div className="flex justify-end mt-2">
-                    <span className="text-[12px] text-[#71717A]">$1.33/day</span>
+                    <span className="text-[12px] text-[#71717A]">$0.89/day</span>
                   </div>
                 </div>
 
@@ -466,7 +466,7 @@ export default function ResultsPage() {
                   <div className="flex justify-between items-start">
                     <div className="flex flex-col">
                       <div className="flex items-center gap-2">
-                        <span className="text-[14px] font-bold tracking-tight text-[#1c1b1b]">12-WEEK PLAN</span>
+                        <span className="text-[14px] font-bold tracking-tight text-[#1c1b1b]">12-WEEK COMPLETE</span>
                         <div className="bg-[#22C55E]/10 text-[#22C55E] text-[10px] font-bold px-2 py-0.5 rounded border border-[#22C55E]/20">BEST VALUE</div>
                       </div>
                     </div>
@@ -482,7 +482,7 @@ export default function ResultsPage() {
 
               {/* Social Proof */}
               <p className="text-center text-[12px] italic text-[#71717A] px-8 mt-6">
-                &quot;People who train for 12 weeks see 2x the results vs 4 weeks&quot;
+                &quot;Men who train for 8+ weeks report lasting improvements vs shorter programs&quot;
               </p>
 
               {/* CTA Button */}
@@ -500,11 +500,12 @@ export default function ResultsPage() {
                     <span className="material-symbols-outlined text-[12px]">lock</span>
                     Secured by Stripe
                   </div>
+                  <p className="text-[12px] text-[#71717A] mt-2 text-center">📧 We&apos;ll email you 3 days before renewal — no surprises</p>
                 </div>
               </div>
 
               <p className="text-[10px] text-[#9CA3AF] text-center leading-relaxed px-10 mt-6">
-                Auto-renews at $39.99/mo after intro period unless cancelled. See Subscription Terms.
+                Renews at $19.99/mo after intro period. Cancel anytime with one click.
               </p>
             </>
           ) : (
@@ -527,43 +528,43 @@ export default function ResultsPage() {
 
               {/* Pricing Cards Stack */}
               <div className="flex flex-col gap-3 px-4 mt-6">
-                {/* Card 1: 1 Week Trial */}
-                <div onClick={() => setSelectedPlan("d1week")} className={`option-tap cursor-pointer flex flex-col p-5 bg-white border-2 rounded-xl shadow-sm active:scale-[0.98] transition-all ${selectedPlan === "d1week" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7]"}`}>
+                {/* Card 1: 2 Week Starter */}
+                <div onClick={() => setSelectedPlan("d2week")} className={`option-tap cursor-pointer flex flex-col p-5 bg-white border-2 rounded-xl shadow-sm active:scale-[0.98] transition-all ${selectedPlan === "d2week" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7]"}`}>
                   <div className="flex justify-between items-start">
                     <div className="flex flex-col">
-                      <span className="text-[14px] font-bold tracking-tight text-[#1c1b1b]">1-WEEK TRIAL</span>
+                      <span className="text-[14px] font-bold tracking-tight text-[#1c1b1b]">2-WEEK STARTER</span>
                     </div>
                     <div className="flex flex-col items-end">
                       <div className="flex items-center gap-2">
-                        <span className="text-[14px] line-through text-[#9CA3AF]">$9.99</span>
-                        <span className="text-[20px] font-bold text-[#1c1b1b]">$4.99</span>
+                        <span className="text-[14px] line-through text-[#9CA3AF]">$14.99</span>
+                        <span className="text-[20px] font-bold text-[#1c1b1b]">$6.99</span>
                       </div>
                     </div>
                   </div>
                   <div className="flex justify-end mt-1">
-                    <span className="text-[12px] text-[#71717A]">$0.71/day</span>
+                    <span className="text-[12px] text-[#71717A]">$0.50/day</span>
                   </div>
                 </div>
 
-                {/* Card 2: 4 Weeks HIGHLIGHTED */}
-                <div onClick={() => setSelectedPlan("d4week")} className={`option-tap cursor-pointer relative flex flex-col p-5 border-2 rounded-xl active:scale-[0.98] transition-all ${selectedPlan === "d4week" ? "option-selected border-[#FF6B2C]" : "bg-[#FFF4EE] border-[#FF6B2C]"}`}>
+                {/* Card 2: 8 Weeks HIGHLIGHTED */}
+                <div onClick={() => setSelectedPlan("d8week")} className={`option-tap cursor-pointer relative flex flex-col p-5 border-2 rounded-xl active:scale-[0.98] transition-all ${selectedPlan === "d8week" ? "option-selected border-[#FF6B2C]" : "bg-[#FFF4EE] border-[#FF6B2C]"}`}>
                   <div className="absolute -top-3 right-4 bg-[#FF6B2C] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                    MOST POPULAR
+                    RECOMMENDED
                   </div>
                   <div className="flex justify-between items-start pt-1">
                     <div className="flex flex-col gap-2">
-                      <span className="text-[14px] font-bold tracking-tight text-[#1c1b1b]">4-WEEK PLAN</span>
+                      <span className="text-[14px] font-bold tracking-tight text-[#1c1b1b]">8-WEEK PROGRAM</span>
                       <div className="w-fit bg-[#FF6B2C] text-white text-[10px] font-bold px-2 py-0.5 rounded">LAUNCH PRICE</div>
                     </div>
                     <div className="flex flex-col items-end">
                       <div className="flex items-center gap-2">
-                        <span className="text-[16px] line-through text-[#9CA3AF]">$39.99</span>
-                        <span className="text-[28px] font-bold text-[#1c1b1b] leading-none">$9.99</span>
+                        <span className="text-[16px] line-through text-[#9CA3AF]">$49.99</span>
+                        <span className="text-[28px] font-bold text-[#1c1b1b] leading-none">$12.99</span>
                       </div>
                     </div>
                   </div>
                   <div className="flex justify-end mt-2">
-                    <span className="text-[12px] text-[#71717A]">$0.33/day</span>
+                    <span className="text-[12px] text-[#71717A]">$0.23/day</span>
                   </div>
                 </div>
 
@@ -572,10 +573,9 @@ export default function ResultsPage() {
                   <div className="flex justify-between items-start">
                     <div className="flex flex-col gap-2">
                       <div className="flex items-center gap-2">
-                        <span className="text-[14px] font-bold tracking-tight text-[#1c1b1b]">12-WEEK PLAN</span>
+                        <span className="text-[14px] font-bold tracking-tight text-[#1c1b1b]">12-WEEK COMPLETE</span>
                         <div className="bg-[#22C55E]/10 text-[#22C55E] text-[10px] font-bold px-2 py-0.5 rounded border border-[#22C55E]/20">BEST VALUE</div>
                       </div>
-                      <div className="w-fit bg-[#22C55E] text-white text-[10px] font-bold px-2 py-0.5 rounded">BEST VALUE</div>
                     </div>
                     <div className="flex flex-col items-end">
                       <div className="flex items-center gap-2">
@@ -592,7 +592,7 @@ export default function ResultsPage() {
 
               {/* Social Proof Metric */}
               <p className="text-center text-[12px] italic text-[#71717A] px-8 mt-6">
-                &quot;People who train for 12 weeks see 2x the results vs 4 weeks&quot;
+                &quot;Men who train for 8+ weeks report lasting improvements vs shorter programs&quot;
               </p>
 
               {/* Main Action CTA */}
@@ -611,12 +611,13 @@ export default function ResultsPage() {
                     <span className="material-symbols-outlined text-[12px]">lock</span>
                     Secured by Stripe
                   </div>
+                  <p className="text-[12px] text-[#71717A] mt-2 text-center">📧 We&apos;ll email you 3 days before renewal — no surprises</p>
                 </div>
               </div>
 
               {/* Footnote / Fine Print */}
               <p className="text-[10px] text-[#9CA3AF] text-center leading-relaxed px-10 mt-6">
-                Auto-renews at $39.99/mo after intro period unless cancelled. See Subscription Terms.
+                Renews at $19.99/mo after intro period. Cancel anytime with one click.
               </p>
 
               {/* Final Urgency Reminder */}
@@ -651,18 +652,18 @@ export default function ResultsPage() {
             {/* Pricing options */}
             <div className="w-full space-y-3 mb-6">
               <div className="flex justify-between items-center p-4 border border-[#E4E4E7] rounded-xl">
-                <span className="text-[14px] font-bold text-[#1c1b1b]">1-WEEK</span>
+                <span className="text-[14px] font-bold text-[#1c1b1b]">2-WEEK</span>
                 <div className="flex items-center gap-2">
-                  <span className="text-[13px] line-through text-[#9CA3AF]">$9.99</span>
-                  <span className="text-[18px] font-bold text-[#1c1b1b]">$4.99</span>
+                  <span className="text-[13px] line-through text-[#9CA3AF]">$14.99</span>
+                  <span className="text-[18px] font-bold text-[#1c1b1b]">$6.99</span>
                 </div>
               </div>
               <div className="flex justify-between items-center p-4 border-2 border-[#FF6B2C] rounded-xl bg-[#FFF4EE] relative">
                 <div className="absolute -top-2.5 right-3 bg-[#FF6B2C] text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">RECOMMENDED</div>
-                <span className="text-[14px] font-bold text-[#1c1b1b]">4-WEEK</span>
+                <span className="text-[14px] font-bold text-[#1c1b1b]">8-WEEK</span>
                 <div className="flex items-center gap-2">
-                  <span className="text-[13px] line-through text-[#9CA3AF]">$39.99</span>
-                  <span className="text-[18px] font-bold text-[#1c1b1b]">$9.99</span>
+                  <span className="text-[13px] line-through text-[#9CA3AF]">$49.99</span>
+                  <span className="text-[18px] font-bold text-[#1c1b1b]">$12.99</span>
                 </div>
               </div>
               <div className="flex justify-between items-center p-4 border border-[#E4E4E7] rounded-xl relative">
@@ -677,7 +678,8 @@ export default function ResultsPage() {
 
             {/* Trust text */}
             <p className="text-[12px] text-[#71717A] text-center mb-1">30-day money-back guarantee · Cancel anytime</p>
-            <p className="text-[11px] text-[#9CA3AF] text-center mb-5">Discreet billing — shows as &apos;PKC Digital&apos; on your statement</p>
+            <p className="text-[11px] text-[#9CA3AF] text-center mb-2">Discreet billing — shows as &apos;PKC Digital&apos; on your statement</p>
+            <p className="text-[12px] text-[#71717A] text-center mb-5">📧 We&apos;ll email you 3 days before renewal — no surprises</p>
 
             {/* CTA */}
             <button
