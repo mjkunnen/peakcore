@@ -46,37 +46,37 @@ export default function FlowPage() {
             <div className="flex-1 flex flex-col justify-center items-center w-full">
               <h2 className="text-[20px] font-bold text-[#1A1A1A] text-center mb-6 leading-tight">What&apos;s your main goal?</h2>
               <div className="flex flex-col gap-3 w-full">
-                <button onClick={() => setSelected("longer")} className={`option-tap w-full max-w-full h-[60px] bg-white border rounded-[12px] flex items-center justify-between px-5 transition-all ${selected === "longer" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:bg-orange-50/30"}`}>
+                <button onClick={() => setSelected("stamina")} className={`option-tap w-full max-w-full h-[60px] bg-white border rounded-[12px] flex items-center justify-between px-5 transition-all ${selected === "stamina" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:bg-orange-50/30"}`}>
                   <div className="flex items-center gap-4">
-                    <span className={`text-[20px] ${selected === "longer" ? "icon-selected" : "icon-bounce"}`}>⏱️</span>
-                    <span className="text-[15px] font-medium text-[#1A1A1A]">Last longer in bed</span>
+                    <span className={`text-[20px] ${selected === "stamina" ? "icon-selected" : "icon-bounce"}`}>💪</span>
+                    <span className="text-[15px] font-medium text-[#1A1A1A]">Regain the stamina I used to have</span>
                   </div>
                   <span className="text-[#AAAAAA] text-xl">&rsaquo;</span>
                 </button>
                 <button onClick={() => setSelected("control")} className={`option-tap w-full max-w-full h-[60px] bg-white border rounded-[12px] flex items-center justify-between px-5 transition-all ${selected === "control" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:bg-orange-50/30"}`}>
                   <div className="flex items-center gap-4">
                     <span className={`text-[20px] ${selected === "control" ? "icon-selected" : "icon-bounce"}`}>🎯</span>
-                    <span className="text-[15px] font-medium text-[#1A1A1A]">Better control</span>
+                    <span className="text-[15px] font-medium text-[#1A1A1A]">Take back control in the bedroom</span>
                   </div>
                   <span className="text-[#AAAAAA] text-xl">&rsaquo;</span>
                 </button>
                 <button onClick={() => setSelected("stronger")} className={`option-tap w-full max-w-full h-[60px] bg-white border rounded-[12px] flex items-center justify-between px-5 transition-all ${selected === "stronger" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:bg-orange-50/30"}`}>
                   <div className="flex items-center gap-4">
                     <span className={`text-[20px] ${selected === "stronger" ? "icon-selected" : "icon-bounce"}`}>⚡</span>
-                    <span className="text-[15px] font-medium text-[#1A1A1A]">Stronger finish</span>
+                    <span className="text-[15px] font-medium text-[#1A1A1A]">Strengthen my body from the inside</span>
                   </div>
                   <span className="text-[#AAAAAA] text-xl">&rsaquo;</span>
                 </button>
                 <button onClick={() => setSelected("health")} className={`option-tap w-full max-w-full h-[60px] bg-white border rounded-[12px] flex items-center justify-between px-5 transition-all ${selected === "health" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:bg-orange-50/30"}`}>
                   <div className="flex items-center gap-4">
-                    <span className={`text-[20px] ${selected === "health" ? "icon-selected" : "icon-bounce"}`}>❤️</span>
-                    <span className="text-[15px] font-medium text-[#1A1A1A]">Overall health</span>
+                    <span className={`text-[20px] ${selected === "health" ? "icon-selected" : "icon-bounce"}`}>🏥</span>
+                    <span className="text-[15px] font-medium text-[#1A1A1A]">Address a health concern proactively</span>
                   </div>
                   <span className="text-[#AAAAAA] text-xl">&rsaquo;</span>
                 </button>
               </div>
             </div>
-            <p className="text-[#71717A] italic text-sm text-center mt-8">Small steps lead to peak performance</p>
+            <p className="text-[#71717A] italic text-sm text-center mt-8">You&apos;re already ahead — most men never take this step</p>
           </main>
           <div className="fixed bottom-0 left-0 right-0 z-50 px-5 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[390px] mx-auto">
             <button disabled={!selected} onClick={() => { next(); }} className={`w-full max-w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
@@ -103,23 +103,23 @@ export default function FlowPage() {
             </div>
             <h1 className="text-[20px] font-extrabold text-[#2d2e36] text-center mb-6 leading-tight">Your age?</h1>
             <div className="grid grid-cols-2 gap-4 mb-8">
-              <button onClick={() => setSelected("18-25")} className={`option-tap group flex flex-col items-center justify-center aspect-square bg-white border-2 rounded-xl transition-all duration-200 active:scale-[0.98] ${selected === "18-25" ? "option-selected border-[#FF6B2C]" : "border-[#adacb6] hover:border-[#a33700]"}`}>
-                <span className={`text-xl font-bold transition-colors ${selected === "18-25" ? "text-[#FF6B2C]" : "text-[#2d2e36] group-hover:text-[#a33700]"}`}>18-25</span>
+              <button onClick={() => setSelected("25-34")} className={`option-tap group flex flex-col items-center justify-center aspect-square bg-white border-2 rounded-xl transition-all duration-200 active:scale-[0.98] ${selected === "25-34" ? "option-selected border-[#FF6B2C]" : "border-[#adacb6] hover:border-[#a33700]"}`}>
+                <span className={`text-xl font-bold transition-colors ${selected === "25-34" ? "text-[#FF6B2C]" : "text-[#2d2e36] group-hover:text-[#a33700]"}`}>25-34</span>
               </button>
-              <button onClick={() => setSelected("26-35")} className={`option-tap group flex flex-col items-center justify-center aspect-square bg-white border-2 rounded-xl transition-all duration-200 active:scale-[0.98] ${selected === "26-35" ? "option-selected border-[#FF6B2C]" : "border-[#adacb6] hover:border-[#a33700]"}`}>
-                <span className={`text-xl font-bold transition-colors ${selected === "26-35" ? "text-[#FF6B2C]" : "text-[#2d2e36] group-hover:text-[#a33700]"}`}>26-35</span>
+              <button onClick={() => setSelected("35-44")} className={`option-tap group flex flex-col items-center justify-center aspect-square bg-white border-2 rounded-xl transition-all duration-200 active:scale-[0.98] ${selected === "35-44" ? "option-selected border-[#FF6B2C]" : "border-[#adacb6] hover:border-[#a33700]"}`}>
+                <span className={`text-xl font-bold transition-colors ${selected === "35-44" ? "text-[#FF6B2C]" : "text-[#2d2e36] group-hover:text-[#a33700]"}`}>35-44</span>
               </button>
-              <button onClick={() => setSelected("36-50")} className={`option-tap group flex flex-col items-center justify-center aspect-square bg-white border-2 rounded-xl transition-all duration-200 active:scale-[0.98] ${selected === "36-50" ? "option-selected border-[#FF6B2C]" : "border-[#adacb6] hover:border-[#a33700]"}`}>
-                <span className={`text-xl font-bold transition-colors ${selected === "36-50" ? "text-[#FF6B2C]" : "text-[#2d2e36] group-hover:text-[#a33700]"}`}>36-50</span>
+              <button onClick={() => setSelected("45-54")} className={`option-tap group flex flex-col items-center justify-center aspect-square bg-white border-2 rounded-xl transition-all duration-200 active:scale-[0.98] ${selected === "45-54" ? "option-selected border-[#FF6B2C]" : "border-[#adacb6] hover:border-[#a33700]"}`}>
+                <span className={`text-xl font-bold transition-colors ${selected === "45-54" ? "text-[#FF6B2C]" : "text-[#2d2e36] group-hover:text-[#a33700]"}`}>45-54</span>
               </button>
-              <button onClick={() => setSelected("50+")} className={`option-tap group flex flex-col items-center justify-center aspect-square bg-white border-2 rounded-xl transition-all duration-200 active:scale-[0.98] ${selected === "50+" ? "option-selected border-[#FF6B2C]" : "border-[#adacb6] hover:border-[#a33700]"}`}>
-                <span className={`text-xl font-bold transition-colors ${selected === "50+" ? "text-[#FF6B2C]" : "text-[#2d2e36] group-hover:text-[#a33700]"}`}>50+</span>
+              <button onClick={() => setSelected("55+")} className={`option-tap group flex flex-col items-center justify-center aspect-square bg-white border-2 rounded-xl transition-all duration-200 active:scale-[0.98] ${selected === "55+" ? "option-selected border-[#FF6B2C]" : "border-[#adacb6] hover:border-[#a33700]"}`}>
+                <span className={`text-xl font-bold transition-colors ${selected === "55+" ? "text-[#FF6B2C]" : "text-[#2d2e36] group-hover:text-[#a33700]"}`}>55+</span>
               </button>
             </div>
             <div className="flex items-center justify-center gap-3 p-4 bg-[#f1effb] rounded-xl">
               <span className="material-symbols-outlined text-[#a33700]" style={{ fontVariationSettings: "'FILL' 1" }}>bolt</span>
               <p className="text-sm text-[#5a5b63] leading-relaxed">
-                Personalizing your training based on your age helps us optimize your pelvic floor recovery speed.
+                After 30, pelvic floor muscles weaken at the same rate as any other muscle. Your plan adapts to where you are now.
               </p>
             </div>
           </main>
@@ -147,25 +147,25 @@ export default function FlowPage() {
               <span className="text-[10px] font-bold tracking-widest text-[#71717A] uppercase">STEP 3 OF 18</span>
             </div>
             <h2 className="text-[20px] font-extrabold text-[#1A1A1A] text-center leading-tight mb-6">
-              How active are you?
+              How would you describe your current fitness?
             </h2>
             <div className="flex flex-col gap-4">
               <button onClick={() => setSelected("very")} className={`option-tap group relative w-full flex flex-col items-center justify-center py-8 px-6 border-2 rounded-xl transition-all duration-200 active:scale-[0.98] ${selected === "very" ? "option-selected border-[#FF6B2C]" : "bg-[#F7F7F8] border-[#E4E4E7] hover:border-[#FF6B2C] hover:bg-[#FFF4EE]"}`}>
                 <span className={`text-4xl mb-3 ${selected === "very" ? "icon-selected" : "icon-bounce"}`}>🏃</span>
-                <span className="text-lg font-bold text-[#1A1A1A]">Very active</span>
+                <span className="text-lg font-bold text-[#1A1A1A]">In good shape, want an edge</span>
               </button>
               <button onClick={() => setSelected("somewhat")} className={`option-tap group relative w-full flex flex-col items-center justify-center py-8 px-6 border-2 rounded-xl transition-all duration-200 active:scale-[0.98] ${selected === "somewhat" ? "option-selected border-[#FF6B2C]" : "bg-[#F7F7F8] border-[#E4E4E7] hover:border-[#FF6B2C] hover:bg-[#FFF4EE]"}`}>
                 <span className={`text-4xl mb-3 ${selected === "somewhat" ? "icon-selected" : "icon-bounce"}`}>🚶</span>
-                <span className="text-lg font-bold text-[#1A1A1A]">Somewhat active</span>
+                <span className="text-lg font-bold text-[#1A1A1A]">Average, room to improve</span>
               </button>
               <button onClick={() => setSelected("not")} className={`option-tap group relative w-full flex flex-col items-center justify-center py-8 px-6 border-2 rounded-xl transition-all duration-200 active:scale-[0.98] ${selected === "not" ? "option-selected border-[#FF6B2C]" : "bg-[#F7F7F8] border-[#E4E4E7] hover:border-[#FF6B2C] hover:bg-[#FFF4EE]"}`}>
-                <span className={`text-4xl mb-3 ${selected === "not" ? "icon-selected" : "icon-bounce"}`}>🛋️</span>
-                <span className="text-lg font-bold text-[#1A1A1A]">Not very active</span>
+                <span className={`text-4xl mb-3 ${selected === "not" ? "icon-selected" : "icon-bounce"}`}>🪫</span>
+                <span className="text-lg font-bold text-[#1A1A1A]">Dealing with low energy or tension</span>
               </button>
             </div>
             <div className="mt-10 text-center">
               <p className="text-[#71717A] italic text-sm font-medium tracking-tight">
-                Every fitness level can see results ✨
+                Every starting point leads to results — your plan adjusts automatically
               </p>
             </div>
           </main>
@@ -220,7 +220,7 @@ export default function FlowPage() {
                 </button>
               </div>
               <p className="text-center text-[#71717A] italic text-sm mt-8 mb-4 px-6">
-                This time, you&apos;ll have a proven system 🎯
+                This time, you&apos;ll have a structured, clinician-backed system
               </p>
             </div>
           </main>
@@ -248,7 +248,7 @@ export default function FlowPage() {
           <main className="flex-1 w-full max-w-[390px] mx-auto px-5 pt-[60px] pb-[120px] flex flex-col">
             <div className="mt-6 mb-6 text-center">
               <h2 className="text-[20px] font-black text-[#1A1A1A] leading-tight tracking-tight">
-                When did you first notice?
+                When did you first notice changes?
               </h2>
             </div>
             <div className="space-y-4 flex-1">
@@ -283,7 +283,7 @@ export default function FlowPage() {
             </div>
             <div className="mt-6 text-center px-4">
               <p className="text-sm font-medium text-[#71717A] leading-relaxed italic">
-                &ldquo;Small steps daily lead to peak performance.&rdquo;
+                You&apos;re not alone — this is more common than you think
               </p>
             </div>
           </main>
@@ -314,7 +314,7 @@ export default function FlowPage() {
                 <span className="text-zinc-500 font-medium text-sm">Step 6 of 18</span>
               </div>
               <h1 className="text-[20px] font-extrabold text-[#1A1A1A] text-center leading-tight">
-                How often does this affect you?
+                In the past 3 months, how often has this been an issue?
               </h1>
               <div className="pt-12 pb-8 px-2">
                 <div className="relative w-full">
@@ -331,7 +331,7 @@ export default function FlowPage() {
                 </div>
               </div>
               <p className="text-center text-[#71717A] italic text-sm mt-8 mb-4 px-5">
-                Honesty helps us build your perfect plan
+                No judgment — this helps us build your personalized protocol
               </p>
             </div>
           </main>
@@ -365,28 +365,35 @@ export default function FlowPage() {
                 <button onClick={() => setSelected("didnt_work")} className={`option-tap w-full h-14 px-5 flex items-center justify-between bg-white border rounded-xl transition-all duration-100 ${selected === "didnt_work" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:border-[#FF6B2C] hover:bg-[#FFF4EE]"}`}>
                   <div className="flex items-center gap-4">
                     <span className={`text-xl ${selected === "didnt_work" ? "icon-selected" : "icon-bounce"}`}>❌</span>
-                    <span className="text-[#1A1A1A] font-semibold text-[17px]">Yes, didn&apos;t work</span>
+                    <span className="text-[#1A1A1A] font-semibold text-[17px]">Yes, but nothing really worked</span>
                   </div>
                   <span className={`material-symbols-outlined text-[18px] ${selected === "didnt_work" ? "text-[#FF6B2C]" : "text-[#71717A]"}`}>arrow_forward_ios</span>
                 </button>
-                <button onClick={() => setSelected("helped")} className={`option-tap w-full h-14 px-5 flex items-center justify-between bg-white border rounded-xl transition-all duration-100 ${selected === "helped" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:border-[#FF6B2C] hover:bg-[#FFF4EE]"}`}>
+                <button onClick={() => setSelected("medication")} className={`option-tap w-full h-14 px-5 flex items-center justify-between bg-white border rounded-xl transition-all duration-100 ${selected === "medication" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:border-[#FF6B2C] hover:bg-[#FFF4EE]"}`}>
                   <div className="flex items-center gap-4">
-                    <span className={`text-xl ${selected === "helped" ? "icon-selected" : "icon-bounce"}`}>🔄</span>
-                    <span className="text-[#1A1A1A] font-semibold text-[17px]">Yes, helped a bit</span>
+                    <span className={`text-xl ${selected === "medication" ? "icon-selected" : "icon-bounce"}`}>💊</span>
+                    <span className="text-[#1A1A1A] font-semibold text-[17px]">Yes, including medication or supplements</span>
                   </div>
-                  <span className={`material-symbols-outlined text-[18px] ${selected === "helped" ? "text-[#FF6B2C]" : "text-[#71717A]"}`}>arrow_forward_ios</span>
+                  <span className={`material-symbols-outlined text-[18px] ${selected === "medication" ? "text-[#FF6B2C]" : "text-[#71717A]"}`}>arrow_forward_ios</span>
                 </button>
-                <button onClick={() => setSelected("never_tried")} className={`option-tap w-full h-14 px-5 flex items-center justify-between bg-white border rounded-xl transition-all duration-100 ${selected === "never_tried" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:border-[#FF6B2C] hover:bg-[#FFF4EE]"}`}>
+                <button onClick={() => setSelected("looked")} className={`option-tap w-full h-14 px-5 flex items-center justify-between bg-white border rounded-xl transition-all duration-100 ${selected === "looked" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:border-[#FF6B2C] hover:bg-[#FFF4EE]"}`}>
                   <div className="flex items-center gap-4">
-                    <span className={`text-xl ${selected === "never_tried" ? "icon-selected" : "icon-bounce"}`}>🆕</span>
-                    <span className="text-[#1A1A1A] font-semibold text-[17px]">Never tried anything</span>
+                    <span className={`text-xl ${selected === "looked" ? "icon-selected" : "icon-bounce"}`}>🔍</span>
+                    <span className="text-[#1A1A1A] font-semibold text-[17px]">I&apos;ve looked into it but never committed</span>
                   </div>
-                  <span className={`material-symbols-outlined text-[18px] ${selected === "never_tried" ? "text-[#FF6B2C]" : "text-[#71717A]"}`}>arrow_forward_ios</span>
+                  <span className={`material-symbols-outlined text-[18px] ${selected === "looked" ? "text-[#FF6B2C]" : "text-[#71717A]"}`}>arrow_forward_ios</span>
+                </button>
+                <button onClick={() => setSelected("first_step")} className={`option-tap w-full h-14 px-5 flex items-center justify-between bg-white border rounded-xl transition-all duration-100 ${selected === "first_step" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:border-[#FF6B2C] hover:bg-[#FFF4EE]"}`}>
+                  <div className="flex items-center gap-4">
+                    <span className={`text-xl ${selected === "first_step" ? "icon-selected" : "icon-bounce"}`}>🆕</span>
+                    <span className="text-[#1A1A1A] font-semibold text-[17px]">This is my first step</span>
+                  </div>
+                  <span className={`material-symbols-outlined text-[18px] ${selected === "first_step" ? "text-[#FF6B2C]" : "text-[#71717A]"}`}>arrow_forward_ios</span>
                 </button>
               </div>
               <div className="mt-6 text-center">
                 <p className="text-[14px] text-[#71717A] italic leading-relaxed">
-                  Most solutions fail because they&apos;re not personalized
+                  It&apos;s not your fault — most approaches don&apos;t address the root cause
                 </p>
               </div>
             </main>
@@ -434,14 +441,14 @@ export default function FlowPage() {
                 <span className="text-sm font-bold text-[#1A1A1A]">10+ min</span>
               </button>
             </div>
-            <p className="text-center text-xs text-[#71717A] italic mt-6 mb-2">Even 3 minutes a day can transform your life ⚡</p>
+            <p className="text-center text-xs text-[#71717A] italic mt-6 mb-2">Even 3 minutes a day builds real, lasting strength</p>
             <div className="mt-6 p-5 bg-[#F7F7F8] rounded-2xl flex items-start gap-4">
               <div className="bg-[#FFF4EE] p-2 rounded-lg">
                 <span className="material-symbols-outlined text-[#FF6B2C]">info</span>
               </div>
               <div>
                 <h4 className="text-sm font-bold text-[#1A1A1A] mb-1">PeakCore Tip</h4>
-                <p className="text-xs text-[#71717A] leading-relaxed">Most users see significant results with just 5 minutes a day within the first 3 weeks.</p>
+                <p className="text-xs text-[#71717A] leading-relaxed">Urologists recommend 5 minutes of daily pelvic floor training as a first-line approach for men over 30.</p>
               </div>
             </div>
           </main>
@@ -467,24 +474,24 @@ export default function FlowPage() {
           </header>
           <main className="flex-1 w-full max-w-[390px] mx-auto px-5 flex flex-col items-center justify-center text-center pt-20 pb-[100px]">
             <div className="mb-8 flex items-center justify-center w-24 h-24 rounded-full bg-[#FF6B2C]/5">
-              <span aria-label="trophy" className="text-6xl" role="img">🏆</span>
+              <span aria-label="medical" className="text-6xl" role="img">🩺</span>
             </div>
             <div className="space-y-3">
               <h1 className="text-[20px] font-black leading-tight text-[#1A1A1A]">
-                Pro athletes train their pelvic floor daily
+                Pelvic floor training is the #1 urologist recommendation
               </h1>
               <p className="text-lg font-medium text-[#71717A]">
-                for peak performance
+                for men experiencing reduced control or stamina
               </p>
             </div>
             <div className="mt-6 w-full grid grid-cols-2 gap-3">
               <div className="p-4 bg-[#f1effb] rounded-xl border border-[#E4E4E7]/50 flex flex-col items-center">
-                <span className="text-[#FF6B2C] font-black text-2xl">Daily</span>
-                <span className="text-xs uppercase tracking-widest text-[#71717A] font-bold">Consistency</span>
+                <span className="text-[#FF6B2C] font-black text-2xl">5 min/day</span>
+                <span className="text-xs uppercase tracking-widest text-[#71717A] font-bold">Recommended duration</span>
               </div>
               <div className="p-4 bg-[#f1effb] rounded-xl border border-[#E4E4E7]/50 flex flex-col items-center">
-                <span className="text-[#FF6B2C] font-black text-2xl">Elite</span>
-                <span className="text-xs uppercase tracking-widest text-[#71717A] font-bold">Standard</span>
+                <span className="text-[#FF6B2C] font-black text-2xl">2-4 weeks</span>
+                <span className="text-xs uppercase tracking-widest text-[#71717A] font-bold">Time to first results</span>
               </div>
             </div>
           </main>
@@ -517,35 +524,35 @@ export default function FlowPage() {
               <button onClick={() => setSelected("age")} className={`option-tap group w-full h-[72px] px-5 flex items-center justify-between bg-white border-2 rounded-xl active:scale-[0.98] transition-all duration-200 ${selected === "age" ? "option-selected border-[#FF6B2C]" : "border-zinc-100 hover:border-[#FF6B2C]/30 hover:bg-[#FFF4EE]/20"}`}>
                 <div className="flex items-center gap-4">
                   <span className={`text-2xl ${selected === "age" ? "icon-selected" : "icon-bounce"}`}>📉</span>
-                  <span className="text-[15px] font-semibold text-zinc-800">Getting worse with age</span>
+                  <span className="text-[15px] font-semibold text-zinc-800">Losing more control as I age</span>
                 </div>
                 <span className={`material-symbols-outlined transition-colors ${selected === "age" ? "text-[#FF6B2C]" : "text-zinc-300"}`}>chevron_right</span>
               </button>
               <button onClick={() => setSelected("partner")} className={`option-tap group w-full h-[72px] px-5 flex items-center justify-between bg-white border-2 rounded-xl active:scale-[0.98] transition-all duration-200 ${selected === "partner" ? "option-selected border-[#FF6B2C]" : "border-zinc-100 hover:border-[#FF6B2C]/30 hover:bg-[#FFF4EE]/20"}`}>
                 <div className="flex items-center gap-4">
                   <span className={`text-2xl ${selected === "partner" ? "icon-selected" : "icon-bounce"}`}>💑</span>
-                  <span className="text-[15px] font-semibold text-zinc-800">Partner satisfaction</span>
+                  <span className="text-[15px] font-semibold text-zinc-800">Not satisfying my partner</span>
                 </div>
                 <span className={`material-symbols-outlined transition-colors ${selected === "partner" ? "text-[#FF6B2C]" : "text-zinc-300"}`}>chevron_right</span>
               </button>
               <button onClick={() => setSelected("missing")} className={`option-tap group w-full h-[72px] px-5 flex items-center justify-between bg-white border-2 rounded-xl active:scale-[0.98] transition-all duration-200 ${selected === "missing" ? "option-selected border-[#FF6B2C]" : "border-zinc-100 hover:border-[#FF6B2C]/30 hover:bg-[#FFF4EE]/20"}`}>
                 <div className="flex items-center gap-4">
-                  <span className={`text-2xl ${selected === "missing" ? "icon-selected" : "icon-bounce"}`}>🚫</span>
-                  <span className="text-[15px] font-semibold text-zinc-800">Missing better experiences</span>
+                  <span className={`text-2xl ${selected === "missing" ? "icon-selected" : "icon-bounce"}`}>💭</span>
+                  <span className="text-[15px] font-semibold text-zinc-800">Knowing I could feel more</span>
                 </div>
                 <span className={`material-symbols-outlined transition-colors ${selected === "missing" ? "text-[#FF6B2C]" : "text-zinc-300"}`}>chevron_right</span>
               </button>
               <button onClick={() => setSelected("health")} className={`option-tap group w-full h-[72px] px-5 flex items-center justify-between bg-white border-2 rounded-xl active:scale-[0.98] transition-all duration-200 ${selected === "health" ? "option-selected border-[#FF6B2C]" : "border-zinc-100 hover:border-[#FF6B2C]/30 hover:bg-[#FFF4EE]/20"}`}>
                 <div className="flex items-center gap-4">
                   <span className={`text-2xl ${selected === "health" ? "icon-selected" : "icon-bounce"}`}>🏥</span>
-                  <span className="text-[15px] font-semibold text-zinc-800">Health decline</span>
+                  <span className="text-[15px] font-semibold text-zinc-800">Bladder control or recovery concerns</span>
                 </div>
                 <span className={`material-symbols-outlined transition-colors ${selected === "health" ? "text-[#FF6B2C]" : "text-zinc-300"}`}>chevron_right</span>
               </button>
             </div>
             <div className="mt-6 text-center">
               <p className="text-xs italic text-zinc-500 font-normal">
-                Knowing your priority helps us focus your plan
+                We hear you. Your plan will target exactly this.
               </p>
             </div>
           </main>
@@ -578,7 +585,7 @@ export default function FlowPage() {
                   🔥
                 </div>
                 <span className={`text-xs md:text-sm font-bold text-center leading-tight ${selected === "asap" ? "text-[#FF6B2C]" : "text-[#3F3F46]"}`}>
-                  ASAP
+                  I want to feel a difference this week
                 </span>
               </button>
               <button onClick={() => setSelected("month")} className={`option-tap group flex flex-col items-center justify-center aspect-square border-2 rounded-2xl p-4 transition-all duration-200 active:scale-95 ${selected === "month" ? "option-selected border-[#FF6B2C]" : "bg-white border-[#E4E4E7] hover:border-[#FF6B2C]/50"}`}>
@@ -586,18 +593,19 @@ export default function FlowPage() {
                   📅
                 </div>
                 <span className={`text-xs md:text-sm font-bold text-center leading-tight ${selected === "month" ? "text-[#FF6B2C]" : "text-[#3F3F46]"}`}>
-                  Within a month
+                  Within 2-4 weeks is realistic
                 </span>
               </button>
               <button onClick={() => setSelected("norush")} className={`option-tap group flex flex-col items-center justify-center aspect-square border-2 rounded-2xl p-4 transition-all duration-200 active:scale-95 ${selected === "norush" ? "option-selected border-[#FF6B2C]" : "bg-white border-[#E4E4E7] hover:border-[#FF6B2C]/50"}`}>
                 <div className={`text-3xl md:text-4xl mb-3 ${selected === "norush" ? "icon-selected" : ""}`}>
-                  🧘
+                  💪
                 </div>
                 <span className={`text-xs md:text-sm font-bold text-center leading-tight ${selected === "norush" ? "text-[#FF6B2C]" : "text-[#3F3F46]"}`}>
-                  No rush
+                  I&apos;m committed to the long game
                 </span>
               </button>
             </div>
+            <p className="text-center text-[#71717A] italic text-sm mt-6">Most men notice the first changes within 14 days</p>
           </main>
           <div className="fixed bottom-0 left-0 right-0 z-50 px-5 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[390px] mx-auto">
             <button disabled={!selected} onClick={() => { next(); }} className={`w-full h-[56px] rounded-[12px] font-bold text-base transition-all ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
@@ -625,23 +633,23 @@ export default function FlowPage() {
               <div className="mb-6 flex items-center justify-center w-20 h-20 rounded-full bg-green-50">
                 <span className="material-symbols-outlined text-[#22C55E] text-[48px] fill-icon">check_circle</span>
               </div>
-              <h2 className="text-[20px] font-extrabold text-[#1A1A1A] tracking-tight mb-2">Good news!</h2>
+              <h2 className="text-[20px] font-extrabold text-[#1A1A1A] tracking-tight mb-2">Based on your answers...</h2>
               <div className="my-8">
-                <span className="text-7xl font-black text-[#FF6B2C] leading-none tracking-tighter">87%</span>
+                <span className="text-5xl font-black text-[#FF6B2C] leading-none tracking-tighter">Strong Match</span>
               </div>
               <p className="text-lg text-zinc-500 leading-relaxed max-w-[280px]">
-                Your profile matches men who improved in 4 weeks
+                Your profile aligns with men who saw real improvement in 4 weeks
               </p>
               <div className="mt-6 grid grid-cols-2 gap-4 w-full">
                 <div className="bg-[#F7F7F8] p-4 rounded-2xl flex flex-col items-start text-left">
                   <span className="material-symbols-outlined text-[#FF6B2C] mb-2">trending_up</span>
-                  <span className="text-sm font-bold text-[#1A1A1A]">Proven Path</span>
-                  <span className="text-xs text-zinc-500">Based on profile match</span>
+                  <span className="text-sm font-bold text-[#1A1A1A]">Personalized</span>
+                  <span className="text-xs text-zinc-500">Built for your specific profile</span>
                 </div>
                 <div className="bg-[#F7F7F8] p-4 rounded-2xl flex flex-col items-start text-left">
                   <span className="material-symbols-outlined text-[#FF6B2C] mb-2">schedule</span>
                   <span className="text-sm font-bold text-[#1A1A1A]">4 Weeks</span>
-                  <span className="text-xs text-zinc-500">Est. improvement time</span>
+                  <span className="text-xs text-zinc-500">Average time to noticeable results</span>
                 </div>
               </div>
             </main>
@@ -655,7 +663,7 @@ export default function FlowPage() {
         </div>
       )}
 
-      {/* ===== STEP 12: PREFERRED TIME (stitch/13_preferred_time.html) ===== */}
+      {/* ===== STEP 12: COMMITMENT ===== */}
       {step === 12 && (
         <div className="bg-white text-[#1A1A1A] antialiased min-h-dvh max-h-dvh overflow-hidden flex flex-col items-center">
           <div className="fixed top-0 left-0 w-full h-1 bg-zinc-200 z-[60]">
@@ -669,24 +677,27 @@ export default function FlowPage() {
             <div className="w-10"></div>
           </header>
           <main className="flex-1 w-full max-w-[390px] mx-auto flex flex-col px-5 pt-[60px] pb-[120px]">
-            <div className="flex-1 flex flex-col justify-center">
-              <h1 className="text-[20px] font-extrabold text-[#1A1A1A] leading-tight mb-6 text-center">
-                Preferred training time?
+            <div className="flex-1 flex flex-col justify-center items-center">
+              <h1 className="text-[20px] font-extrabold text-[#1A1A1A] leading-tight mb-8 text-center">
+                Are you ready to commit to 5 minutes a day for the next 30 days?
               </h1>
-              <div className="grid grid-cols-3 gap-3">
-                <button onClick={() => setSelected("morning")} className={`option-tap flex flex-col items-center justify-center aspect-square border rounded-xl transition-all active:scale-95 ${selected === "morning" ? "option-selected border-[#FF6B2C]" : "bg-[#F7F7F8] border-[#E4E4E7] hover:border-[#FF6B2C]"}`}>
-                  <span className={`text-3xl mb-2 ${selected === "morning" ? "icon-selected" : "icon-bounce"}`}>🌅</span>
-                  <span className={`text-sm font-semibold ${selected === "morning" ? "text-[#FF6B2C]" : "text-[#3F3F46]"}`}>Morning</span>
+              <div className="flex flex-col gap-4 w-full">
+                <button onClick={() => setSelected("allin")} className={`option-tap w-full h-16 px-5 flex items-center justify-between bg-white border-2 rounded-xl transition-all active:scale-[0.98] ${selected === "allin" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:border-[#FF6B2C] hover:bg-[#FFF4EE]"}`}>
+                  <div className="flex items-center gap-4">
+                    <span className={`text-2xl ${selected === "allin" ? "icon-selected" : "icon-bounce"}`}>✅</span>
+                    <span className="text-[17px] font-semibold text-[#1A1A1A]">Yes, I&apos;m all in</span>
+                  </div>
+                  <span className={`material-symbols-outlined ${selected === "allin" ? "text-[#FF6B2C]" : "text-zinc-300"}`}>chevron_right</span>
                 </button>
-                <button onClick={() => setSelected("afternoon")} className={`option-tap flex flex-col items-center justify-center aspect-square border rounded-xl transition-all active:scale-95 ${selected === "afternoon" ? "option-selected border-[#FF6B2C]" : "bg-[#F7F7F8] border-[#E4E4E7] hover:border-[#FF6B2C]"}`}>
-                  <span className={`text-3xl mb-2 ${selected === "afternoon" ? "icon-selected" : "icon-bounce"}`}>☀️</span>
-                  <span className={`text-sm font-semibold ${selected === "afternoon" ? "text-[#FF6B2C]" : "text-[#3F3F46]"}`}>Afternoon</span>
-                </button>
-                <button onClick={() => setSelected("evening")} className={`option-tap flex flex-col items-center justify-center aspect-square border rounded-xl transition-all active:scale-95 ${selected === "evening" ? "option-selected border-[#FF6B2C]" : "bg-[#F7F7F8] border-[#E4E4E7] hover:border-[#FF6B2C]"}`}>
-                  <span className={`text-3xl mb-2 ${selected === "evening" ? "icon-selected" : "icon-bounce"}`}>🌙</span>
-                  <span className={`text-sm font-semibold ${selected === "evening" ? "text-[#FF6B2C]" : "text-[#3F3F46]"}`}>Evening</span>
+                <button onClick={() => setSelected("mybest")} className={`option-tap w-full h-16 px-5 flex items-center justify-between bg-white border-2 rounded-xl transition-all active:scale-[0.98] ${selected === "mybest" ? "option-selected border-[#FF6B2C]" : "border-[#E4E4E7] hover:border-[#FF6B2C] hover:bg-[#FFF4EE]"}`}>
+                  <div className="flex items-center gap-4">
+                    <span className={`text-2xl ${selected === "mybest" ? "icon-selected" : "icon-bounce"}`}>💪</span>
+                    <span className="text-[17px] font-semibold text-[#1A1A1A]">I&apos;ll do my best</span>
+                  </div>
+                  <span className={`material-symbols-outlined ${selected === "mybest" ? "text-[#FF6B2C]" : "text-zinc-300"}`}>chevron_right</span>
                 </button>
               </div>
+              <p className="text-center text-[#71717A] italic text-sm mt-8">That&apos;s all it takes. No equipment. No gym. Just you.</p>
             </div>
           </main>
           <div className="fixed bottom-0 left-0 right-0 z-50 px-5 pb-6 pt-3 bg-gradient-to-t from-white via-white/95 to-transparent max-w-[390px] mx-auto">
@@ -695,7 +706,7 @@ export default function FlowPage() {
         </div>
       )}
 
-      {/* ===== STEP 13: REMINDERS (stitch/14_reminders.html) ===== */}
+      {/* ===== STEP 13: TESTIMONIALS ===== */}
       {step === 13 && (
         <div className="bg-white text-[#1A1A1A] antialiased flex justify-center min-h-dvh max-h-dvh overflow-hidden">
           <div className="w-full max-w-[390px] min-h-dvh max-h-dvh flex flex-col relative overflow-hidden">
@@ -706,39 +717,26 @@ export default function FlowPage() {
               <h1 className="font-black tracking-tighter text-xl text-orange-600">PEAKCORE</h1>
               <div className="w-10"></div>
             </header>
-            <main className="flex-grow flex flex-col pt-14 pb-[100px]">
+            <main className="flex-grow flex flex-col items-center justify-center px-6 pt-14 pb-[120px] text-center">
               <div className="w-full sticky top-14 z-40 bg-white">
                 <div className="progress-bar-track">
                   <div className="progress-bar-fill" style={{ width: progressWidth }}></div>
                 </div>
               </div>
-              <div className="flex-grow flex flex-col items-center justify-center px-6 text-center">
-                <h2 className="text-[20px] font-extrabold leading-tight tracking-tight text-[#1A1A1A] mb-6">
-                  Want daily reminders?
-                </h2>
-                <div className="w-full p-8 rounded-xl bg-[#F7F7F8] border border-[#E4E4E7] mb-6 flex flex-col items-center">
-                  <div className="w-16 h-16 rounded-2xl bg-[#FFF4EE] flex items-center justify-center mb-4">
-                    <span className="material-symbols-outlined text-[#FF6B2C] text-4xl" style={{ fontVariationSettings: "'FILL' 1" }}>notifications_active</span>
-                  </div>
-                  <p className="text-[#3F3F46] font-medium text-center px-4 leading-relaxed">
-                    Stay consistent with quick daily alerts to keep your training on track.
-                  </p>
-                </div>
-              </div>
+              <span className="text-6xl text-[#FF6B2C] mb-6">&#10077;</span>
+              <blockquote className="text-[18px] font-semibold text-[#1A1A1A] leading-relaxed mb-3 px-2">
+                &ldquo;I went from lasting under 2 minutes to over 15. My only regret is not starting sooner.&rdquo;
+              </blockquote>
+              <p className="text-[13px] text-[#9CA3AF] mb-10">— Verified user, age 41</p>
+              <blockquote className="text-[15px] text-[#3F3F46] leading-relaxed mb-3 px-4 italic">
+                &ldquo;My urologist recommended pelvic floor exercises. This program made it simple.&rdquo;
+              </blockquote>
+              <p className="text-[13px] text-[#9CA3AF] mb-8">— Verified user, age 53</p>
             </main>
-            <div className="fixed bottom-0 left-0 right-0 w-full max-w-[390px] mx-auto px-5 pb-8 pt-4 bg-white bg-opacity-95 backdrop-blur-sm">
-              <div className="flex flex-col gap-3">
-                <button onClick={() => setSelected("yes")} className={`option-tap w-full h-[56px] rounded-xl font-bold text-lg flex items-center justify-center active:scale-[0.98] transition-all ${selected === "yes" ? "bg-[#FF6B2C] text-white shadow-lg shadow-orange-200 option-selected" : "bg-white text-[#FF6B2C] border-2 border-[#FF6B2C]"}`}>
-                  ✅ Yes, keep me on track
-                </button>
-                <button onClick={() => setSelected("no")} className={`option-tap w-full h-[56px] rounded-xl font-bold text-lg flex items-center justify-center active:scale-[0.98] transition-all ${selected === "no" ? "bg-[#FF6B2C] text-white shadow-lg shadow-orange-200 option-selected" : "bg-white text-[#FF6B2C] border-2 border-[#FF6B2C]"}`}>
-                  ⏭️ No thanks
-                </button>
-              </div>
-              <button disabled={!selected} onClick={() => { next(); }} className={`w-full h-[56px] rounded-[12px] font-bold text-base transition-all mt-3 ${selected ? "bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]" : "bg-[#E4E4E7] text-[#71717A] cursor-not-allowed"}`}>Continue</button>
-              <p className="mt-4 text-center text-[#71717A] text-sm font-medium">
-                Consistency is the #1 predictor of success
-              </p>
+            <div className="fixed bottom-0 left-0 right-0 w-full max-w-[390px] mx-auto px-5 pb-8 pt-4 bg-gradient-to-t from-white via-white/95 to-transparent">
+              <button onClick={() => { next(); }} className="w-full h-[56px] rounded-[12px] font-bold text-base transition-all bg-[#FF6B2C] text-white shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow active:scale-[0.97]">
+                See My Plan →
+              </button>
             </div>
           </div>
         </div>
@@ -767,10 +765,10 @@ export default function FlowPage() {
               </div>
               <div className="text-center mb-8">
                 <h1 className="text-[1.75rem] font-bold text-[#1c1b1b] leading-tight tracking-tighter mb-2">
-                  Get Your Personal Plan
+                  Your Personal Protocol is Ready
                 </h1>
                 <p className="text-[1rem] text-[#594139] leading-relaxed px-4">
-                  Enter your email for your custom plan
+                  Enter your email to receive your customized 8-week program
                 </p>
               </div>
               <div className="space-y-4">
@@ -784,7 +782,7 @@ export default function FlowPage() {
                   />
                 </div>
                 <button onClick={handleEmailSubmit} className={`w-full h-14 bg-[#ff6b2c] text-white font-bold text-[1.125rem] rounded-xl flex items-center justify-center gap-2 active:scale-[0.98] transition-all duration-200 ${email ? "shadow-[0_0_20px_rgba(255,107,44,0.4)] animate-cta-glow" : ""}`}>
-                  Get My Plan
+                  Unlock My Protocol →
                   <span className="material-symbols-outlined text-[1.25rem]">arrow_forward</span>
                 </button>
                 <button onClick={() => router.push("/loading-screen")} className="w-full text-[13px] text-[#71717A] mt-3 py-2 hover:underline transition-all">
@@ -807,7 +805,7 @@ export default function FlowPage() {
               <div className="bg-[#f6f3f2] p-4 rounded-xl flex items-center gap-4">
                 <div className="flex flex-col">
                   <span className="text-[0.625rem] text-[#ff6b2c] font-black uppercase tracking-[0.2em]">Live Status</span>
-                  <span className="text-[0.8125rem] font-semibold text-[#1c1b1b]">Plan generating for your metrics...</span>
+                  <span className="text-[0.8125rem] font-semibold text-[#1c1b1b]">Protocol finalizing based on your 18 answers...</span>
                 </div>
                 <div className="ml-auto flex items-center">
                   <div className="w-1.5 h-1.5 bg-[#ff6b2c] rounded-full animate-pulse"></div>
